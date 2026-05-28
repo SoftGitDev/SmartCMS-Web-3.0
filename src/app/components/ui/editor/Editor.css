@@ -1,0 +1,163 @@
+/* ============================================================
+   Editor.css — CKEditor themed with --primaryColor variables
+   ============================================================ */
+
+/* Label */
+.editor-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.75rem;
+    color: var(--slate500Color);
+    font-weight: 500;
+}
+
+.editor-label.required::after {
+    content: " *";
+    color: var(--dangerColor);
+}
+
+/* Outer wrapper */
+.editor-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Container that wraps the CKEditor instance */
+.editor-container .ck.ck-editor {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px var(--primaryColor25);
+}
+
+/* ── Toolbar ── */
+.editor-container .ck.ck-toolbar {
+    background-color: var(--theader) !important;
+    border-color: var(--primaryColor50) !important;
+    padding: 4px 6px !important;
+}
+
+.editor-container .ck.ck-toolbar .ck-toolbar__separator {
+    background-color: var(--primaryColor40) !important;
+}
+
+/* Toolbar buttons — default */
+.editor-container .ck.ck-button {
+    color: var(--slate600Color) !important;
+    border-radius: 5px !important;
+    transition: background 0.15s, color 0.15s !important;
+}
+
+/* Toolbar buttons — hover */
+.editor-container .ck.ck-button:hover:not(.ck-disabled) {
+    background-color: var(--primaryColor25) !important;
+    color: var(--primaryColor) !important;
+}
+
+/* Toolbar buttons — active / pressed */
+.editor-container .ck.ck-button.ck-on {
+    background-color: var(--primaryColor) !important;
+    color: var(--whiteColor) !important;
+}
+
+.editor-container .ck.ck-button.ck-on:hover:not(.ck-disabled) {
+    background-color: var(--primaryColor75) !important;
+    color: var(--whiteColor) !important;
+}
+
+/* Dropdown arrows inside toolbar */
+.editor-container .ck.ck-dropdown .ck-button .ck-button__label {
+    color: var(--slate600Color) !important;
+    font-size: 0.8rem !important;
+}
+
+/* ── Editable area ── */
+.editor-container .ck.ck-editor__main .ck-editor__editable {
+    min-height: 180px;
+    background-color: var(--ComponentBgColor) !important;
+    border-color: var(--primaryColor50) !important;
+    color: var(--slate700Color) !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 14px 16px !important;
+    transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+/* Focused editing area */
+.editor-container .ck.ck-editor__main .ck-editor__editable.ck-focused {
+    border-color: var(--primaryColor) !important;
+    box-shadow: 0 0 0 3px var(--primaryColor25) !important;
+    outline: none !important;
+}
+
+/* Placeholder text */
+.editor-container .ck .ck-placeholder::before {
+    color: var(--slate500Color40) !important;
+}
+
+/* ── Dropdown panels (heading selector, etc.) ── */
+.editor-container .ck.ck-dropdown__panel {
+    border-color: var(--primaryColor50) !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 16px var(--primaryColor25) !important;
+    overflow: hidden;
+}
+
+.editor-container .ck.ck-list__item .ck-button:hover:not(.ck-disabled) {
+    background-color: var(--primaryColor25) !important;
+    color: var(--primaryColor) !important;
+}
+
+.editor-container .ck.ck-list__item .ck-button.ck-on {
+    background-color: var(--primaryColor) !important;
+    color: var(--whiteColor) !important;
+}
+
+/* ── Links ── */
+.editor-container .ck-content a {
+    color: var(--primaryColor) !important;
+    text-decoration: underline;
+}
+
+/* ── Blockquote ── */
+.editor-container .ck-content blockquote {
+    border-left: 4px solid var(--primaryColor) !important;
+    padding-left: 12px;
+    color: var(--slate500Color) !important;
+    font-style: italic;
+}
+
+/* ── Tables ── */
+.editor-container .ck-content .table table th {
+    background-color: var(--primaryColor25) !important;
+    color: var(--slate700Color) !important;
+    border-color: var(--primaryColor50) !important;
+}
+
+.editor-container .ck-content .table table td {
+    border-color: var(--primaryColor25) !important;
+}
+
+/* ── Disabled state ── */
+.editor-container.editor-disabled .ck.ck-editor__main .ck-editor__editable {
+    background-color: var(--bgColor) !important;
+    color: var(--slate500Color40) !important;
+    cursor: not-allowed;
+}
+
+.editor-container.editor-disabled .ck.ck-toolbar {
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+/* ── Scrollbar (webkit) ── */
+.editor-container .ck-editor__editable::-webkit-scrollbar {
+    width: 6px;
+}
+.editor-container .ck-editor__editable::-webkit-scrollbar-thumb {
+    background: var(--primaryColor50);
+    border-radius: 3px;
+}
+.editor-container .ck-editor__editable::-webkit-scrollbar-track {
+    background: transparent;
+}

@@ -1,0 +1,62 @@
+/* 1. Container - Ensures spacing between inputs */
+.otp-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  /* Space between each box */
+  margin-top: 1rem;
+}
+
+/* 2. The Input Box - Modern Square Look */
+.otp-input {
+  width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  background-color: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  caret-color: var(--primaryColor);
+}
+
+/* 3. Focus State - The "Premium" Active Effect */
+.otp-input:focus {
+  /* border-color: var(--primaryColor) !important; */
+  border-color: var(--primaryColor) !important;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(var(--primaryColor));
+  transform: translateY(-3px);
+  outline: none;
+}
+
+/* 4. Filled State (Optional - if you want filled boxes to look different) */
+.otp-input:not(:placeholder-shown) {
+  background-color: #fff;
+  border-color: #cbd5e1;
+}
+
+/* 5. Disabled State */
+.otp-input:disabled {
+  background-color: #e9ecef;
+  color: #adb5bd;
+  cursor: not-allowed;
+  border-color: #dee2e6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 6. Remove default number spinners (Browser Reset) */
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .otp-input[type=number] {
+  -moz-appearance: textfield;
+} */

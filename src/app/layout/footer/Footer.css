@@ -1,0 +1,21 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff !important;
+  padding: 7px 0px;
+  color: black;
+  position: sticky;
+  text-align: center;
+  /* height: 30px; */
+  z-index: 35 !important;
+}
+
+.footer-p {
+  color: black;
+  float: inline-end;
+}
+
+.h-15 {
+  height: 15px !important;
+}
