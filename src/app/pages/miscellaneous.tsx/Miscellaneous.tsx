@@ -10,10 +10,10 @@ import { getUserData } from '../../utils/common';
 import LoaderUI from '../../components/loader/Loader';
 import SideMenu from '../../components/common/SideMenu';
 import Category from './module/Category';
-import CategoryMdl from '../../content/modal/miscellaneous.tsx/CategoryMdl';
-import SubCategoryMdl from '../../content/modal/miscellaneous.tsx/SubCategoryMdl';
-import CircularTypeMdl from '../../content/modal/miscellaneous.tsx/CircularTypeMdl';
 import SubCategory from './module/SubCategory';
+import Department from './module/Department';
+import CircularType from './module/CircularType';
+import DynamicColumn from './module/DynamicColumn';
 
 const PageHeaeder = lazy(() => import("../../components/common/PageHeaeder").then(({ default: PageHeaeder }) => ({ default: PageHeaeder })));
 
@@ -212,16 +212,30 @@ const Miscellaneous = () => {
     };
 
     // Close handlers
+
+    // CategoryMdl
     const handleCloseCategoryMdl = (data?: any) => {
         handleCommonMdl(isCategoryMdl, setIsCategoryMdl, data);
     }
 
+    // SubCategoryMdl
     const handleCloseSubCategoryMdl = (data?: any) => {
         handleCommonMdl(isSubCategoryMdl, setIsSubCategoryMdl, data);
     }
 
+    // CircularTypeMdl
     const handleCloseCircularTypeMdl = (data?: any) => {
         handleCommonMdl(isCircularTypeMdl, setIsCircularTypeMdl, data);
+    }
+
+    // DepartmentMdl
+    const handleCloseDepartmentMdl = (data?: any) => {
+        handleCommonMdl(isCircularTypeMdl, setIsCircularTypeMdl, data);
+    }
+
+    // DyanmicColumMdl
+    const handleCloseDyanmicColumMdl = (data?: any) => {
+        handleCommonMdl(isDynamicColumnMdl, setIsDynamicColumnMdl, data);
     }
 
     // Get current menu item to access button name
@@ -289,19 +303,39 @@ const Miscellaneous = () => {
                             />
                         </Suspense>
                     }
+
+                    {/* Circular Type */}
+                    {activeTab === "circular-type" &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <CircularType
+                                show={isSubCategoryMdl}
+                                handleClose={handleCloseCircularTypeMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* Department */}
+                    {activeTab === 'department' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <Department
+                                show={isDepartmentMdl}
+                                handleClose={handleCloseDepartmentMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* dynamic-column */}
+                    {activeTab === 'dynamic-column' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <DynamicColumn
+                                show={isDynamicColumnMdl}
+                                handleClose={handleCloseDyanmicColumMdl}
+                            />
+                        </Suspense>
+                    }
                 </div>
 
 
-
-
-                {/* Circular Type Mdl */}
-                {isCircularTypeMdl &&
-                    <CircularTypeMdl
-                        show={isCircularTypeMdl}
-                        handleClose={handleCloseCircularTypeMdl}
-                        editedData={editData}
-                    />
-                }
             </div>
         </div>
     )

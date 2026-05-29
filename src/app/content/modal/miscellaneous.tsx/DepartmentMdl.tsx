@@ -1,32 +1,32 @@
-// Purpose: Circular Type add edit module modal 
+// Purpose: Department   modal 
 // Created by: Harish
-// Created Date: 28-05-2026
+// Created Date: 29-05-2026
 
-
-import { ErrorMessage, Formik ,Form} from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
+import { LucideListChecks } from 'lucide-react';
 import React from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap';
-import Textfield from '../../../components/ui/TextField/TextInput';
-import { LucideListChecks } from 'lucide-react';
 import * as Yup from 'yup';
+import Textfield from '../../../components/ui/TextField/TextInput';
 
 
-interface CircularTypeMdlMdlProps {
+interface DepartmentMdlProps {
     show: boolean;
     handleClose: () => void;
     editedData?: any;
 }
 
-const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose, editedData }) => {
+const DepartmentMdl: React.FC<DepartmentMdlProps> = ({ show, handleClose, editedData }) => {
 
     // Form submission handlers
-    const addCircularTypeMdl = (values: any) => {
-        console.log('Add CircularTypeMdl => ', values);
+    const addDepartmentMdl = (values: any) => {
+        console.log('Add Department => ', values);
     };
 
-    const editCircularTypeMdl = (values: any) => {
-        console.log('Edit CircularTypeMdl => ', values);
+    const editDepartmentMdl = (values: any) => {
+        console.log('Edit Department => ', values);
     };
+
 
     return (
         <div>
@@ -40,17 +40,17 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
                 <Formik
                     // Initial values mapped cleanly to database keys and fallback states
                     initialValues={{
-                        circularType: editedData?.circularType || '',
+                        departmentNm: editedData?.departmentNm || '',
                     }}
                     // Validation Schema alignment with form fields
                     validationSchema={Yup.object().shape({
-                        category: Yup.string().required('Category Name is required'),
+                        departmentNm: Yup.string().required('Department Name is required'),
                     })}
                     onSubmit={(values, { setSubmitting }) => {
                         if (editedData) {
-                            editCircularTypeMdl(values);
+                            editDepartmentMdl(values);
                         } else {
-                            addCircularTypeMdl(values);
+                            addDepartmentMdl(values);
                         }
                         setSubmitting(false);
                     }}
@@ -84,18 +84,18 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
                                         <Row>
                                             <Col md={12} className='mb-3'>
                                                 <Textfield
-                                                    label='Sub Category Name'
-                                                    value={values.circularType}
-                                                    name='circularType'
-                                                    id='circularType'
+                                                    label='Department Name'
+                                                    value={values.departmentNm}
+                                                    name='departmentNm'
+                                                    id='departmentNm'
                                                     required
                                                     type='text'
                                                     onBlur={handleBlur}
                                                     onChange={handleChange}
-                                                    placeholder='Enter Circular Type '
+                                                    placeholder='Enter Department name '
                                                     maxLength={100}
                                                 />
-                                                <ErrorMessage name="circularType" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="departmentNm" className="text-danger small mt-1" component="div" />
                                             </Col>
                                         </Row>
                                     </Col>
@@ -124,4 +124,4 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
     )
 }
 
-export default CircularTypeMdl
+export default DepartmentMdl
