@@ -55,6 +55,8 @@
   --transparentButton: white;
   --SuccessTrans: #3ec9292a;
   --SiderBarColor: rgb(255, 255, 255);
+
+  
 }
 
 body {
@@ -772,15 +774,6 @@ input::placeholder {
 
 /* Misc Siderbar Css */
 
-.custom-tabs-sidebar {
-  width: 300px;
-  background-color: #ffffff;
-  border-right: 1px solid #e2e8f0;
-  display: flex;
-  flex-direction: column;
-}
-
-
 
 .custom-tabs-container {
   display: flex;
@@ -899,4 +892,10 @@ input::placeholder {
   background-color: #ffffff;
   overflow-y: auto;
   padding: 15px;
+}
+
+/* Licence Lable UI  */
+.licence-input {
+  border: 2px dashed var(--primaryColor75) !important;
+  background-color: var(--primaryColor25) !important;
 }

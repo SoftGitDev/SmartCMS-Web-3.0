@@ -13,6 +13,7 @@ import {
   Package,
   Code2,
   ClipboardList,
+  BellRing,
 } from "lucide-react";
 
 export function menuItems(userData: any) {
@@ -31,8 +32,8 @@ export function menuItems(userData: any) {
       isShow: true,
       child: [
         {
-          childtitle: "Bank",
-          childlink: "/bank",
+          childtitle: "Organization ",
+          childlink: "/organization ",
           childicon: Building,
           isShow: true,
         },
@@ -43,8 +44,8 @@ export function menuItems(userData: any) {
           isShow: true,
         },
         {
-          childtitle: "Bank Management",
-          childlink: "/bank-management",
+          childtitle: "Organization Management",
+          childlink: "/organization-management",
           childicon: Building2,
           isShow: true,
         },
@@ -72,12 +73,18 @@ export function menuItems(userData: any) {
           childicon: Code2,
           isShow: true,
         },
-        {
-          childtitle: "Mail & SMS Configuration",
+          {
+          childtitle: "Channel Configuration",
           childlink: "/communication-config",
-          childicon: Mail,
+          childicon: BellRing,
           isShow: true,
         },
+        // {
+        //   childtitle: "Mail & SMS Configuration",
+        //   childlink: "/communication-config",
+        //   childicon: Mail,
+        //   isShow: true,
+        // },
         // {
         //   childtitle: "Escalation Levels",
         //   childlink: "/matrixlevels",

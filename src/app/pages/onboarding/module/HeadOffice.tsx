@@ -9,7 +9,7 @@
 import React from 'react';
 import { Row, Col, } from 'react-bootstrap';
 
-import { Building2, Hash, Phone, MapPin, Map, Landmark, EarthIcon, } from 'lucide-react';
+import { Building2, Hash, Phone, MapPin, Map, Landmark, EarthIcon, Mail, MapPinned, } from 'lucide-react';
 
 import { ErrorMessage as FormikErrorMessage } from 'formik';
 import Textfield from '../../../components/ui/TextField/TextInput';
@@ -68,9 +68,7 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                         IconProp={Building2}
                         type='text'
                         onChange={(e) => {
-
                             const regex = /^[A-Za-z\s]*$/;
-
                             if (regex.test(e.target.value)
                             ) {
                                 setFieldValue('branchName', e.target.value);
@@ -106,9 +104,9 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                 {/* Contact Details */}
                 <Col md={6}>
                     <Textfield
-                        label="Contact Details"
+                        label="Mobile No"
                         name="contactNo"
-                        placeholder="Enter contact number"
+                        placeholder="Enter mobile number"
                         required
                         type='text'
                         maxLength={10}
@@ -125,6 +123,27 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                     />
                     <ErrorMessage name="contactNo" component="div" className="ErrorMessage" />
                 </Col>
+
+                {/* Email ID */}
+                <Col md={6}>
+                    <Textfield
+                        label="Email ID"
+                        name="emailId"
+                        placeholder="Enter email id"
+                        required
+                        type='email'
+                        maxLength={50}
+                        value={values.emailId}
+                        tabIndex={getNextTabIndex()}
+                        onBlur={handleBlur}
+                        IconProp={Mail}
+                        onChange={(e) => {
+                            setFieldValue('emailId', e.target.value);
+                        }}
+                    />
+                    <ErrorMessage name="emailId " component="div" className="ErrorMessage" />
+                </Col>
+
                 {/* Address Line 1 */}
                 <Col md={6}>
                     <Textfield
@@ -161,7 +180,7 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
 
                 </Col>
                 {/* Country */}
-                <Col md={6}>
+                <Col md={3}>
                     <Textfield
                         label="Country"
                         name="country"
@@ -178,7 +197,7 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                     <ErrorMessage name="country" component="div" className="ErrorMessage" />
                 </Col>
                 {/* State */}
-                <Col md={6}>
+                <Col md={3}>
                     <SelectField
                         label="State"
                         placeholder="Select state"
@@ -224,7 +243,7 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                         value={values.pinCode}
                         tabIndex={getNextTabIndex()}
                         onBlur={handleBlur}
-                        IconProp={Hash}
+                        IconProp={MapPinned}
                         onChange={(e) => {
                             const regex = /^[0-9]*$/;
                             if (regex.test(e.target.value)) {

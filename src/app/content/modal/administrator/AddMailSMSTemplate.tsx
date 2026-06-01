@@ -1,6 +1,6 @@
 import { ErrorMessage, Form, Formik } from 'formik';
 import { BadgeCheck, Copy, KeySquare, Loader, LoaderCircle, Mail, MessageSquare, Shield } from 'lucide-react';
-import React, { useCallback,  useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Accordion, Button, Col, Modal, Row, Tab, Tabs } from 'react-bootstrap';
 import Editor from '../../../components/ui/editor/Editor';
 import toastNotify from '../../../utils/tostNotify';
@@ -22,8 +22,11 @@ interface MailSMSTemplateFormValues {
     mailStatus: boolean;
     unicode: boolean;
     smsStatus: boolean;
+    whatsAppStatus: boolean;
     tempId: string;
     tempIdLbl: string;
+    whatsAppDesc: string;
+    whatsAppTempId: string
 }
 
 type AddMailSMSTemplateProps = {
@@ -39,7 +42,9 @@ const mailSMSTemplateValidationSchema = Yup.object().shape({
     mailSubject: Yup.string().required('Mail subject is required'),
     mailDescription: Yup.string().required('Mail content is required'),
     smsDescription: Yup.string().required('SMS content is required'),
+    whatsAppDesc: Yup.string().required('WhatsApp content is required'),
     tempId: Yup.string().required('SMS Template Id is required'),
+    whatsAppTempId: Yup.string().required('WhatsApp Template Id is required'),
 });
 
 const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClose, editedData, getMailSmsTemplateList }) => {
@@ -61,8 +66,11 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
         mailStatus: editedData?.mailStatus || false,
         unicode: editedData?.unicode || false,
         smsStatus: editedData?.smsStatus || false,
+        whatsAppStatus: editedData?.whatsAppStatus || false,
         tempId: editedData?.smsTemplateId || "",
         tempIdLbl: editedData?.tempIdLbl || "",
+        whatsAppTempId: editedData?.whatsAppTempId || "",
+        whatsAppDesc: editedData?.whatsAppDesc || "",
     };
 
     // Add New Templete
@@ -198,7 +206,7 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}  size="xl" >
+            <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="xl" >
                 <div className="modal-content border-0 shadow-lg">
                     <Formik
                         initialValues={initialValues}
@@ -246,7 +254,7 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
                                                     </Col>
 
                                                     <Col md={4} className='mt-4'>
-                                                        {mailSMSActiveTab === 'mailconfig' ? (
+                                                        {mailSMSActiveTab === 'mailconfig' && (
                                                             <Checkbox
                                                                 label="Mail Status"
                                                                 name='mailStatus'
@@ -256,7 +264,9 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
                                                                     setFieldValue("mailStatus", e.target.checked);
                                                                 }}
                                                             />
-                                                        ) : (
+                                                        )}
+
+                                                        {mailSMSActiveTab === 'smsconfig' && (
                                                             <Checkbox
                                                                 label="SMS Status"
                                                                 name='smsStatus'
@@ -264,6 +274,18 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
                                                                 checked={values.smsStatus === true}
                                                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                                     setFieldValue("smsStatus", e.target.checked);
+                                                                }}
+                                                            />
+                                                        )}
+
+                                                        {mailSMSActiveTab === 'whatsAppConfig' && (
+                                                            <Checkbox
+                                                                label="WhatsApp Status"
+                                                                name='whatsAppStatus'
+                                                                tabIndex={5}
+                                                                checked={values.whatsAppStatus === true}
+                                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                                    setFieldValue("whatsAppStatus", e.target.checked);
                                                                 }}
                                                             />
                                                         )}
@@ -319,6 +341,7 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
                                                             </Row>
                                                         </Tab>
 
+                                                        {/* sms */}
                                                         <Tab eventKey="smsconfig" title={<><MessageSquare size={16} className='me-1' /> SMS Configurations</>} className='h-75'>
                                                             <Row className="g-3 px-3">
 
@@ -385,6 +408,60 @@ const AddMailSMSTemplate: React.FC<AddMailSMSTemplateProps> = ({ show, handleClo
                                                             </Row>
                                                         </Tab>
 
+                                                        {/* WhatsApp Configuration */}
+                                                        <Tab eventKey="whatsAppConfig" title={<><MessageSquare size={16} className='me-1' /> WhatsApp Configurations</>} className='h-75'>
+                                                            <Row className="g-3 px-3">
+                                                                <Col md={6} className=''>
+                                                                    <Textfield
+                                                                        label="WhatsApp Template Id"
+                                                                        name="whatsAppTempId"
+                                                                        placeholder="Enter WhatsApp Template Id"
+                                                                        value={values.whatsAppTempId}
+                                                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                                            e.preventDefault();
+                                                                            const { value } = e.target;
+                                                                            const regex = /^[0-9]*[.,]?[0-9]*$/;
+                                                                            if (regex.test(value.toString())) {
+                                                                                setFieldValue("whatsAppTempId", value);
+                                                                            }
+                                                                        }}
+                                                                        maxLength={50}
+                                                                        onBlur={handleBlur}
+                                                                        required
+                                                                        tabIndex={4}
+                                                                    />
+                                                                    <ErrorMessage name="whatsAppTempId" component="div" className="ErrorMessage" />
+                                                                </Col>
+
+                                                                <div className='mt-2 mb-3'>
+                                                                    <TextArea
+                                                                        label="WhatsApp Content"
+                                                                        name="whatsAppDesc"
+                                                                        placeholder='Enter WhatsApp Content'
+                                                                        required
+                                                                        maxLength={400}
+                                                                        tabIndex={5}
+                                                                        value={values.whatsAppDesc}
+                                                                        onChange={handleChange}
+                                                                        onBlur={handleBlur}
+                                                                    />
+
+                                                                    <ErrorMessage name="whatsAppDesc" component="div" className="ErrorMessage" />
+                                                                </div>
+
+                                                                {/* <Col md={2} className='pb-3' style={{ marginTop: 20 }}>
+                                                                    <Checkbox
+                                                                        label="SMS Status"
+                                                                        name='smsStatus'
+                                                                        tabIndex={5}
+                                                                        checked={values.smsStatus === true}
+                                                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                                            setFieldValue("smsStatus", e?.target.checked);
+                                                                        }}
+                                                                    />
+                                                                </Col> */}
+                                                            </Row>
+                                                        </Tab>
                                                     </Tabs>
                                                 </div>
                                             </Col>

@@ -1,4 +1,4 @@
-// Purpose: Bank Details Configuration Management
+// Purpose: Organization  Details Configuration Management
 // Created by: Harish
 // Updated Date: 25-05-2026
 
@@ -6,7 +6,7 @@ import React, { useState, useRef } from "react";
 import { Container, Row, Col, Card, CardBody, Nav, Tab, Button, Form } from "react-bootstrap";
 import { Formik, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { University, Building2, Settings, Edit, Check, Globe2, Phone, MapPin, KeySquare, Lock, ShieldCheck } from "lucide-react";
+import { University, Building2, Settings, Edit, Check, Globe2, Phone, MapPin, KeySquare, Lock, ShieldCheck, Mail } from "lucide-react";
 
 import PageHeaeder from "../../../components/common/PageHeaeder";
 import Textfield from "../../../components/ui/TextField/TextInput";
@@ -23,7 +23,7 @@ const dummyLogo = "";
 const navItems = [
     {
         key: "bankDetails",
-        title: "Bank Details",
+        title: "Organization  Details",
         desc: "API credentials & profile core info",
         icon: <University size={20} strokeWidth={2.5} />
     },
@@ -75,9 +75,9 @@ const Bank = () => {
 
     // Consolidated Comprehensive Formik Validation Schema
     const validationSchema = Yup.object({
-        // Step 1: Bank Details Validation
-        bankName: Yup.string().required('Bank Name is required'),
-        bankCode: Yup.string().required('Bank Code is required'),
+        // Step 1: Organization  Details Validation
+        bankName: Yup.string().required('Organization  is required'),
+        bankCode: Yup.string().required('NPCI Code is required'),
         productKey: Yup.string().required('Product Key is required'),
         secretKey: Yup.string().required('Secret Key is required'),
         adminDomain: Yup.string().required('Admin Domain URL is required'),
@@ -87,8 +87,13 @@ const Bank = () => {
         branchName: Yup.string().required('Branch Name is required'),
         branchCode: Yup.string().required('Branch Code is required'),
         contactNo: Yup.string()
-            .matches(/^[0-9]{10}$/, 'Contact number must be exactly 10 digits')
-            .required('Contact number is required'),
+            .matches(/^[0-9]{10}$/, 'Mobile No must be exactly 10 digits')
+            .required('Mobile No is required'),
+
+        emailId: Yup.string()
+            .email('Enter a valid email address')
+            .required('Email is required'),
+
         addressLine1: Yup.string().required('Address Line 1 is required'),
         city: Yup.string().required('City is required'),
         state: Yup.string().nullable().required('State selection is required'),
@@ -101,7 +106,7 @@ const Bank = () => {
     return (
         <Formik
             initialValues={{
-                // STEP 1 - BANK DETAILS
+                // STEP 1 - Organization  Details
                 bankName: '',
                 bankCode: '',
                 productKey: '',
@@ -114,6 +119,7 @@ const Bank = () => {
                 branchName: '',
                 branchCode: '',
                 contactNo: '',
+                emailId: '',
                 addressLine1: '',
                 addressLine2: '',
                 city: '',
@@ -141,7 +147,7 @@ const Bank = () => {
                 <>
                     <PageHeaeder
                         Icon={University}
-                        title={"Bank Details"}
+                        title={"Organization  Details"}
                         description={
                             "Manage bank credentials, head office addresses, and application module service parameters configuration toggles."
                         }
@@ -194,14 +200,14 @@ const Bank = () => {
                                     <Card className="border-0 shadow-sm rounded-2 h-100">
                                         <Card.Body className="p-4">
                                             <Tab.Content>
-                                                {/* STEP 1: BANK DETAILS */}
+                                                {/* STEP 1: Organization  Details */}
                                                 <Tab.Pane eventKey="bankDetails">
                                                     <Row className="g-3">
                                                         <Col md={6}>
                                                             <Textfield
-                                                                label="Bank Name"
+                                                                label="Organization "
                                                                 name="bankName"
-                                                                placeholder="Enter bank display title"
+                                                                placeholder="Enter Organization name"
                                                                 value={values.bankName}
                                                                 disabled={!isEditMode}
                                                                 tabIndex={getNextTabIndex()}
@@ -215,7 +221,7 @@ const Bank = () => {
                                                         </Col>
                                                         <Col md={6}>
                                                             <Textfield
-                                                                label="Bank Code"
+                                                                label="NPCI Code"
                                                                 name="bankCode"
                                                                 placeholder="e.g. HDFC, BARB"
                                                                 value={values.bankCode}
@@ -230,39 +236,8 @@ const Bank = () => {
                                                             />
                                                             <ErrorMessage name="bankCode" component="div" className="ErrorMessage" />
                                                         </Col>
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="Product Key"
-                                                                name="productKey"
-                                                                placeholder="Enter service product validation key"
-                                                                value={values.productKey}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                type="text"
 
-                                                                IconProp={KeySquare}
-                                                                onChange={(e: any) =>
-                                                                    setFieldValue('productKey', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="productKey" component="div" className="ErrorMessage" />
-                                                        </Col>
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="Secret Key"
-                                                                name="secretKey"
-                                                                type="password"
-                                                                placeholder="••••••••••••"
-                                                                value={values.secretKey}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                IconProp={Lock}
-                                                                onChange={(e: any) =>
-                                                                    setFieldValue('secretKey', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="secretKey" component="div" className="ErrorMessage" />
-                                                        </Col>
+
                                                         <Col md={6}>
                                                             <Textfield
                                                                 label="Admin Domain
@@ -348,9 +323,9 @@ const Bank = () => {
                                                             />
                                                             <ErrorMessage name="branchCode" component="div" className="ErrorMessage" />
                                                         </Col>
-                                                        <Col md={6}>
+                                                        <Col md={3}>
                                                             <Textfield
-                                                                label="Contact Number"
+                                                                label="Mobile No"
                                                                 name="contactNo"
                                                                 maxLength={10}
                                                                 placeholder="Enter 10 digit landline/mobile contact"
@@ -363,6 +338,23 @@ const Bank = () => {
                                                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (/^[0-9]*$/.test(e.target.value)) setFieldValue("contactNo", e.target.value); }}
                                                             />
                                                             <ErrorMessage name="contactNo" component="div" className="ErrorMessage" />
+                                                        </Col>
+                                                        <Col md={3}>
+                                                            <Textfield
+                                                                label="Email ID"
+                                                                name="emailId"
+                                                                maxLength={50}
+                                                                required
+                                                                placeholder="Enter email id"
+                                                                value={values.emailId}
+                                                                disabled={!isEditMode}
+                                                                tabIndex={getNextTabIndex()}
+                                                                onBlur={handleBlur}
+                                                                type="text"
+                                                                IconProp={Mail}
+                                                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (/^[0-9]*$/.test(e.target.value)) setFieldValue("contactNo", e.target.value); }}
+                                                            />
+                                                            <ErrorMessage name="emailId" component="div" className="ErrorMessage" />
                                                         </Col>
                                                         <Col md={6}>
                                                             <Textfield

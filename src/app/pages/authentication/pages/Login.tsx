@@ -57,6 +57,7 @@ const Login = () => {
         <Suspense fallback={<LoaderUI />}>
             {/* <LoginLayout title="Login" Note="Please enter your credentials to sign in !"> */}
             <LoginLayout
+                Headertitle='Login'
                 title="Welcome to Complaint Management System"
                 Note="Manage complaints, track tickets, and streamline support operations securely."
             >

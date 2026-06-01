@@ -23,7 +23,7 @@ interface BankMstTblProps {
 const columns: tableColumnProps[] = [
     {
         field: 'bankName',
-        header: 'Bank Name',
+        header: 'Organization ',
         sorting: true,
         width: "280px",
     },

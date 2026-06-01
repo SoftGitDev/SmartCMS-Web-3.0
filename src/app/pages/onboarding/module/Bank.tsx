@@ -1,9 +1,9 @@
-// Purpose: OnBoarding Step First - Bank Details Component
+// Purpose: OnBoarding Step First - Organization  Details Component
 // Created by: Harish
 // Created Date: 21-05-2026
 
 // Change History:
-// 21-05-2026 | Harish | Created Bank Details Component
+// 21-05-2026 | Harish | Created Organization  Details Component
 // --------------------------------------------------------------
 
 import React, { useRef } from 'react';
@@ -41,12 +41,12 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                 ========================= */}
                 <Col lg={8}>
                     <Row className="g-3">
-                        {/* Bank Name */}
+                        {/* Organization  */}
                         <Col md={6}>
                             <Textfield
-                                label="Bank Name"
+                                label="Organization "
                                 name="bankName"
-                                placeholder="Enter bank name"
+                                placeholder="Enter Organization "
                                 required
                                 type='text'
                                 maxLength={100}
@@ -64,12 +64,12 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                             <ErrorMessage name="bankName" component="div" className="ErrorMessage" />
                         </Col>
 
-                        {/* Bank Code */}
+                        {/* NPCI Code */}
                         <Col md={6}>
                             <Textfield
-                                label="Bank Code"
+                                label="NPCI Code"
                                 name="bankCode"
-                                placeholder="Enter bank code"
+                                placeholder="Enter NPCI Code"
                                 required
                                 type='text'
                                 maxLength={20}
@@ -181,10 +181,10 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                 ========================= */}
                 <Col lg={4}>
                     <DocumentCard
-                        title={"Bank Logo"}
+                        title={"Organization Logo"}
                         imageBase64={values.logo}
                         isRequired
-                        subdescTitle="Click here to upload bank logo"
+                        subdescTitle="Click here to upload Organization Logo"
                         descTitle="PNG, JPG supported"
                         fileInputRef={fileInputRef}
                         fileErrorName="logo"

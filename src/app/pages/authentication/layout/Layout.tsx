@@ -19,6 +19,7 @@ interface LayoutProps {
     children: React.ReactNode;
     title?: React.ReactNode;
     Note?: string;
+    Headertitle?: string
 }
 
 
@@ -45,7 +46,7 @@ const cmsFeatures = [
     },
 ];
 
-const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "" }) => {
+const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "", Headertitle = "" }) => {
     const version = packageJson.version;
 
     return (
@@ -56,7 +57,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "" }) => {
                 {/* Left Side Content */}
 
                 <Col
-                    lg={7}
+                    lg={8}
                     className="auth-panel-left d-none d-lg-flex flex-column justify-content-between p-5 text-white position-relative overflow-hidden"
                     style={{
                         // backgroundImage: "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://www.mastercontrol.com/images/default-source/gxp-lifeline/20222/august/2022-bl-data-integrity-standards_900x400.png?Status=Temp&sfvrsn=adfe7dcc_2')",
@@ -102,7 +103,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "" }) => {
                     {/* Hero Section */}
                     <div
                         className="position-relative"
-                        style={{ zIndex: 2, maxWidth: '840px' }}
+                        style={{ zIndex: 2, maxWidth: '1000px' }}
                     >
                         <h1 className="fw-bold mb-4 text-white"
                             style={{
@@ -152,13 +153,20 @@ const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "" }) => {
                     <div className="m-4 m-md-5 z-index-2">
                     </div>
                     <div className="flex-grow-1 d-flex flex-column justify-content-center w-100 mx-auto px-4" style={{ maxWidth: '520px' }}>
-                        <div className='d-flex justify-content-center mb-5'>
+                        <div className="d-flex justify-content-center align-items-center gap-2 mb-5">
                             <img
                                 src={productLogo}
                                 alt="Logo"
                                 className="img-fluid"
                                 style={{ maxHeight: 120, width: 150 }}
                             />
+
+                            {Headertitle && (
+                                <>
+                                    <span className="fs-4 text-muted">|</span>
+                                    <h5 className="mb-0">{Headertitle}</h5>
+                                </>
+                            )}
                         </div>
                         {title && (
                             <div className="mb-0">
@@ -175,28 +183,31 @@ const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "" }) => {
                         {children}
                         <div className="mt-3 pt-3 border-top border-light">
                             <div className="text-center">
-                                <div className="text-muted mb-1" style={{ fontSize: "11px", letterSpacing: '0.5px' }}>
-                                    VERSION <span className="text-primary fw-bold">{version}</span>
-                                </div>
+
                                 {/* <div className="text-muted opacity-75" style={{ fontSize: "9px", lineHeight: '1.6' }}>
                                     Designed & Developed By <span className="fw-semibold text-dark">SOFT-TECH SOLUTIONS</span><br />
                                     Copyright © 2014 - {new Date().getFullYear()}
                                 </div> */}
-                                <div className="text-muted opacity-75" style={{ fontSize: "10px", lineHeight: '1.6' }}>
+                                <div className="text-muted opacity-75 -2" style={{ fontSize: "10px", lineHeight: '1.6' }}>
                                     Developed By <Link to={'https://suretytelco.com/'} target='_blank' className="fw-semibold text-primary"> SURETY-TELCO </Link> | Sales by  <Link to={'https://soft-techsolutions.com/'} target='_Blank' className="fw-semibold text-success">SOFT-TECH SOLUTIONS</Link> <br />
-                                    Copyright © 2014 - {new Date().getFullYear()}
+                                </div>
+                                 <div className="text-muted opacity-75 mt-1" style={{ fontSize: "10px", lineHeight: '1.6' }}>
+                                    Copyright © 2014 - {new Date().getFullYear()} | All Right Reserved
+                                </div>
+                                <div className="text-muted mb-1 mt-2" style={{ fontSize: "11px", letterSpacing: '0.5px' }}>
+                                    VERSION <span className="text-primary fw-bold">{version}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-auto m-3 m-md-3 pt-2 border-top d-flex align-items-center gap-2">
+                    {/* <div className="mt-auto m-3 m-md-3 pt-2 border-top d-flex align-items-center gap-2">
                         <div className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style={{ backgroundColor: '#dcfce7', width: '30px', height: '30px' }} >
                             <ShieldCheck size={15} className="text-success" />
                         </div>
                         <span className="text-muted fw-bold text-uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }} >
                             Protected and Secured by Soft-Tech Solutions Private Limited
                         </span>
-                    </div>
+                    </div> */}
 
                 </Col>
             </Row>

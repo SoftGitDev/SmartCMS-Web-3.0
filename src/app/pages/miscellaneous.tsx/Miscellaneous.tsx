@@ -4,7 +4,7 @@
 
 
 import React, { lazy, Suspense, useState } from 'react'
-import { Building2, ClipboardList, Columns3, Cuboid, Files, FileText, FolderKanban, GitBranch, Layers3, Mail, Plus, Settings2, ShieldCheck, Ticket, Workflow } from 'lucide-react';
+import { Building2, ClipboardList, Columns3, Cuboid, Files, FileText, FolderKanban, GitBranch, Layers3, Mail, Plus, PlusCircle, Settings2, ShieldCheck, Ticket, Workflow } from 'lucide-react';
 import { Button } from 'react-bootstrap';
 import { getUserData } from '../../utils/common';
 import LoaderUI from '../../components/loader/Loader';
@@ -261,7 +261,7 @@ const Miscellaneous = () => {
                                             className="ms-auto"
                                             onClick={handleAddMis}
                                         >
-                                            <Plus size={16} className="me-1" />
+                                            <PlusCircle size={16} className="me-1" />
                                             {currentMenu?.buttonName || "Add New"}
                                         </Button>
                                     )}

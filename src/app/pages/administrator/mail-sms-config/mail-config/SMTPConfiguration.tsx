@@ -114,7 +114,7 @@ const MailAPIConfig: React.FC<{ userData: any, mailConfigData: any, apiTypeData:
                                                 </Col>
                                             </Row>
 
-                                            <div className="alert my-4 border-primary border-0 d-flex align-items-center shadow-sm" style={{ backgroundColor: '#dfe5ffff', borderRadius: '10px', color: '#4b5976ff' }}>
+                                            <div className="alert my-4 border-primary border-0 d-flex align-items-center shadow-sm" style={{ backgroundColor: 'var(--primaryColor25)', borderRadius: '10px', color: 'var(--primaryColor)' }}>
                                                 <div className="icon-wrapper me-3">
                                                     <InfoIcon className="text-primary" />
                                                 </div>

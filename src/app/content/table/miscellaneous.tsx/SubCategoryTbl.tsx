@@ -7,36 +7,35 @@ import { tableColumnProps } from '../../../types/typr'
 
 
 const columns: tableColumnProps[] = [
-    {
+     {
         field: 'category',
         header: 'Category',
         sorting: true,
     },
     {
+        field: 'subcategory',
+        header: 'Sub Category',
+        sorting: true,
+    },
+    {
         field: 'categoryFor',
-        header: 'Category For',
+        header: 'Sub Category For',
         sorting: true,
     },
     {
         field: 'categoryType',
-        header: 'Category Type',
+        header: 'Sub Category Type',
         sorting: true,
     },
     {
         field: 'customerType',
-        header: 'Customer Type',
+        header: 'Sub Customer Type',
         sorting: true,
     },
     {
         field: 'categoryAutoAssign',
-        header: 'Category Auto Assign',
+        header: 'Sub Category Auto Assign',
         sorting: true,
-    },
-    {
-        field: 'status',
-        header: 'Status',
-        sorting: true,
-        align: "center",
     },
     {
         field: '',
@@ -50,6 +49,7 @@ const columns: tableColumnProps[] = [
 const dummyData = [
     {
         category: 'Technical Support',
+        subcategory: 'ATM Service Related',
         categoryFor: 'Internal',
         categoryType: 'Service',
         customerType: 'Employee',
@@ -58,6 +58,7 @@ const dummyData = [
     },
     {
         category: 'Network Issue',
+        subcategory: 'LAN Connectivity',
         categoryFor: 'Internal',
         categoryType: 'Incident',
         customerType: 'Employee',
@@ -66,6 +67,7 @@ const dummyData = [
     },
     {
         category: 'Software Installation',
+        subcategory: 'Application Setup',
         categoryFor: 'Internal',
         categoryType: 'Request',
         customerType: 'Employee',
@@ -74,6 +76,7 @@ const dummyData = [
     },
     {
         category: 'Customer Complaint',
+        subcategory: 'Service Quality',
         categoryFor: 'External',
         categoryType: 'Complaint',
         customerType: 'Customer',
@@ -82,6 +85,7 @@ const dummyData = [
     },
     {
         category: 'Account Verification',
+        subcategory: 'KYC Verification',
         categoryFor: 'External',
         categoryType: 'Verification',
         customerType: 'Customer',
@@ -90,6 +94,7 @@ const dummyData = [
     },
     {
         category: 'Payment Failure',
+        subcategory: 'Transaction Declined',
         categoryFor: 'External',
         categoryType: 'Incident',
         customerType: 'Merchant',
@@ -98,6 +103,7 @@ const dummyData = [
     },
     {
         category: 'Branch Support',
+        subcategory: 'Branch Operations',
         categoryFor: 'Internal',
         categoryType: 'Support',
         customerType: 'Branch',
@@ -106,6 +112,7 @@ const dummyData = [
     },
     {
         category: 'Document Approval',
+        subcategory: 'Policy Approval',
         categoryFor: 'Internal',
         categoryType: 'Approval',
         customerType: 'Management',
@@ -114,6 +121,7 @@ const dummyData = [
     },
     {
         category: 'Mobile Banking',
+        subcategory: 'App Access Issue',
         categoryFor: 'External',
         categoryType: 'Service',
         customerType: 'Customer',
@@ -122,6 +130,7 @@ const dummyData = [
     },
     {
         category: 'Loan Inquiry',
+        subcategory: 'Personal Loan Query',
         categoryFor: 'External',
         categoryType: 'Inquiry',
         customerType: 'Customer',
@@ -153,7 +162,7 @@ const SubCategoryTbl: React.FC<SubCategoryTblProps> = ({ handleCloseSubCategoryM
                                 {/* {userData?.permissions?.UPDATE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="edit" title="Edit" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseSubCategoryMdl(child.row)} ><Pen size={16} /></Button>
 
-                                <Button variant="edit" title="Ticket auto assign" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseSubCategoryMdl(child.row)} ><GitFork size={16} /></Button>
+                                {/* <Button variant="edit" title="Ticket auto assign" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseSubCategoryMdl(child.row)} ><GitFork size={16} /></Button> */}
 
                                 {/* {userData?.permissions?.DELETE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="delete" title="Delete" className="btn-sm icon-wrapper-delete rounded-circle"><Trash size={16} /></Button>

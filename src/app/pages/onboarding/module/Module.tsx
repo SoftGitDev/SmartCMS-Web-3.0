@@ -65,19 +65,19 @@ const Module: React.FC<ModuleProps> = ({ values, setFieldValue, }) => {
             icon: MessageCircle,
         },
 
-        {
-            key: 'smsInteg',
-            title: 'SMS Integration',
-            subtitle: 'SMS notification service',
-            icon: Smartphone,
-        },
+        // {
+        //     key: 'smsInteg',
+        //     title: 'SMS Integration',
+        //     subtitle: 'SMS notification service',
+        //     icon: Smartphone,
+        // },
 
-        {
-            key: 'ivrInteg',
-            title: 'IVR Integration',
-            subtitle: 'Call and IVR management',
-            icon: PhoneCall,
-        },
+        // {
+        //     key: 'ivrInteg',
+        //     title: 'IVR Integration',
+        //     subtitle: 'Call and IVR management',
+        //     icon: PhoneCall,
+        // },
     ];
 
     // Handle Toggle

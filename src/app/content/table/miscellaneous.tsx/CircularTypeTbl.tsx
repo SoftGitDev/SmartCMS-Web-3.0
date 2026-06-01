@@ -6,7 +6,7 @@
 import React, { JSX } from 'react'
 import { tableColumnProps } from '../../../types/typr'
 import { Button } from 'react-bootstrap'
-import { Trash } from 'lucide-react'
+import { Pen, Trash } from 'lucide-react'
 import { Datatable } from '../../../components/ui/DataTable/Datatable'
 
 const columns: tableColumnProps[] = [

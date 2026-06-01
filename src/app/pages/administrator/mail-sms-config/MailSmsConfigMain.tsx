@@ -8,11 +8,12 @@
 // --------------------------------------------------------------
 
 import React, { lazy, Suspense } from 'react'
-import { Mail, MessageSquare, Sparkles } from 'lucide-react'
+import { Mail, MessageSquare, Sliders, Sparkles } from 'lucide-react'
 import { Tab, Tabs } from 'react-bootstrap'
 import { getUserData } from '../../../utils/common';
 import LoaderUI from '../../../components/loader/Loader';
 import PageHeaeder from '../../../components/common/PageHeaeder';
+import WhatsAppConfig from './wpConfig/WhatsAppConfig';
 
 const SMTPConfig = lazy(() => import("./smtp-config/SMTPConfig").then(({ default: SMTPConfig }) => ({ default: SMTPConfig })));
 const MailSMSTemplate = lazy(() => import("./templates/MailSMSTemplate").then(({ default: MailSMSTemplate }) => ({ default: MailSMSTemplate })));
@@ -42,9 +43,9 @@ const MailSmsConfigMain = () => {
         <div>
             <Suspense>
                 <PageHeaeder
-                    Icon={Mail}
-                    title={'Mail and SMS Configurations'}
-                    description={'Manage email and SMS settings, APIs, and templates'}
+                    Icon={Sliders}
+                    title="Channel Configurations"
+                    description="Configure and manage real-time communication channels, webhook integrations, SMS gateways, and automated email SMTP templates."
                 />
             </Suspense>
 
@@ -81,7 +82,6 @@ const MailSmsConfigMain = () => {
                     {activeTab === "smsconfig" &&
                         <Suspense fallback={<LoaderUI />}>
                             <div className='p-3 pt-0'>
-
                                 <SmsAPIConfig userData={userData} />
                             </div>
 
@@ -89,6 +89,17 @@ const MailSmsConfigMain = () => {
                     }
                 </Tab>
                 {/* } */}
+
+                <Tab eventKey="wpConfig" title={<><MessageSquare size={16} className='me-1' /> WhatsApp Configurations</>} onSelect={() => setActiveTab("wpConfig")} className='h-75'>
+                    {activeTab === "wpConfig" &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <div className='p-3 pt-0'>
+                                <WhatsAppConfig userData={userData} />
+                            </div>
+
+                        </Suspense>
+                    }
+                </Tab>
 
                 {/* {handleCheckPermission("VIEW_MAIL_SMS_TEMPLATE") && */}
                 <Tab eventKey="templates" title={<><Sparkles size={16} className='me-1' /> Templates</>} onSelect={() => setActiveTab("templates")}>

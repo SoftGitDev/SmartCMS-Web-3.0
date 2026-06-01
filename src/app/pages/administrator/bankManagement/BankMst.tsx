@@ -226,7 +226,7 @@ const BankMst = () => {
             <Suspense fallback={<LoaderUI />}>
                 <PageHeaeder
                     Icon={Landmark}
-                    title={'Bank Management'}
+                    title={'Organization Management'}
                     description={
                         'Manage bank onboarding, branch mapping, operational status, contact details, and organization-wide banking configurations.'
                     }

@@ -49,14 +49,13 @@ const AnimatedMenu = (props: MenuProps<OptionType, boolean>) => {
 const customStyles = {
     menu: (provided: any) => ({
         ...provided,
-        zIndex: 9999,
+        zIndex: 99999,
     }),
     menuPortal: (provided: any) => ({
         ...provided,
-        zIndex: 9999 // If using menuPortalTarget
-    })
+        zIndex: 99999,
+    }),
 };
-
 
 const SelectField: React.FC<SelectFieldProps> = ({
     label,

@@ -42,11 +42,11 @@ export const useLayout = () => {
 export const LayoutProvide: React.FC<layoutProvideProps> = ({ children }) => {
 
   const [setupData, setSetupData] = useState<any>(null); // STATE USED FOR GETTING ONBOARDING DATA
-  const [bankLogoDetails, setBankLogoDetails] = useState<any>(null); // STATE USED FOR STORING BANK LOGO DETAILS
+  const [bankLogoDetails, setBankLogoDetails] = useState<any>(null); // STATE USED FOR STORING Organization Logo DETAILS
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
 
 
-  // FUNCTION USED FOR GETTING BANK LOGO AT LOGIN TIME
+  // FUNCTION USED FOR GETTING Organization Logo AT LOGIN TIME
   const getSetupDetail = useCallback(async () => {
     try {
       const result = await apiRequest("POST", urls.authLogoDetails, {});

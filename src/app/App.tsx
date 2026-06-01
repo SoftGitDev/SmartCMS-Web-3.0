@@ -39,8 +39,8 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
 
           {/* Administrator */}
-          <Route path="bank-management" element={<BankMst />} />
-          <Route path="bank" element={<Bank />} />
+          <Route path="organization-management" element={<BankMst />} />
+          <Route path="organization" element={<Bank />} />
           <Route path="branch" element={<Branch />} />
           <Route path="user-management" element={<Usermanagement />} />
           <Route path="app-config" element={<Appconfig />} />

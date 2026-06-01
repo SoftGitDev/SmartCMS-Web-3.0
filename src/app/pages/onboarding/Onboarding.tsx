@@ -8,7 +8,7 @@
 
 import React, { useState } from 'react';
 import SetupLayout from '../authentication/layout/SetupLayout';
-import { Boxes, Building, Building2, ShieldCheck, } from 'lucide-react';
+import { Boxes, Building, Building2, Server, ShieldCheck, } from 'lucide-react';
 import { Button, Card, CardBody, CardFooter, CardHeader, } from 'react-bootstrap';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -17,13 +17,14 @@ import Bank from './module/Bank';
 import HeadOffice from './module/HeadOffice';
 import Module from './module/Module';
 import License from './module/License';
+import ServerHelthConfig from './module/ServerHelthConfig';
 
 
 // Wizard Steps
 const allSteps = [
     {
         step: 1,
-        title: 'Bank Details',
+        title: 'Organization  Details',
         subtitle: 'Manage bank information',
         icon: Building2,
     },
@@ -41,6 +42,12 @@ const allSteps = [
     },
     {
         step: 4,
+        title: 'Server Monitoring',
+        subtitle: 'Track server status & health metrics',
+        icon: Server,
+    },
+    {
+        step: 5,
         title: 'License Setup',
         subtitle: 'Activate and manage licenses',
         icon: ShieldCheck,
@@ -52,8 +59,7 @@ const initialValues = {
     // Step 1
     bankName: '',
     bankCode: '',
-    productKey: '',
-    secretKey: '',
+
     adminDomain: '',
     clientDomain: '',
     logo: null,
@@ -62,6 +68,7 @@ const initialValues = {
     branchName: '',
     branchCode: '',
     contactNo: '',
+    emailId: '',
     addressLine1: '',
     addressLine2: '',
     city: '',
@@ -79,7 +86,12 @@ const initialValues = {
     smsInteg: false,
     ivrInteg: false,
 
-    // STEP 4 - LICENSE SETUP
+    // STEP 4 - Servicer SETUP
+    isServerConfig: false,
+    productKey: '',
+    secretKey: '',
+
+    // STEP 5 - LICENSE SETUP
     licenseKey: '',
     licenseType: null,
     expiryDate: '',
@@ -94,10 +106,10 @@ const stepSchemas = [
     // STEP 1
     Yup.object().shape({
         bankName: Yup.string()
-            .required('Bank name is required'),
+            .required('Organization  is required'),
 
         bankCode: Yup.string()
-            .required('Bank code is required'),
+            .required('NPCI Code is required'),
 
         productKey: Yup.string()
             .required('Product key is required'),
@@ -122,11 +134,15 @@ const stepSchemas = [
             .required('Branch code is required'),
 
         contactNo: Yup.string()
-            .required('Contact number is required')
+            .required('Mobile number is required')
             .matches(
                 /^[0-9]{10}$/,
                 'Enter valid 10 digit mobile number'
             ),
+
+        emailId: Yup.string()
+            .email('Enter a valid email address')
+            .required('Email is required'),
 
         addressLine1: Yup.string()
             .required('Address line 1 is required'),
@@ -184,7 +200,7 @@ const Onboarding = () => {
     return (
         <>
             <SetupLayout
-                title="New Client Onboard"
+                title="New Organization Onboard"
                 subtitle="Configure workspace, administrative roles, and infrastructure settings."
             >
                 <Card className="border-0 shadow-sm rounded-4">
@@ -255,6 +271,16 @@ const Onboarding = () => {
                                         )}
                                         {/* STEP 4 */}
                                         {currentStep === 3 && (
+                                            <ServerHelthConfig
+                                                values={values}
+                                                setFieldValue={setFieldValue}
+                                                handleBlur={handleBlur}
+                                                getNextTabIndex={getNextTabIndex}
+                                            />
+
+                                        )}
+                                        {/* STEP 5 */}
+                                        {currentStep === 4 && (
                                             <div>
                                                 <License
                                                     values={values}

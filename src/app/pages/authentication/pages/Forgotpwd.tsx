@@ -51,9 +51,10 @@ const Forgotpwd = () => {
         <Suspense fallback={<LoaderUI />}>
             {/* <LoginLayout title="Forgot Password !" Note="Please enter your details !" > */}
             <LoginLayout
-    title="Forgot Password"
-    Note="Verify your account using OTP to reset your password securely."
->
+                Headertitle='Forgot'
+                title="Forgot Password"
+                Note="Verify your account using OTP to reset your password securely."
+            >
                 <Formik
                     initialValues={{
                         organizationCd: "",

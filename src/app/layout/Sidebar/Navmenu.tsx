@@ -88,7 +88,7 @@ const Navmenu: React.FC<NavmenuProps> = ({ menus, collapsed, isHovered, mobileOp
             {/* {bankLogoDetails?.mainLogo ? (
               <img
                 src={bankLogoDetails?.mainLogo}
-                alt="Bank Logo"
+                alt="Organization Logo"
                 className="img-fluid"
                 style={{ maxHeight: bankLogoDetails?.mainLogoHeight, width: bankLogoDetails?.mainLogoWidth }}
               />
@@ -107,7 +107,7 @@ const Navmenu: React.FC<NavmenuProps> = ({ menus, collapsed, isHovered, mobileOp
             )} */}
             <img
               src={companyLogo}
-              alt="Bank Logo"
+              alt="Organization Logo"
               className="img-fluid d-flex"
               style={{ height: 25, width: 'auto' }}
             // style={{ maxHeight: bankLogoDetails?.mainLogoHeight, width: bankLogoDetails?.mainLogoWidth }}

@@ -69,6 +69,7 @@ const ReserPwd = () => {
     return (
         <Suspense fallback={<LoaderUI />}>
             <LoginLayout
+                Headertitle='Reset'
                 title="Reset Your Password"
                 Note="Set a new secure password to protect your CMS account and activities."
             >

@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { CircleCheck, LoaderCircle } from 'lucide-react';
 import { Col } from 'react-bootstrap';
 import { ErrorMessage, FormikHandlers } from 'formik';
@@ -21,7 +21,15 @@ interface Props {
 
 const License: React.FC<Props> = ({ values, setFieldValue, handleBlur, isLicenseLoader, handleChange, licenseVerify }) => {
 
-    const [deviceId, setDeviceId] = useState<string>("");
+    const [deviceId, setDeviceId] = useState<string>("5B55153Z-673F4V-5R5F1P1P-1R1R1R");
+
+    const [copied, setCopied] = useState<boolean>(false)
+    // Copy Function
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(deviceId);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
     // FUNCTION USED FOR GET DEVICE ID 
     // const getDeviceID = useCallback(async () => {
@@ -58,8 +66,22 @@ const License: React.FC<Props> = ({ values, setFieldValue, handleBlur, isLicense
                 </p>
             </div>
 
+            {/* Registration Code */}
+            <label className="form-label small fw-bold">
+                Registration Request Code <span className="text-danger">*</span>
+            </label>
+            <div className="d-flex mb-5 align-items-center gap-3 mt-2">
+                <div className="flex-grow-1 rounded p-2 fw-bold text-center licence-input">
+                    {deviceId}
+                </div>
+                {/* Copy Button */}
+                <button className="btn btn-outline-success" onClick={copyToClipboard} >
+                    {copied ? '✓ Copied' : 'Copy'}
+                </button>
+            </div>
+
             {/* Registration Code Section */}
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <label className="form-label small fw-bold">
                     Registration Request Code <span className="text-danger">*</span>
                 </label>
@@ -77,7 +99,7 @@ const License: React.FC<Props> = ({ values, setFieldValue, handleBlur, isLicense
                 <p className="small text-muted mt-2 text-center">
                     Use this Registration Request Code to generate license
                 </p>
-            </div>
+            </div> */}
 
             {/* Automatic License Box */}
             {/* <div className="border-0 rounded-4 mb-2" style={{ backgroundColor: '#f0f4ff', border: '1px solid #d0dbff !important' }}>
@@ -104,7 +126,7 @@ const License: React.FC<Props> = ({ values, setFieldValue, handleBlur, isLicense
                     <Col md={12} className="mb-2">
                         <TextArea
                             label="Enter License Key"
-                            placeholder="Paste your license key here from CRM panel..."
+                            placeholder="Paste your license key here..."
                             name="LicXml"
                             value={values?.LicXml}
                             required
