@@ -7,7 +7,7 @@ import React from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Textfield from '../../../components/ui/TextField/TextInput';
 import { ErrorMessage, Form, Formik } from 'formik';
-import * as Yup from 'yup'; 
+import * as Yup from 'yup';
 import RadioBtn from '../../../components/ui/Radio/RadioBtn';
 import Checkbox from '../../../components/ui/checkBox/Checkbox';
 import Note from '../../../utils/Note';
@@ -127,7 +127,7 @@ const SubCategoryMdl: React.FC<SubCategoryMdlProps> = ({ show, handleClose, edit
                                                     maxLength={100}
                                                     tabIndex={getNextTabIndex()}
                                                 />
-                                                <ErrorMessage name="subCategory" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="subCategory" className="ErrorMessage" component="div" />
                                             </Col>
 
                                             {/* Category For Radio Selections */}
@@ -162,7 +162,7 @@ const SubCategoryMdl: React.FC<SubCategoryMdlProps> = ({ show, handleClose, edit
                                                         tabIndex={getNextTabIndex()}
                                                     />
                                                 </div>
-                                                <ErrorMessage name="subCategoryFor" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="subCategoryFor" className="ErrorMessage" component="div" />
                                             </Col>
 
                                             {/* Category Type Radio Selections */}
@@ -197,7 +197,7 @@ const SubCategoryMdl: React.FC<SubCategoryMdlProps> = ({ show, handleClose, edit
                                                         tabIndex={getNextTabIndex()}
                                                     />
                                                 </div>
-                                                <ErrorMessage name="subCategoryType" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="subCategoryType" className="ErrorMessage" component="div" />
                                             </Col>
 
                                             {/* Customer Type Radio Selections */}
@@ -232,7 +232,7 @@ const SubCategoryMdl: React.FC<SubCategoryMdlProps> = ({ show, handleClose, edit
                                                         tabIndex={getNextTabIndex()}
                                                     />
                                                 </div>
-                                                <ErrorMessage name="customerType" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="customerType" className="ErrorMessage" component="div" />
                                             </Col>
 
                                             {/* Checkbox Configuration logic */}

@@ -162,7 +162,7 @@ const ReserPwd = () => {
                                     // type="submit"
                                     variant="primary"
                                     tabIndex={9}
-                                    onClick={() => navigate('/')}
+                                    onClick={() => navigate('/dashboard')}
                                     className="w-100 mt-3 mb-0 mt-4"
                                     disabled={IsLoading}
                                 >

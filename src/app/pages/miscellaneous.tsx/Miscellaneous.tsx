@@ -14,6 +14,8 @@ import SubCategory from './module/SubCategory';
 import Department from './module/Department';
 import CircularType from './module/CircularType';
 import DynamicColumn from './module/DynamicColumn';
+import FormMapping from './module/FormMapping';
+import TicketTemplate from './module/TicketTemplate';
 
 const PageHeaeder = lazy(() => import("../../components/common/PageHeaeder").then(({ default: PageHeaeder }) => ({ default: PageHeaeder })));
 
@@ -85,15 +87,15 @@ const Miscellaneous = () => {
             buttonPermission: true,
             isShow: true,
         },
-        {
-            title: "Mail SMS Template",
-            description: "Manage mail and sms templates",
-            Icon: Mail,
-            link: "mail-sms-template",
-            buttonName: "Add Template",
-            buttonPermission: true,
-            isShow: true,
-        },
+        // {
+        //     title: "Mail SMS Template",
+        //     description: "Manage mail and sms templates",
+        //     Icon: Mail,
+        //     link: "mail-sms-template",
+        //     buttonName: "Add Template",
+        //     buttonPermission: true,
+        //     isShow: true,
+        // },
         {
             title: "Ticket Template",
             description: "Manage ticket templates",
@@ -134,6 +136,8 @@ const Miscellaneous = () => {
 
     const [activeTab, setActiveTab] = useState<string>(menus.filter((i) => i.isShow)[0]?.link || "");
 
+    console.log('activeTab', activeTab);
+
     // Modal states
     const [isCategoryMdl, setIsCategoryMdl] = useState<boolean>(false);
     const [isSubCategoryMdl, setIsSubCategoryMdl] = useState<boolean>(false);
@@ -156,6 +160,8 @@ const Miscellaneous = () => {
     }
 
     const handleAddMis = () => {
+        console.log('circular-type');
+
         switch (activeTab) {
 
             case "category":
@@ -230,12 +236,22 @@ const Miscellaneous = () => {
 
     // DepartmentMdl
     const handleCloseDepartmentMdl = (data?: any) => {
-        handleCommonMdl(isCircularTypeMdl, setIsCircularTypeMdl, data);
+        handleCommonMdl(isDepartmentMdl, setIsDepartmentMdl, data);
     }
 
     // DyanmicColumMdl
     const handleCloseDyanmicColumMdl = (data?: any) => {
         handleCommonMdl(isDynamicColumnMdl, setIsDynamicColumnMdl, data);
+    }
+
+    // Form Mapping
+    const handleCloseFormMappingMdl = (data?: any) => {
+        handleCommonMdl(isFormMappingMdl, setIsFormMappingMdl, data);
+    }
+
+    // Form Mapping
+    const handleCloseTicketTempMdl = (data?: any) => {
+        handleCommonMdl(isTicketTemplateMdl, setIsTicketTemplateMdl, data);
     }
 
     // Get current menu item to access button name
@@ -288,7 +304,7 @@ const Miscellaneous = () => {
                     {activeTab === "category" &&
                         <Suspense fallback={<LoaderUI />}>
                             <Category
-                                show={isCircularTypeMdl}
+                                show={isCategoryMdl}
                                 handleClose={handleCloseCategoryMdl}
                             />
                         </Suspense>
@@ -308,7 +324,7 @@ const Miscellaneous = () => {
                     {activeTab === "circular-type" &&
                         <Suspense fallback={<LoaderUI />}>
                             <CircularType
-                                show={isSubCategoryMdl}
+                                show={isCircularTypeMdl}
                                 handleClose={handleCloseCircularTypeMdl}
                             />
                         </Suspense>
@@ -333,11 +349,31 @@ const Miscellaneous = () => {
                             />
                         </Suspense>
                     }
+
+                    {/* form-mapping */}
+                    {activeTab === 'form-mapping' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <FormMapping
+                                show={isFormMappingMdl}
+                                handleClose={handleCloseFormMappingMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* Ticket-temp */}
+                    {activeTab === 'ticket-template' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <TicketTemplate
+                                show={isTicketTemplateMdl}
+                                handleClose={handleCloseTicketTempMdl}
+                            />
+                        </Suspense>
+                    }
                 </div>
 
 
             </div>
-        </div>
+        </div >
     )
 }
 

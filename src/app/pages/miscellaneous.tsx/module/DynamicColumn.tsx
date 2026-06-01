@@ -11,7 +11,9 @@ const DynamicColumn: React.FC<DynamicColumnProps> = ({ show, handleClose }) => {
     return (
         <div>
             {/* table  */}
-            <DynamicColumnTbl />
+            <DynamicColumnTbl
+                handleditData={handleClose}
+            />
 
             {/* Modal */}
             {show &&

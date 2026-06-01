@@ -80,7 +80,7 @@ const DepartmentMdl: React.FC<DepartmentMdlProps> = ({ show, handleClose, edited
                             {/* Modal Body */}
                             <Modal.Body>
                                 <Row>
-                                    <Col md={7}>
+                                    <Col md={12}>
                                         <Row>
                                             <Col md={12} className='mb-3'>
                                                 <Textfield
@@ -95,7 +95,7 @@ const DepartmentMdl: React.FC<DepartmentMdlProps> = ({ show, handleClose, edited
                                                     placeholder='Enter Department name '
                                                     maxLength={100}
                                                 />
-                                                <ErrorMessage name="departmentNm" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="departmentNm" className="ErrorMessage" component="div" />
                                             </Col>
                                         </Row>
                                     </Col>

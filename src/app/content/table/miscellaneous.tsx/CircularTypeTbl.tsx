@@ -14,6 +14,7 @@ const columns: tableColumnProps[] = [
         field: 'circularType',
         header: 'Circular Type',
         sorting: true,
+        width: '120vh'
     },
 
     {
@@ -24,6 +25,69 @@ const columns: tableColumnProps[] = [
     }
 ];
 
+
+const dummyData = [
+    {
+        id: 1,
+        circularType: 'Internal Memo',
+
+    },
+    {
+        id: 2,
+        circularType: 'Public Notice',
+
+    },
+    {
+        id: 3,
+        circularType: 'Policy Update',
+
+    },
+    {
+        id: 4,
+        circularType: 'Event Invitation',
+
+    },
+    {
+        id: 5,
+        circularType: 'Internal Memo',
+
+    },
+    {
+        id: 6,
+        circularType: 'Compliance Directive',
+
+    },
+    {
+        id: 7,
+        circularType: 'Policy Update',
+
+    },
+    {
+        id: 8,
+        circularType: 'Technical Bulletin',
+
+    },
+    {
+        id: 9,
+        circularType: 'Safety Advisory',
+
+    },
+    {
+        id: 10,
+        circularType: 'Public Notice',
+
+    },
+    {
+        id: 11,
+        circularType: 'Internal Memo',
+    },
+    {
+        id: 12,
+        circularType: 'Training Announcement',
+    }
+];
+
+
 interface CategoryTypeTblProps {
     handleCloseCategoryTypeMdl: (row: any) => void
 }
@@ -32,7 +96,7 @@ const CircularTypeTbl: React.FC<CategoryTypeTblProps> = ({ handleCloseCategoryTy
     return (
         <div>
             <Datatable
-                data={[]}
+                data={dummyData}
                 columns={columns}
                 isSearchBar
                 pagination

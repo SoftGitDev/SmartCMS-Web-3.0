@@ -23,39 +23,39 @@ interface ServerHealthConfigProps {
     getNextTabIndex: () => number;
 }
 
-const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({ 
-    values, 
-    setFieldValue, 
-    handleBlur, 
-    getNextTabIndex 
+const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
+    values,
+    setFieldValue,
+    handleBlur,
+    getNextTabIndex
 }) => {
     return (
         <div className="p-3">
 
             {/* ── Server Health Monitoring Toggle Card ── */}
             <Col xs={12}>
-                <div 
-                    className="rounded-3 px-4 py-3 d-flex align-items-center justify-content-between h-100 shadow-sm" 
-                    style={{ 
-                        border: `1.5px solid ${values.isServerConfig ? 'var(--primaryColor)' : '#e2e8f0'}`, 
-                        backgroundColor: values.isServerConfig ? 'var(--primaryColor25)' : '#ffffff', 
+                <div
+                    className="rounded-3 px-4 py-3 d-flex align-items-center justify-content-between h-100 shadow-sm"
+                    style={{
+                        border: `1.5px solid ${values.isServerConfig ? 'var(--primaryColor)' : '#e2e8f0'}`,
+                        backgroundColor: values.isServerConfig ? 'var(--primaryColor25)' : '#ffffff',
                         transition: 'all 0.25s ease-in-out',
-                    }} 
+                    }}
                 >
                     <div className="d-flex align-items-center gap-3">
                         {/* Icon Container */}
-                        <div 
-                            className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0" 
-                            style={{ 
-                                width: '42px', 
-                                height: '42px', 
-                                backgroundColor: values.isServerConfig ? 'var(--primaryColor)' : '#f1f5f9', 
-                                transition: 'background-color 0.25s ease', 
-                            }} 
+                        <div
+                            className="d-flex align-items-center justify-content-center rounded-3 flex-shrink-0"
+                            style={{
+                                width: '42px',
+                                height: '42px',
+                                backgroundColor: values.isServerConfig ? 'var(--primaryColor)' : '#f1f5f9',
+                                transition: 'background-color 0.25s ease',
+                            }}
                         >
                             <Activity size={20} strokeWidth={2} color={values.isServerConfig ? '#ffffff' : '#64748b'} />
                         </div>
-                        
+
                         {/* Text Content */}
                         <div>
                             <div className="d-flex align-items-center gap-2 mb-1">
@@ -63,26 +63,26 @@ const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
                                     Real-Time Server Health Monitor
                                 </h6>
                                 <span
-                                    className="px-2 py-0.5 rounded-pill fw-semibold" 
-                                    style={{ 
-                                        fontSize: '10px', 
-                                        backgroundColor: values.isServerConfig ? '#dcfce7' : '#f1f5f9', 
-                                        color: values.isServerConfig ? '#15803d' : '#64748b', 
-                                        transition: 'all 0.2s ease', 
-                                    }} 
+                                    className="px-2 py-0.5 rounded-pill fw-semibold"
+                                    style={{
+                                        fontSize: '10px',
+                                        backgroundColor: values.isServerConfig ? '#dcfce7' : '#f1f5f9',
+                                        color: values.isServerConfig ? '#15803d' : '#64748b',
+                                        transition: 'all 0.2s ease',
+                                    }}
                                 >
                                     {values.isServerConfig ? 'Active' : 'Disabled'}
                                 </span>
                             </div>
-                            <p className="mb-0 fw-medium" style={{ fontSize: '12px', color: '#64748b' }}> 
-                                {values.isServerConfig 
-                                    ? 'Actively monitoring your server instances, uptime percentages, and database diagnostics.' 
+                            <p className="mb-0 fw-medium" style={{ fontSize: '12px', color: '#64748b' }}>
+                                {values.isServerConfig
+                                    ? 'Actively monitoring your server instances, uptime percentages, and database diagnostics.'
                                     : 'Enable real-time server metrics tracking and cryptographic verification.'
-                                } 
+                                }
                             </p>
                         </div>
                     </div>
-                    
+
                     <ToggleSwitch
                         id="isServerConfig"
                         name="isServerConfig"
@@ -108,9 +108,9 @@ const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
                             IconProp={KeySquare}
                             onChange={(e: any) => setFieldValue('productKey', e.target.value)}
                         />
-                        <ErrorMessage name="productKey" component="div" className="text-danger small mt-1" />
+                        <ErrorMessage name="productKey" component="div" className="ErrorMessage" />
                     </Col>
-                    
+
                     <Col md={6}>
                         <Textfield
                             label="Secret Key"
@@ -123,7 +123,7 @@ const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
                             IconProp={Lock}
                             onChange={(e: any) => setFieldValue('secretKey', e.target.value)}
                         />
-                        <ErrorMessage name="secretKey" component="div" className="text-danger small mt-1" />
+                        <ErrorMessage name="secretKey" component="div" className="ErrorMessage" />
                     </Col>
                 </Row>
             )}

@@ -3,7 +3,7 @@
 // Created Date: 28-05-2026
 
 
-import { ErrorMessage, Formik ,Form} from 'formik';
+import { ErrorMessage, Formik, Form } from 'formik';
 import React from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Textfield from '../../../components/ui/TextField/TextInput';
@@ -44,7 +44,7 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
                     }}
                     // Validation Schema alignment with form fields
                     validationSchema={Yup.object().shape({
-                        category: Yup.string().required('Category Name is required'),
+                        circularType: Yup.string().required('Category type is required'),
                     })}
                     onSubmit={(values, { setSubmitting }) => {
                         if (editedData) {
@@ -80,11 +80,11 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
                             {/* Modal Body */}
                             <Modal.Body>
                                 <Row>
-                                    <Col md={7}>
+                                    <Col md={12}>
                                         <Row>
                                             <Col md={12} className='mb-3'>
                                                 <Textfield
-                                                    label='Sub Category Name'
+                                                    label='Category Type'
                                                     value={values.circularType}
                                                     name='circularType'
                                                     id='circularType'
@@ -95,7 +95,7 @@ const CircularTypeMdl: React.FC<CircularTypeMdlMdlProps> = ({ show, handleClose,
                                                     placeholder='Enter Circular Type '
                                                     maxLength={100}
                                                 />
-                                                <ErrorMessage name="circularType" className="text-danger small mt-1" component="div" />
+                                                <ErrorMessage name="circularType" className="ErrorMessage" component="div" />
                                             </Col>
                                         </Row>
                                     </Col>
