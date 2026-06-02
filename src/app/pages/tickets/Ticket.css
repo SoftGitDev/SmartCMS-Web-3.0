@@ -1,0 +1,18 @@
+.ticket-stat-card {
+  border-radius: 14px;
+  transition: all 0.3s ease;
+}
+
+.ticket-stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.ticket-stat-card h6 {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.ticket-stat-card h3 {
+  font-size: 28px;
+  line-height: 1;
+}

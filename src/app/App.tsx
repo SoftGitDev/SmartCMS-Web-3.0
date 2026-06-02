@@ -25,6 +25,7 @@ import Services from './pages/services/Services';
 import DebugLog from './pages/logs/DebugLog';
 import AccessLog from './pages/logs/AccessLog';
 import Auditlog from './pages/logs/Auditlog';
+import Ticketdtl from './pages/tickets/Ticketdtl';
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
 
           {/* Ticket */}
           <Route path="tickets" element={<Ticket />} />
+          <Route path="tickets/ticketdtl" element={<Ticketdtl />} />
           {/* Services */}
           <Route path="services" element={<Services />} />
 

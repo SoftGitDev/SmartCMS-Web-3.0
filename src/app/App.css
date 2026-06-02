@@ -856,6 +856,10 @@ input::placeholder {
   flex-direction: column;
 }
 
+.no-caret::after {
+  display: none !important;
+}
+
 .tab-title {
   font-weight: 600;
   font-size: 14px;
