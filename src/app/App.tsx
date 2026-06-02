@@ -19,6 +19,12 @@ import BankMst from './pages/administrator/bankManagement/BankMst';
 import Miscellaneous from './pages/miscellaneous.tsx/Miscellaneous';
 import Appconfig from './pages/administrator/appconfig/Appconfig';
 import ProductConfig from './pages/administrator/productConfig/ProductConfig';
+import Ticket from './pages/tickets/Ticket';
+import UserProfile from './pages/userProfile/UserProfile';
+import Services from './pages/services/Services';
+import DebugLog from './pages/logs/DebugLog';
+import AccessLog from './pages/logs/AccessLog';
+import Auditlog from './pages/logs/Auditlog';
 
 function App() {
   return (
@@ -50,6 +56,20 @@ function App() {
 
           {/* Miscellaneous */}
           <Route path="miscellaneous" element={<Miscellaneous />} />
+
+          {/* Ticket */}
+          <Route path="tickets" element={<Ticket />} />
+          {/* Services */}
+          <Route path="services" element={<Services />} />
+
+          {/* Logs */}
+          <Route path="logs/debug" element={<DebugLog />} />
+          <Route path="logs/access" element={<AccessLog />} />
+          <Route path="logs/audit" element={<Auditlog />} />
+
+          {/* Header Profile Screen */}
+          <Route path="profile" element={<UserProfile />} />
+
 
         </Route>
       </Routes>

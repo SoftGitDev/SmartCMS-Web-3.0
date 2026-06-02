@@ -9,12 +9,12 @@ interface editorProps {
     disabled?: boolean;
     value?: string;
     placeholder?: string
-    onReady?:any
-    data?:any
+    onReady?: any
+    data?: any
 
 }
 
-const Editor: React.FC<editorProps> = ({ onChange, label, required, value, disabled, onReady , data, placeholder = "Type your content here..." }) => {
+const Editor: React.FC<editorProps> = ({ onChange, label, required, value, disabled, onReady, data, placeholder = "Type your content here..." }) => {
 
     // const editorConfiguration = {
     //     toolbar: {

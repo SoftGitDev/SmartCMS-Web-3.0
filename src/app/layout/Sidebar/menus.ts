@@ -14,6 +14,7 @@ import {
   Code2,
   ClipboardList,
   BellRing,
+  Lightbulb,
 } from "lucide-react";
 
 export function menuItems(userData: any) {
@@ -73,7 +74,7 @@ export function menuItems(userData: any) {
           childicon: Code2,
           isShow: true,
         },
-          {
+        {
           childtitle: "Channel Configuration",
           childlink: "/communication-config",
           childicon: BellRing,
@@ -111,6 +112,47 @@ export function menuItems(userData: any) {
       title: "Ticket",
       icon: FileText,
       link: "/tickets",
+      isShow: true,
+    },
+
+    {
+      title: "Services",
+      icon: Settings,
+      link: "/services",
+      isShow: true,
+    },
+
+    {
+      title: "Knowledge Base",
+      icon: Lightbulb,
+      link: "#",
+      isShow: true,
+      child: [
+        {
+          childtitle: "Article",
+          childlink: "/article",
+          childicon: Bug,
+          isShow: true,
+        },
+        {
+          childtitle: "Announcement",
+          childlink: "/announcement",
+          childicon: FileText,
+          isShow: true,
+        },
+        {
+          childtitle: "Circular",
+          childlink: "/circular",
+          childicon: ClipboardList,
+          isShow: true,
+        },
+      ],
+    },
+
+    {
+      title: "Configurations",
+      icon: Settings,
+      link: "/configurations",
       isShow: true,
     },
 

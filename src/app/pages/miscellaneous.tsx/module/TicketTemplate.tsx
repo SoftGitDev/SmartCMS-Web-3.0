@@ -5,7 +5,7 @@
 
 import React from 'react'
 import TicketTemplateTbl from '../../../content/table/miscellaneous.tsx/TicketTemplateTbl'
-import TicketTemplateMdl from '../../../content/table/miscellaneous.tsx/TicketTemplateMdl'
+import TicketTemplateMdl from '../../../content/modal/miscellaneous.tsx/TicketTemplateMdl'
 
 interface TicketTemplateProps {
     show: boolean
@@ -21,7 +21,10 @@ const TicketTemplate: React.FC<TicketTemplateProps> = ({ show, handleClose }) =>
             />
 
             {/* Modal */}
-            <TicketTemplateMdl />
+            <TicketTemplateMdl
+                show={show}
+                handleClose={handleClose}
+            />
         </>
     )
 }

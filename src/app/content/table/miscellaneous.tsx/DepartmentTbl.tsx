@@ -15,6 +15,7 @@ const columns: tableColumnProps[] = [
         field: 'department',
         header: 'Department',
         sorting: true,
+        width: '120vh'
     },
 
     {
@@ -23,6 +24,27 @@ const columns: tableColumnProps[] = [
         align: "center",
         sorting: false,
     }
+];
+
+// 1. Define the interface
+interface DepartmentDataRow {
+    department: string;
+}
+
+// 2. Populate 12 realistic corporate records
+const departmentData: DepartmentDataRow[] = [
+    { department: 'Human Resources' },
+    { department: 'Information Technology' },
+    { department: 'Finance & Accounting' },
+    { department: 'Marketing & Communications' },
+    { department: 'Sales & Business Development' },
+    { department: 'Customer Success' },
+    { department: 'Legal & Compliance' },
+    { department: 'Product Management' },
+    { department: 'Engineering' },
+    { department: 'Operations & Logistics' },
+    { department: 'Quality Assurance' },
+    { department: 'Research & Development' }
 ];
 
 
@@ -35,7 +57,7 @@ const DepartmentTbl: React.FC<DepartmentTblProps> = ({ handleCloseDepartmentMdl 
     return (
         <>
             <Datatable
-                data={[]}
+                data={departmentData}
                 columns={columns}
                 isSearchBar
                 pagination

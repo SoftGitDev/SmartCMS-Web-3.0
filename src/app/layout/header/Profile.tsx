@@ -47,7 +47,7 @@ const Profile = ({ isProfile, setIsProfile, screenWidth = 1024 }: ProfileProps) 
         {/* User Identity Header */}
         <div className="profile-header">
           <div className="avatar-circle">
-            {userData?.userId?.slice(0, 1)?.toUpperCase()}
+            {userData?.userId || 'Harish'?.slice(0, 1)?.toUpperCase()}
           </div>
           <div className="user-meta">
             <span className="user-name">{userData?.userId || "Guest User"}</span>
@@ -66,7 +66,6 @@ const Profile = ({ isProfile, setIsProfile, screenWidth = 1024 }: ProfileProps) 
               <User size={18} className="list-icon" />
               <span>My Profile</span>
             </div>
-            <ChevronRight size={14} className="chevron" />
           </button>
 
           {/* <button className="menu-item" onClick={() => { }}>

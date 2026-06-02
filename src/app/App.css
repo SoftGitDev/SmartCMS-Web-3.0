@@ -55,8 +55,6 @@
   --transparentButton: white;
   --SuccessTrans: #3ec9292a;
   --SiderBarColor: rgb(255, 255, 255);
-
-  
 }
 
 body {
@@ -774,7 +772,6 @@ input::placeholder {
 
 /* Misc Siderbar Css */
 
-
 .custom-tabs-container {
   display: flex;
   height: calc(100vh - 170px);
@@ -788,6 +785,7 @@ input::placeholder {
   border-right: 1px solid #e2e8f0;
   display: flex;
   flex-direction: column;
+  max-height: 80vh;
 }
 
 .sidebar-header {
@@ -834,7 +832,6 @@ input::placeholder {
   position: relative;
   min-height: 50px;
 }
-
 
 .size-menu-icon-wrapper {
   width: 30px;
@@ -898,4 +895,74 @@ input::placeholder {
 .licence-input {
   border: 2px dashed var(--primaryColor75) !important;
   background-color: var(--primaryColor25) !important;
+}
+
+/* User Profile */
+
+.profile-avatar {
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  position: relative;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 4px solid #eef2ff;
+  object-fit: cover;
+}
+
+.avatar-upload-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  border: none;
+  background: var(--primaryColor);
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.profile-security {
+  margin-top: 15px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 15px;
+  border-radius: 30px;
+  background: #e8fff0;
+  color: #198754;
+}
+
+.section-title {
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--primaryColor);
+  padding-left: 12px;
+}
+
+/* Button Css  */
+
+.btn-edit {
+  background-color: var(--blueOpcityColor) !important;
+  border: none !important;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-edit svg {
+  color: var(--blueColor) !important;
+}
+
+.btn-edit:hover,
+.btn-edit:active {
+  background-color: var(--blueColor) !important;
+}
+
+.btn-edit:hover svg,
+.btn-edit:active svg {
+  color: var(--whiteColor) !important;
 }

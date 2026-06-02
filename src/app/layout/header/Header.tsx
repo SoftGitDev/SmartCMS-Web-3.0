@@ -1,13 +1,10 @@
 /************************************************************
 // Purpose       : Application Header
-// Created by    : Yogesh 
+// Created by    : Harish 
 // Created Date  : 01-01-2026
 // Description   : This is application common header show with layout after login.
 //
-// Change history:
-// 01-01-2026 | Yogesh | Write Comments 
-// 01-01-2026 | Yogesh | Added framer-motion animations for sidebar toggle, notification & profile dropdown
-// 28-01-2026 | Yogesh | Add Login user information with bank.
+
 ************************************************************/
 
 import { useState } from "react";
@@ -89,11 +86,7 @@ const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: He
               className="d-flex align-items-center gap-2"
             >
 
-              <div
-                className="bg-light rounded-circle p-2 d-flex align-items-center justify-content-center"
-                // style={{ width: "40px", height: "40px", color: '#4880ff', fontSize: 22 }}
-                style={{ width: "40px", height: "40px", color: 'rgb(var(--primaryColor))', fontSize: 22 }}
-              >
+              <div className="bg-primary-50 rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: "40px", height: "40px", color: 'var(--primaryColor)', fontSize: 22 }} >
                 {userData?.userId?.slice(0, 1)?.toUpperCase() || 'H'}
               </div>
 

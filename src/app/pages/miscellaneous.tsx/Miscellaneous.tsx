@@ -4,9 +4,8 @@
 
 
 import React, { lazy, Suspense, useState } from 'react'
-import { Building2, ClipboardList, Columns3, Cuboid, Files, FileText, FolderKanban, GitBranch, Layers3, Mail, Plus, PlusCircle, Settings2, ShieldCheck, Ticket, Workflow } from 'lucide-react';
+import { Building2, ClipboardList, Columns3, Files, FileText, FolderKanban, GitBranch, Layers3, PlusCircle, Settings2, ShieldCheck, Ticket, Workflow } from 'lucide-react';
 import { Button } from 'react-bootstrap';
-import { getUserData } from '../../utils/common';
 import LoaderUI from '../../components/loader/Loader';
 import SideMenu from '../../components/common/SideMenu';
 import Category from './module/Category';
@@ -16,13 +15,17 @@ import CircularType from './module/CircularType';
 import DynamicColumn from './module/DynamicColumn';
 import FormMapping from './module/FormMapping';
 import TicketTemplate from './module/TicketTemplate';
+import TicketStatus from './module/TicketStatus';
+import CategoryVieWright from './module/CategoryVieWright';
+import EscalationLevelAssign from './module/EscalationLevelAssign';
+import ExceptionLevel from './module/ExceptionLevel';
+import ExceptionMatrix from './module/ExceptionMatrix';
 
 const PageHeaeder = lazy(() => import("../../components/common/PageHeaeder").then(({ default: PageHeaeder }) => ({ default: PageHeaeder })));
 
 
 const Miscellaneous = () => {
 
-    const userData = getUserData();
     const menus = [
         {
             title: "Category",
@@ -57,7 +60,7 @@ const Miscellaneous = () => {
             Icon: ShieldCheck,
             link: "category-view-rights",
             buttonName: "Add Rights",
-            buttonPermission: true,
+            buttonPermission: false,
             isShow: true,
         },
         {
@@ -124,12 +127,30 @@ const Miscellaneous = () => {
             isShow: true,
         },
         {
+            title: "Exception Level",
+            description: "Manage Exception Level",
+            Icon: ClipboardList,
+            link: "exception-level",
+            buttonName: "Exception Level",
+            buttonPermission: true,
+            isShow: true,
+        },
+        {
+            title: "Exception Matrix",
+            description: "Manage Exception Matrix",
+            Icon: ClipboardList,
+            link: "exception-matrix",
+            buttonName: "Exception Matrix",
+            buttonPermission: true,
+            isShow: true,
+        },
+        {
             title: "Escalation Assign",
             description: "Manage escalation mappings",
             Icon: Workflow,
             link: "escalation-assign",
             buttonName: "Add Escalation",
-            buttonPermission: true,
+            buttonPermission: false,
             isShow: true,
         },
     ];
@@ -152,6 +173,9 @@ const Miscellaneous = () => {
     const [isServiceAssignMdl, setIsServiceAssignMdl] = useState<boolean>(false);
     const [isEscalationAssignMdl, setIsEscalationAssignMdl] = useState<boolean>(false);
 
+    const [isExceptionLevelMdl, setIsExceptionLevelMdl] = useState<boolean>(false);
+    const [isExceptionMatrixMdl, setIsExceptionMatrixMdl] = useState<boolean>(false);
+
     const [editData, setEditeData] = useState<any>(null);
 
     const handleCommonMdl = (currentState: boolean, setState: React.Dispatch<React.SetStateAction<boolean>>, data?: any) => {
@@ -160,7 +184,6 @@ const Miscellaneous = () => {
     }
 
     const handleAddMis = () => {
-        console.log('circular-type');
 
         switch (activeTab) {
 
@@ -212,6 +235,14 @@ const Miscellaneous = () => {
                 handleCommonMdl(isEscalationAssignMdl, setIsEscalationAssignMdl);
                 break;
 
+            case "exception-level":
+                handleCommonMdl(isExceptionLevelMdl, setIsExceptionLevelMdl);
+                break;
+
+            case "exception-matrix":
+                handleCommonMdl(isExceptionMatrixMdl, setIsExceptionMatrixMdl);
+                break;
+
             default:
                 break;
         }
@@ -249,9 +280,24 @@ const Miscellaneous = () => {
         handleCommonMdl(isFormMappingMdl, setIsFormMappingMdl, data);
     }
 
-    // Form Mapping
+    // Ticket Templete
     const handleCloseTicketTempMdl = (data?: any) => {
         handleCommonMdl(isTicketTemplateMdl, setIsTicketTemplateMdl, data);
+    }
+
+    // Ticket Status
+    const handleCloseTicketStatusMdl = (data?: any) => {
+        handleCommonMdl(isTicketStatusMdl, setIsTicketStatusMdl, data);
+    }
+
+    // exception-level
+    const handleCloseExceptionLevelMdl = (data?: any) => {
+        handleCommonMdl(isExceptionLevelMdl, setIsExceptionLevelMdl, data);
+    }
+
+    // exception-matrix
+    const handleCloseExceptionMatrixMdl = (data?: any) => {
+        handleCommonMdl(isExceptionMatrixMdl, setIsExceptionMatrixMdl, data);
     }
 
     // Get current menu item to access button name
@@ -366,6 +412,50 @@ const Miscellaneous = () => {
                             <TicketTemplate
                                 show={isTicketTemplateMdl}
                                 handleClose={handleCloseTicketTempMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* Ticket-status */}
+                    {activeTab === 'ticket-status' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <TicketStatus
+                                show={isTicketStatusMdl}
+                                handleClose={handleCloseTicketStatusMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* category-view-rights */}
+                    {activeTab === 'category-view-rights' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <CategoryVieWright />
+                        </Suspense>
+                    }
+
+                    {/* category-view-rights */}
+                    {activeTab === 'escalation-assign' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <EscalationLevelAssign />
+                        </Suspense>
+                    }
+
+                    {/* exception-level */}
+                    {activeTab === 'exception-level' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <ExceptionLevel
+                                show={isExceptionLevelMdl}
+                                handleClose={handleCloseExceptionLevelMdl}
+                            />
+                        </Suspense>
+                    }
+
+                    {/* exception-matrix */}
+                    {activeTab === 'exception-matrix' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <ExceptionMatrix
+                                show={isExceptionMatrixMdl}
+                                handleClose={handleCloseExceptionMatrixMdl}
                             />
                         </Suspense>
                     }
