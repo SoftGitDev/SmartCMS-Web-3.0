@@ -1,37 +1,46 @@
-import React from 'react'
+import React from 'react';
 
-interface noteProps {
-    data: string[]
+interface NoteProps {
+    data: string[];
 }
 
-const Note: React.FC<noteProps> = ({ data }) => {
+const Note: React.FC<NoteProps> = ({ data }) => {
     return (
         <div
+            className="mt-3"
             style={{
-                background: "#f9f9f9",
-                padding: "10px",
-                borderRadius: "5px",
-            }}>
+                background: "#f8f9fa",
+                padding: "12px 16px",
+                borderRadius: "8px",
+                borderLeft: "4px solid #dc3545",
+            }}
+        >
             <span
+                className="text-danger fw-semibold"
                 style={{
-                    fontSize: "12px",
-                    fontWeight: "600",
-                    borderBottom: "1px solid",
+                    fontSize: "13px",
+                    borderBottom: "1px solid #dc3545",
                 }}
-                className='text-danger'
             >
-                Note -{" "}
+                Note
             </span>
-            <br />
-            <ol className="noteOl mt-3">
-                {data.map((items: string, id: number) => (
-                    <li key={id} className='text-sm text-slate-500 mt-2'>
-                        {items}
-                    </li>
-                ))}
-            </ol>
-        </div>
-    )
-}
 
-export default Note
+            <div className="mt-3">
+                {data.map((item, index) => (
+                    <div
+                        key={index}
+                        className="mb-2 text-secondary"
+                        style={{ fontSize: "13px" }}
+                    >
+                        <span className="fw-semibold me-1">
+                            {index + 1}.
+                        </span>
+                        {item}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default Note;

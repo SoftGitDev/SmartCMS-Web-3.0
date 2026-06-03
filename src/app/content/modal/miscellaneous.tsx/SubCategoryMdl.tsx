@@ -249,7 +249,7 @@ const SubCategoryMdl: React.FC<SubCategoryMdlProps> = ({ show, handleClose, edit
                                     </Col>
 
                                     {/* Sidebar Guidance Notes */}
-                                    <Col md={5}>
+                                    <Col md={5} className="d-none d-md-block">
                                         <Note data={SubCategoryMdlNote} />
                                     </Col>
                                 </Row>

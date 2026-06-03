@@ -179,35 +179,27 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                         onChange={(e) => { setFieldValue('addressLine2', e.target.value); }} />
 
                 </Col>
-                {/* Country */}
+                {/* Pin Code */}
                 <Col md={3}>
                     <Textfield
-                        label="Country"
-                        name="country"
-                        placeholder="Enter country"
+                        label="Pin Code"
+                        name="pinCode"
+                        placeholder="Enter pin code"
                         required
                         type='text'
-                        maxLength={30}
-                        value={values.country}
+                        maxLength={6}
+                        value={values.pinCode}
                         tabIndex={getNextTabIndex()}
                         onBlur={handleBlur}
-                        IconProp={EarthIcon}
-                        onChange={(e) => { setFieldValue('country', e.target.value); }}
+                        IconProp={MapPinned}
+                        onChange={(e) => {
+                            const regex = /^[0-9]*$/;
+                            if (regex.test(e.target.value)) {
+                                setFieldValue('pinCode', e.target.value);
+                            }
+                        }}
                     />
-                    <ErrorMessage name="country" component="div" className="ErrorMessage" />
-                </Col>
-                {/* State */}
-                <Col md={3}>
-                    <SelectField
-                        label="State"
-                        placeholder="Select state"
-                        required
-                        options={stateOptions}
-                        tabIndex={getNextTabIndex()}
-                        value={values.state}
-                        onChange={(selected) => { setFieldValue('state', selected); }}
-                    />
-                    <ErrorMessage name="state" component="div" className="ErrorMessage" />
+                    <ErrorMessage name="pinCode" component="div" className="ErrorMessage" />
                 </Col>
                 {/* City */}
                 <Col md={3}>
@@ -231,31 +223,38 @@ const HeadOffice: React.FC<HeadOfficeProps> = ({ values, setFieldValue, ErrorMes
                     />
                     <ErrorMessage name="city" component="div" className="ErrorMessage" />
                 </Col>
-                {/* Pin Code */}
+
+                {/* State */}
+                <Col md={3}>
+                    <SelectField
+                        label="State"
+                        placeholder="Select state"
+                        required
+                        options={stateOptions}
+                        tabIndex={getNextTabIndex()}
+                        value={values.state}
+                        onChange={(selected) => { setFieldValue('state', selected); }}
+                    />
+                    <ErrorMessage name="state" component="div" className="ErrorMessage" />
+                </Col>
+                {/* Country */}
                 <Col md={3}>
                     <Textfield
-                        label="Pin Code"
-                        name="pinCode"
-                        placeholder="Enter pin code"
+                        label="Country"
+                        name="country"
+                        placeholder="Enter country"
                         required
                         type='text'
-                        maxLength={6}
-                        value={values.pinCode}
+                        maxLength={30}
+                        value={values.country}
                         tabIndex={getNextTabIndex()}
                         onBlur={handleBlur}
-                        IconProp={MapPinned}
-                        onChange={(e) => {
-                            const regex = /^[0-9]*$/;
-                            if (regex.test(e.target.value)) {
-                                setFieldValue('pinCode', e.target.value);
-                            }
-                        }}
+                        IconProp={EarthIcon}
+                        onChange={(e) => { setFieldValue('country', e.target.value); }}
                     />
-                    <ErrorMessage name="pinCode" component="div" className="ErrorMessage" />
+                    <ErrorMessage name="country" component="div" className="ErrorMessage" />
                 </Col>
-
             </Row>
-
         </div>
     );
 };

@@ -8,11 +8,12 @@
 ************************************************************/
 
 import { useState } from "react";
-import { Navbar, Container } from "react-bootstrap";
+import { Navbar, Container, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Profile from "./Profile";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, LogOutIcon } from "lucide-react";
 import { getUserData } from "../../utils/common";
+import { sessionStoreData } from "../../utils/Helper";
 
 type HeaderProps = {
   setCollapsed: React.Dispatch<React.SetStateAction<boolean>>;
@@ -31,6 +32,29 @@ const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: He
     isMobile ? setMobileSidebarOpen(true) : setCollapsed(!collapsed);
   };
 
+  const handleLoginOnMain = () => {
+    const updateClient = {
+      ...userData,
+      reqClientCd: userData?.clientCd,
+      reqUserCd: userData?.userCd,
+      reqbalance: userData?.balance,
+      reqclientNm: userData?.clientNm,
+      reqUserNm: userData?.userNm,
+      reqClientId: userData?.clientId,
+      reqpersonNm: userData?.personNm,
+      reqlastLogin: userData?.lastLogin,
+      isMobileAppAccess: null,
+      isLoginAsClient: false,
+      isSMTPFlag: userData?.smtpSourceType,
+      isSMSConfigFlag: userData?.smsSourceType,
+    };
+    sessionStoreData(updateClient);
+    window.location.reload();
+  }
+
+  const clientData = JSON.parse(
+    sessionStorage.getItem("_client_data_") || "{}"
+  );
 
 
   return (
@@ -56,8 +80,8 @@ const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: He
             </motion.div>
 
             <div className="my-1">
-              <h6 className="mb-0 fw-bold text-base text-primary">{userData?.bankCode || 1001}-{userData?.bank?.bankName || 'Soft Tech'}</h6>
-              <p className="mb-0 text-dark text-sm fw-semibold">Hello..! , {userData?.personName?.toUpperCase() || 'Harish Suthar'} | Last Login : {userData?.lastLoginDt || '21-05-2026'}</p>
+              <h6 className="mb-0 fw-bold text-base text-primary">{userData?.bankCode || (clientData?.reqClientCd || '1000')}-{userData?.bank?.bankName || (clientData?.reqclientNm || 'SOFTE_TECH ')}</h6>
+              <p className="mb-0 text-dark text-sm fw-semibold">Hello..! , {userData?.personName?.toUpperCase() || (clientData?.reqUserNm || 'Abhishek ')} | Last Login : {userData?.lastLoginDt || '21-05-2026'}</p>
             </div>
 
           </div>
@@ -78,6 +102,22 @@ const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: He
               </motion.div>
             </AnimatePresence>
 
+            {clientData?.isLoginAsClient &&
+              <>
+                <OverlayTrigger
+                  placement="bottom"
+                  delay={{ show: 100, hide: 100 }}
+                  overlay={<Tooltip id="button-tooltip">
+                    Logout From Client
+                  </Tooltip>}
+                >
+                  <div className="notification-icon rounded-circle position-relative" onClick={handleLoginOnMain}>
+                    <LogOutIcon />
+                  </div>
+                </OverlayTrigger>
+              </>
+            }
+
             {/* Profile Section with dropdown toggle */}
             <motion.div
               onClick={() => setIsProfile(!isProfile)}
@@ -87,11 +127,11 @@ const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: He
             >
 
               <div className="bg-primary-50 rounded-circle p-2 d-flex align-items-center justify-content-center" style={{ width: "40px", height: "40px", color: 'var(--primaryColor)', fontSize: 22 }} >
-                {userData?.userId?.slice(0, 1)?.toUpperCase() || 'H'}
+                {userData?.userId?.slice(0, 1)?.toUpperCase() || ((clientData?.reqUserNm || 'Abhishek ')?.slice(0, 1)?.toUpperCase())}
               </div>
 
               <div className="d-none d-md-block">
-                <span className="text-sm">{userData?.userId || 'Harish Suthar'}</span>
+                <span className="text-sm">{userData?.userId || (clientData?.reqUserNm || 'Abhishek ')}</span>
                 <p className="mb-0 text-xs text-muted">{(userData?.parentRole === "S" && "Super Admin") || (userData?.parentRole === "A" && "Admin") || (userData?.parentRole === "U" && "User")} Admin</p>
               </div>
 

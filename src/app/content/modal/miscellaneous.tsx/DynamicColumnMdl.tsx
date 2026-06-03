@@ -1,5 +1,5 @@
 import { ErrorMessage, Form, Formik, FieldArray } from 'formik';
-import { LucideListChecks, Trash, X } from 'lucide-react';
+import { LucideColumns3, LucideListChecks, Trash, X } from 'lucide-react';
 import React from 'react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import * as Yup from 'yup';
@@ -7,6 +7,8 @@ import Textfield from '../../../components/ui/TextField/TextInput';
 import RadioBtn from '../../../components/ui/Radio/RadioBtn';
 import SelectField from '../../../components/ui/SelectBox/SelectField';
 import Checkbox from '../../../components/ui/checkBox/Checkbox';
+import Note from '../../../utils/Note';
+import { DynamicColumnNote } from '../../data/note';
 
 interface DynamicColumnMdlProps {
     show: boolean;
@@ -123,15 +125,20 @@ const DynamicColumnMdl: React.FC<DynamicColumnMdlProps> = ({ show, handleClose, 
                             <Modal.Header closeButton>
                                 <Modal.Title className='w-100'>
                                     <div className='d-flex align-items-start'>
-                                        <div className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3" style={{ width: 40, height: 40, flexShrink: 0 }} >
-                                            <LucideListChecks className='text-primary' size={22} strokeWidth={2.2} />
+                                        <div
+                                            className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3"
+                                            style={{ width: 40, height: 40, flexShrink: 0 }}
+                                        >
+                                            <LucideColumns3 className='text-primary' size={22} strokeWidth={2.2} />
                                         </div>
+
                                         <div>
                                             <h6 className="fw-semibold text-dark mb-1">
-                                                {editedData ? 'Edit Sub-Category' : 'Create New Sub-Category'}
+                                                {editedData ? 'Edit Dynamic Column' : 'Create Dynamic Column'}
                                             </h6>
+
                                             <p className="text-secondary text-sm mb-0">
-                                                Manage Sub-Category settings and classification details.
+                                                Manage column configuration.
                                             </p>
                                         </div>
                                     </div>
@@ -141,7 +148,7 @@ const DynamicColumnMdl: React.FC<DynamicColumnMdlProps> = ({ show, handleClose, 
                             {/* Modal Body */}
                             <Modal.Body>
                                 <Row>
-                                    <Col md={8}>
+                                    <Col >
                                         <Row>
                                             {/* Field Type */}
                                             <Col md={12} className="mb-3">
@@ -320,8 +327,8 @@ const DynamicColumnMdl: React.FC<DynamicColumnMdlProps> = ({ show, handleClose, 
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col>
-                                        Note
+                                    <Col md={5} className="d-none d-md-block">
+                                        <Note data={DynamicColumnNote} />
                                     </Col>
                                 </Row>
                             </Modal.Body>

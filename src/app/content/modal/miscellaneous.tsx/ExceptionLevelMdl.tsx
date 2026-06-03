@@ -2,10 +2,12 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import Textfield from '../../../components/ui/TextField/TextInput';
-import { LucideListChecks } from 'lucide-react';
+import { LucideListChecks, LucideShieldAlert } from 'lucide-react';
 import * as Yup from 'yup';
 import RadioBtn from '../../../components/ui/Radio/RadioBtn';
 import SelectField from '../../../components/ui/SelectBox/SelectField';
+import Note from '../../../utils/Note';
+import { ExceptionLevelNote } from '../../data/note';
 
 
 interface ExceptionLevelMdlProps {
@@ -88,15 +90,20 @@ const ExceptionLevelMdl: React.FC<ExceptionLevelMdlProps> = ({ show, handleClose
                             <Modal.Header closeButton>
                                 <Modal.Title className='w-100'>
                                     <div className='d-flex align-items-start'>
-                                        <div className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3" style={{ width: 40, height: 40, flexShrink: 0 }} >
-                                            <LucideListChecks className='text-primary' size={22} strokeWidth={2.2} />
+                                        <div
+                                            className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3"
+                                            style={{ width: 40, height: 40, flexShrink: 0 }}
+                                        >
+                                            <LucideShieldAlert className='text-primary' size={22} strokeWidth={2.2} />
                                         </div>
+
                                         <div>
                                             <h6 className="fw-semibold text-dark mb-1">
-                                                {editedData ? 'Edit Sub-Category' : 'Create New Sub-Category'}
+                                                {editedData ? 'Edit Exception Level' : 'Create Exception Level'}
                                             </h6>
+
                                             <p className="text-secondary text-sm mb-0">
-                                                Manage Sub-Category settings and classification details.
+                                                Manage exception levels.
                                             </p>
                                         </div>
                                     </div>
@@ -263,9 +270,9 @@ const ExceptionLevelMdl: React.FC<ExceptionLevelMdlProps> = ({ show, handleClose
                                     </Col>
 
                                     {/* Sidebar Guidance Notes */}
-                                    {/* <Col md={5}>
-                                        <Note data={SubCategoryMdlNote} />
-                                    </Col> */}
+                                    <Col className="d-none d-md-block">
+                                        <Note data={ExceptionLevelNote} />
+                                    </Col>
                                 </Row>
                             </Modal.Body>
 

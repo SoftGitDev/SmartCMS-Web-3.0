@@ -26,6 +26,9 @@ import DebugLog from './pages/logs/DebugLog';
 import AccessLog from './pages/logs/AccessLog';
 import Auditlog from './pages/logs/Auditlog';
 import Ticketdtl from './pages/tickets/Ticketdtl';
+import Article from './pages/knowledgeBase/Article';
+import Announcement from './pages/knowledgeBase/Announcement';
+import Circular from './pages/knowledgeBase/Circular';
 
 function App() {
   return (
@@ -63,6 +66,11 @@ function App() {
           <Route path="tickets/ticketdtl" element={<Ticketdtl />} />
           {/* Services */}
           <Route path="services" element={<Services />} />
+
+          {/* Knowledge Base */}
+          <Route path="article" element={<Article />} />
+          <Route path="announcement" element={<Announcement />} />
+          <Route path="circular" element={<Circular />} />
 
           {/* Logs */}
           <Route path="logs/debug" element={<DebugLog />} />

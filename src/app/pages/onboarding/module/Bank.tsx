@@ -20,7 +20,7 @@ import DocumentCard from '../../../components/ui/documentUpload/DocumentCard';
 interface BankProps {
     values: any;
     setFieldValue: (field: string, value: any) => void;
-    ErrorMessage:any;
+    ErrorMessage: any;
     handleBlur: any;
     getNextTabIndex: () => number;
 }
@@ -44,9 +44,9 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                         {/* Organization  */}
                         <Col md={6}>
                             <Textfield
-                                label="Organization "
+                                label="Organization Name "
                                 name="bankName"
-                                placeholder="Enter Organization "
+                                placeholder="Enter Organization  name"
                                 required
                                 type='text'
                                 maxLength={100}
@@ -67,9 +67,9 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                         {/* NPCI Code */}
                         <Col md={6}>
                             <Textfield
-                                label="NPCI Code"
+                                label="Organization  Code"
                                 name="bankCode"
-                                placeholder="Enter NPCI Code"
+                                placeholder="Enter Organization  Code"
                                 required
                                 type='text'
                                 maxLength={20}
@@ -88,8 +88,7 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                             <ErrorMessage name="bankCode" component="div" className="ErrorMessage" />
                         </Col>
 
-                        {/* Product Key */}
-                        <Col md={6}>
+                        {/* <Col md={6}>
                             <Textfield
                                 label="Product Key"
                                 name="productKey"
@@ -111,8 +110,6 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                             <ErrorMessage name="productKey" component="div" className="ErrorMessage" />
 
                         </Col>
-
-                        {/* Secret Key */}
                         <Col md={6}>
                             <Textfield
                                 label="Secret Key"
@@ -133,8 +130,7 @@ const Bank: React.FC<BankProps> = ({ values, setFieldValue, ErrorMessage, handle
                                 }}
                             />
                             <ErrorMessage name="secretKey" component="div" className="ErrorMessage" />
-
-                        </Col>
+                        </Col> */}
 
                         {/* Admin Domain */}
                         <Col md={6}>

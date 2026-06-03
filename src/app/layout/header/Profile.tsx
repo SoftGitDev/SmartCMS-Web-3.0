@@ -47,7 +47,7 @@ const Profile = ({ isProfile, setIsProfile, screenWidth = 1024 }: ProfileProps) 
         {/* User Identity Header */}
         <div className="profile-header">
           <div className="avatar-circle">
-            {userData?.userId || 'Harish'?.slice(0, 1)?.toUpperCase()}
+            {userData?.userId || 'Abhishek'?.slice(0, 1)?.toUpperCase()}
           </div>
           <div className="user-meta">
             <span className="user-name">{userData?.userId || "Guest User"}</span>

@@ -27,12 +27,12 @@ const navItems = [
         desc: "API credentials & profile core info",
         icon: <University size={20} strokeWidth={2.5} />
     },
-    {
-        key: "headOffice",
-        title: "Head Office",
-        desc: "Branch location and contact configurations",
-        icon: <Building2 size={20} strokeWidth={2.5} />
-    },
+    // {
+    //     key: "headOffice",
+    //     title: "Head Office",
+    //     desc: "Branch location and contact configurations",
+    //     icon: <Building2 size={20} strokeWidth={2.5} />
+    // },
     {
         key: "moduleSetup",
         title: "Module Setup",
@@ -202,92 +202,252 @@ const Bank = () => {
                                             <Tab.Content>
                                                 {/* STEP 1: Organization  Details */}
                                                 <Tab.Pane eventKey="bankDetails">
-                                                    <Row className="g-3">
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="Organization "
-                                                                name="bankName"
-                                                                placeholder="Enter Organization name"
-                                                                value={values.bankName}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                type="text"
+                                                    <fieldset className="border rounded-2 mt-2 p-3 bg-white mb-3">
+                                                        <legend className="float-none w-auto px-2 mb-0 text-sm fw-semibold">
+                                                            Organization <span className="text-primary">Details</span>
+                                                        </legend>
+                                                        <Row className="g-3">
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Organization "
+                                                                    name="bankName"
+                                                                    placeholder="Enter Organization name"
+                                                                    value={values.bankName}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={University}
+                                                                    onChange={(e: any) => setFieldValue('bankName', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="bankName" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="NPCI Code"
+                                                                    name="bankCode"
+                                                                    placeholder="e.g. HDFC, BARB"
+                                                                    value={values.bankCode}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    IconProp={Building2}
+                                                                    type="text"
+                                                                    onChange={(e: any) =>
+                                                                        setFieldValue('bankCode', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="bankCode" component="div" className="ErrorMessage" />
+                                                            </Col>
 
-                                                                IconProp={University}
-                                                                onChange={(e: any) => setFieldValue('bankName', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="bankName" component="div" className="ErrorMessage" />
-                                                        </Col>
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="NPCI Code"
-                                                                name="bankCode"
-                                                                placeholder="e.g. HDFC, BARB"
-                                                                value={values.bankCode}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                IconProp={Building2}
-                                                                type="text"
 
-                                                                onChange={(e: any) =>
-                                                                    setFieldValue('bankCode', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="bankCode" component="div" className="ErrorMessage" />
-                                                        </Col>
-
-
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="Admin Domain
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Admin Domain
                                                                 " name="adminDomain"
-                                                                placeholder="https://admin.bank.com"
-                                                                value={values.adminDomain}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                type="text"
+                                                                    placeholder="https://admin.bank.com"
+                                                                    value={values.adminDomain}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={Globe2}
+                                                                    onChange={(e: any) =>
+                                                                        setFieldValue('adminDomain', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="adminDomain" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Client Domain"
+                                                                    name="clientDomain"
+                                                                    placeholder="https://client.bank.com"
+                                                                    value={values.clientDomain}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={Globe2}
+                                                                    onChange={(e: any) =>
+                                                                        setFieldValue('clientDomain', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="clientDomain" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={6}>
+                                                                <DocumentCard
+                                                                    title={"Bank Custom Logo"}
+                                                                    imageBase64={values.logo || dummyLogo}
+                                                                    isRequired
+                                                                    isDisabled={!isEditMode}
+                                                                    fileInputRef={fileInputRef}
+                                                                    fileErrorName="logo" descTitle='No corporate logo loaded'
+                                                                    subdescTitle='Click here to update logo configuration asset'
+                                                                    maxSize={500}
+                                                                    onUploadClick={() => fileInputRef.current?.click()}
+                                                                    onFileChange={async (e: any) => setFieldValue("logo", e?.base64 || null)}
+                                                                    onFileBlur={handleBlur}
+                                                                />
+                                                            </Col>
+                                                        </Row>
+                                                    </fieldset>
+                                                    {/* Address Office */}
+                                                    <fieldset className="border rounded-2 mt-2 p-3 bg-white ">
+                                                        <legend className="float-none w-auto px-2 mb-0 text-sm fw-semibold">
+                                                            Head  <span className="text-primary">Office</span>
+                                                        </legend>
+                                                        <Row className="g-3">
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Branch Name"
+                                                                    name="branchName"
+                                                                    placeholder="Main HQ Branch Name"
+                                                                    value={values.branchName}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    IconProp={Building2}
+                                                                    type="text"
+                                                                    onChange={(e: any) => setFieldValue('branchName', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="branchName" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Branch Code"
+                                                                    name="branchCode"
+                                                                    placeholder="HQBR001"
+                                                                    value={values.branchCode}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    IconProp={KeySquare}
+                                                                    type="text"
+                                                                    onChange={(e: any) => setFieldValue('branchCode', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="branchCode" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={3}>
+                                                                <Textfield
+                                                                    label="Mobile No"
+                                                                    name="contactNo"
+                                                                    maxLength={10}
+                                                                    placeholder="Enter 10 digit landline/mobile contact"
+                                                                    value={values.contactNo}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={Phone}
+                                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (/^[0-9]*$/.test(e.target.value)) setFieldValue("contactNo", e.target.value); }}
+                                                                />
+                                                                <ErrorMessage name="contactNo" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={3}>
+                                                                <Textfield
+                                                                    label="Email ID"
+                                                                    name="emailId"
+                                                                    maxLength={50}
+                                                                    required
+                                                                    placeholder="Enter email id"
+                                                                    value={values.emailId}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={Mail}
+                                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => { if (/^[0-9]*$/.test(e.target.value)) setFieldValue("contactNo", e.target.value); }}
+                                                                />
+                                                                <ErrorMessage name="emailId" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={6}>
+                                                                <Textfield
+                                                                    label="Country"
+                                                                    name="country"
+                                                                    placeholder="e.g. India"
+                                                                    value={values.country}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={Globe2}
+                                                                    onChange={(e: any) => setFieldValue('country', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="country" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={12}>
+                                                                <Textfield
+                                                                    label="Address Line 1"
+                                                                    name="addressLine1" placeholder="Building/Street Info"
+                                                                    value={values.addressLine1}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    IconProp={MapPin}
+                                                                    type="text"
+                                                                    onChange={(e: any) => setFieldValue('addressLine1', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="addressLine1" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={12}>
+                                                                <Textfield
+                                                                    label="Address Line 2"
+                                                                    name="addressLine2"
+                                                                    placeholder="Locality/Area info (Optional)"
+                                                                    value={values.addressLine2}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    IconProp={MapPin}
+                                                                    onChange={(e: any) => setFieldValue('addressLine2', e.target.value)}
+                                                                />
+                                                            </Col>
+                                                            <Col md={4}>
+                                                                <Textfield
+                                                                    label="City"
+                                                                    name="city"
+                                                                    placeholder="e.g. Mumbai"
+                                                                    value={values.city}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    type="text"
+                                                                    onChange={(e: any) => setFieldValue('city', e.target.value)}
+                                                                />
+                                                                <ErrorMessage name="city" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                            <Col md={4}>
+                                                                <SelectField
+                                                                    label="State"
+                                                                    placeholder="Select state"
+                                                                    required
+                                                                    isDisabled={!isEditMode}
+                                                                    options={stateOptions}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    value={values.state}
+                                                                    onChange={(selected) => { setFieldValue('state', selected); }}
+                                                                />
+                                                            </Col>
+                                                            <Col md={4}>
+                                                                <Textfield
+                                                                    label="Pin Code"
+                                                                    name="pinCode"
+                                                                    maxLength={6}
+                                                                    type="text"
+                                                                    placeholder="6-digit Zip/Postal code"
+                                                                    value={values.pinCode}
+                                                                    disabled={!isEditMode}
+                                                                    tabIndex={getNextTabIndex()}
+                                                                    onBlur={handleBlur}
+                                                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                                        if (/^[0-9]*$/.test(e.target.value))
+                                                                            setFieldValue("pinCode", e.target.value);
+                                                                    }}
+                                                                />
+                                                                <ErrorMessage name="pinCode" component="div" className="ErrorMessage" />
+                                                            </Col>
+                                                        </Row>
+                                                    </fieldset>
 
-                                                                IconProp={Globe2}
-                                                                onChange={(e: any) =>
-                                                                    setFieldValue('adminDomain', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="adminDomain" component="div" className="ErrorMessage" />
-                                                        </Col>
-                                                        <Col md={6}>
-                                                            <Textfield
-                                                                label="Client Domain"
-                                                                name="clientDomain"
-                                                                placeholder="https://client.bank.com"
-                                                                value={values.clientDomain}
-                                                                disabled={!isEditMode}
-                                                                tabIndex={getNextTabIndex()}
-                                                                onBlur={handleBlur}
-                                                                type="text"
-
-                                                                IconProp={Globe2}
-                                                                onChange={(e: any) =>
-                                                                    setFieldValue('clientDomain', e.target.value)}
-                                                            />
-                                                            <ErrorMessage name="clientDomain" component="div" className="ErrorMessage" />
-                                                        </Col>
-                                                        <Col md={6}>
-                                                            <DocumentCard
-                                                                title={"Bank Custom Logo"}
-                                                                imageBase64={values.logo || dummyLogo}
-                                                                isRequired
-                                                                isDisabled={!isEditMode}
-                                                                fileInputRef={fileInputRef}
-                                                                fileErrorName="logo" descTitle='No corporate logo loaded'
-                                                                subdescTitle='Click here to update logo configuration asset'
-                                                                maxSize={500}
-                                                                onUploadClick={() => fileInputRef.current?.click()}
-                                                                onFileChange={async (e: any) => setFieldValue("logo", e?.base64 || null)}
-                                                                onFileBlur={handleBlur}
-                                                            />
-                                                        </Col>
-                                                    </Row>
                                                 </Tab.Pane>
 
                                                 {/* STEP 2: HEAD OFFICE PANELS */}

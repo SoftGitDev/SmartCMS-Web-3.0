@@ -58,13 +58,13 @@ const UserDetail = () => {
                                     <Card.Body>
                                         <div className="text-center">
                                             <div className="profile-avatar">
-                                                <img src="https://ui-avatars.com/api/?name=Harish+Suthar" alt="" />
+                                                <img src="https://ui-avatars.com/api/?name=Abhishek" alt="" />
                                                 <button type="button" className="avatar-upload-btn" >
                                                     <Camera size={16} />
                                                 </button>
                                             </div>
                                             <h4 className="mt-3 mb-1">
-                                                Harish Suthar
+                                                Abhishek
                                             </h4>
                                             <StatusBadge
                                                 label={'Admin'}

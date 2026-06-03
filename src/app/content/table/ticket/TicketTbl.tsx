@@ -3,13 +3,15 @@
 // Created Date: 02-06-2026
 
 
-import React, { JSX } from 'react'
+import React, { JSX, useState } from 'react'
 import { Datatable } from '../../../components/ui/DataTable/Datatable'
 import { tableColumnProps } from '../../../types/typr';
 import StatusBadge from '../../../components/ui/customBadge/StatusBadge';
-import { Dropdown } from 'react-bootstrap';
-import { EllipsisVertical } from 'lucide-react';
+import { Button, Dropdown } from 'react-bootstrap';
+import { EllipsisVertical, Filter } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import SelectField from '../../../components/ui/SelectBox/SelectField';
+import Datepicker from '../../../components/ui/datePicker/Datepicker';
 
 const columns: tableColumnProps[] = [
     {
@@ -66,12 +68,12 @@ const columns: tableColumnProps[] = [
         header: 'Created Date',
         sorting: true,
     },
-    {
-        field: 'action',
-        header: 'Action',
-        sorting: false,
-        align: "center", // Centered for the three-dot vertical menu icons
-    }
+    // {
+    //     field: 'action',
+    //     header: 'Action',
+    //     sorting: false,
+    //     align: "center", // Centered for the three-dot vertical menu icons
+    // }
 ];
 
 
@@ -240,9 +242,44 @@ const statusVariants: Record<string, string> = {
     "Assigned": "primary"
 };
 
+// 1. Dummy Data Structures for the Filter Options
+const STATUS_OPTIONS = [
+    { label: 'Active', value: 'active' },
+    { label: 'Pending', value: 'pending' },
+    { label: 'Completed', value: 'completed' }
+];
+
+const PRIORITY_OPTIONS = [
+    { label: 'High', value: 'high' },
+    { label: 'Medium', value: 'medium' },
+    { label: 'Low', value: 'low' }
+];
+
+const CATEGORY_OPTIONS = [
+    { label: 'Features', value: 'features' },
+    { label: 'Bugs', value: 'bugs' },
+    { label: 'Documentation', value: 'docs' }
+];
+
 const TicketTbl = () => {
     // Inside your component:
     const navigate = useNavigate();
+    const [isFilter, setIsFilter] = useState<boolean>(false)
+
+    // States to capture filter data
+    const [status, setStatus] = useState(null);
+    const [priority, setPriority] = useState(null);
+    const [category, setCategory] = useState(null);
+
+    const handleFilter = () => {
+        setIsFilter(!isFilter)
+    }
+
+    const handleClearAll = () => {
+        setStatus(null);
+        setPriority(null);
+        setCategory(null);
+    };
     return (
         <>
             <Datatable
@@ -252,6 +289,56 @@ const TicketTbl = () => {
                 pagination
                 onDoubleClick={(row) => navigate(`/tickets/ticketdtl`, { state: { ticket: row } })}
                 style={{ height: "calc(-465px + 100vh)", overflow: "auto", }}
+                tableBtn={
+                    <div className='d-flex gap-3 ms-auto'>
+                        {/* Filter Icon Container */}
+                        <div onClick={handleFilter} className="bg-primary-50 d-flex align-items-center justify-content-center rounded p-2" style={{ width: '40px', height: '40px', cursor: 'pointer' }}>
+                            <Filter size={20} className="text-primary" />
+                        </div>
+                        {isFilter && <>
+                            {/* Status */}
+                            <div style={{ width: 230 }}>
+                                <SelectField
+                                    placeholder='Select Status'
+                                    options={STATUS_OPTIONS}
+                                    value={status}
+                                    onChange={setStatus}
+
+                                />
+                            </div>
+                            {/* Priority */}
+                            <div style={{ width: 230 }}>
+                                <SelectField
+                                    placeholder='Select Priority'
+                                    options={PRIORITY_OPTIONS}
+                                    value={priority}
+                                    onChange={setPriority}
+                                />
+                            </div>
+                            {/* Category */}
+                            <div style={{ width: 230 }}>
+                                <SelectField
+                                    placeholder='Select Category'
+                                    options={CATEGORY_OPTIONS}
+                                    value={category}
+                                    onChange={setCategory}
+                                />
+                            </div>
+                            {/* Date Range */}
+                            <div style={{ width: 230 }}>
+                                <Datepicker
+                                    mode='range'
+                                    placeholder='Select Date Range'
+                                />
+                            </div>
+
+                            {/* Button */}
+                            <Button onClick={handleClearAll} size='sm' variant='outline-dark' className='px-4'>
+                                Clear
+                            </Button>
+                        </>}
+                    </div>
+                }
             >
                 {(child: { row: any, column: tableColumnProps, rowIndex: number }): JSX.Element => (
                     <>

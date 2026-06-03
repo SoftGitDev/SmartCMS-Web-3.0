@@ -11,6 +11,8 @@ import Textfield from '../../../components/ui/TextField/TextInput';
 import { ListChecks } from 'lucide-react';
 import RadioBtn from '../../../components/ui/Radio/RadioBtn';
 import Editor from '../../../components/ui/editor/Editor';
+import Note from '../../../utils/Note';
+import { TicketTemplateNote } from '../../data/note';
 
 interface TicketTemplateMdlProps {
     show: boolean;
@@ -184,8 +186,9 @@ const TicketTemplateMdl: React.FC<TicketTemplateMdlProps> = ({ show, handleClose
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col>
-                                        Note : -
+                                    {/* Note UI */}
+                                    <Col className="d-none d-md-block">
+                                        <Note data={TicketTemplateNote} />
                                     </Col>
                                 </Row>
                             </Modal.Body>

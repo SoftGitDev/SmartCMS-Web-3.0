@@ -3,6 +3,7 @@ import { Datatable } from '../../../components/ui/DataTable/Datatable'
 import { Button } from 'react-bootstrap'
 import { GitFork, Pen, Trash } from 'lucide-react'
 import { tableColumnProps } from '../../../types/typr'
+import ToggleSwitch from '../../../components/ui/toggleSwitch/ToggleSwitch'
 
 
 const columns: tableColumnProps[] = [
@@ -35,7 +36,7 @@ const columns: tableColumnProps[] = [
         field: 'status',
         header: 'Status',
         sorting: true,
-        align: "center",
+        align: "left",
     },
     {
         field: '',
@@ -146,12 +147,18 @@ const CategoryTbl: React.FC<CategoryTblProps> = ({ handleCloseCategoryMdl }) => 
                 {(child: { row: any, column: tableColumnProps, rowIndex: number }): JSX.Element => (
                     <>
 
+                        {child.column.field === 'status' &&
+                            <ToggleSwitch
+                                checked={child.row.status} onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
+                                    throw new Error('Function not implemented.')
+                                }} />
+                        }
                         {child.column.field === '' && <div>
                             <div className='d-flex justify-content-center gap-2'>
                                 {/* {userData?.permissions?.UPDATE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="edit" title="Edit" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseCategoryMdl(child.row)} ><Pen size={16} /></Button>
 
-                                <Button variant="edit" title="Ticket auto assign" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseCategoryMdl(child.row)} ><GitFork size={16} /></Button>
+                                {/* <Button variant="edit" title="Ticket auto assign" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleCloseCategoryMdl(child.row)} ><GitFork size={16} /></Button> */}
 
                                 {/* {userData?.permissions?.DELETE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="delete" title="Delete" className="btn-sm icon-wrapper-delete rounded-circle"><Trash size={16} /></Button>
@@ -161,7 +168,7 @@ const CategoryTbl: React.FC<CategoryTblProps> = ({ handleCloseCategoryMdl }) => 
                         }
 
                         {
-                            child.column.field !== "modifyBy" &&
+                            child.column.field !== "status" &&
                             child.row[child.column.field as keyof any]}
                     </>
                 )}

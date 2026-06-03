@@ -13,8 +13,20 @@ export const convertMinutesSeconds = (time: number) => {
 
 //  OPT auto focse
 export const autoFocusOnOtp = (id: string) => {
-    const nextfield: HTMLInputElement | null = document.querySelector(`input[id=${id}]`);
-    if (nextfield !== null) {
-        nextfield.focus();
-    }
-}
+  const nextfield: HTMLInputElement | null = document.querySelector(
+    `input[id=${id}]`,
+  );
+  if (nextfield !== null) {
+    nextfield.focus();
+  }
+};
+
+// Dummy Localhostere Save Data
+export const sessionStoreData = (val: any) => {
+  try {
+    return sessionStorage.setItem("_client_data_", JSON.stringify(val));
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

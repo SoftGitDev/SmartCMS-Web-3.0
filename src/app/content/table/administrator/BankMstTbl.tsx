@@ -8,7 +8,7 @@ import { Datatable } from '../../../components/ui/DataTable/Datatable'
 import { branchPropsType, tableColumnProps } from '../../../types/typr'
 import ToggleSwitch from '../../../components/ui/toggleSwitch/ToggleSwitch';
 import { Button } from 'react-bootstrap';
-import { Pen, Trash } from 'lucide-react';
+import { LogIn, Pen, Trash } from 'lucide-react';
 
 interface BankMstTblProps {
     data: any[],
@@ -18,6 +18,7 @@ interface BankMstTblProps {
     totalRecord: number,
     setSearchContain: React.Dispatch<React.SetStateAction<string>>,
     handleBankMdl: (row: any) => void
+    loginWithClient: (row: any) => void
 }
 
 const columns: tableColumnProps[] = [
@@ -47,12 +48,12 @@ const columns: tableColumnProps[] = [
     {
         field: '',
         header: '',
-        sorting: true,
+        sorting: false,
         align: "center",
     }
 ];
 
-const BankMstTbl: React.FC<BankMstTblProps> = ({ data, isLoader, setPageSize, setPageNo, totalRecord, setSearchContain, handleBankMdl }) => {
+const BankMstTbl: React.FC<BankMstTblProps> = ({ data, isLoader, setPageSize, setPageNo, totalRecord, setSearchContain, handleBankMdl, loginWithClient }) => {
     return (
         <>
             <Datatable
@@ -100,9 +101,11 @@ const BankMstTbl: React.FC<BankMstTblProps> = ({ data, isLoader, setPageSize, se
                         }
 
                         {child.column.field === '' && <div>
-                            <div className='d-flex justify-content-center gap-2'>
+                            <div className='d-flex justify-content-end gap-2'>
                                 {/* {userData?.permissions?.UPDATE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="edit" title="Edit" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => handleBankMdl(child.row)} ><Pen size={14} /></Button>
+                                {/* Login With  */}
+                                {/* <Button variant="edit" title="Login With Client" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => loginWithClient(child.row)} ><LogIn size={14} /></Button> */}
                                 {/* {userData?.permissions?.DELETE_MAIL_CONFIG === "Y" && */}
                                 <Button variant="delete" title="Delete" className="btn-sm icon-wrapper-delete rounded-circle" ><Trash size={14} /></Button>
                                 {/* } */}

@@ -249,9 +249,10 @@ const CategoryMdl: React.FC<CategoryMdlProps> = ({ show, handleClose, editedData
                                             </Col>
                                         </Row>
                                     </Col>
-                                    <Col md={5}>
+                                    <Col md={5} className="d-none d-md-block">
                                         <Note data={CategoryMdlNote} />
                                     </Col>
+
                                 </Row>
                             </Modal.Body>
                             <Modal.Footer>

@@ -153,9 +153,8 @@ export function menuItems(userData: any) {
       title: "Configurations",
       icon: Settings,
       link: "/configurations",
-      isShow: true,
+      isShow: false,
     },
-
     {
       title: "Logs",
       icon: Bug,

@@ -5,6 +5,8 @@ import Textfield from '../../../components/ui/TextField/TextInput'
 import { LucideListChecks, X } from 'lucide-react'
 import * as Yup from 'yup';
 import SelectField from '../../../components/ui/SelectBox/SelectField'
+import Note from '../../../utils/Note'
+import { ExceptionMatrixNote } from '../../data/note'
 
 
 
@@ -179,9 +181,9 @@ const ExceptionMatrixMdl: React.FC<ExceptionMatrixMdlProps> = ({ show, handleClo
                                 </Col>
 
                                 {/* Sidebar Guidance Notes */}
-                                {/* <Col md={5}>
-                                        <Note data={SubCategoryMdlNote} />
-                                    </Col> */}
+                                <Col className="d-none d-md-block">
+                                    <Note data={ExceptionMatrixNote} />
+                                </Col>
                             </Row>
                         </Modal.Body>
 

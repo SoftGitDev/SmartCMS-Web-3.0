@@ -58,9 +58,9 @@ const LicenceDtl = () => {
                 </Button>
             </div>
             {/* licence Details */}
-            <fieldset className="border rounded-2 mt-2 p-3 bg-white shadow-sm">
+            <fieldset className="border rounded-2 mt-2 p-3 bg-white ">
                 <legend className="float-none w-auto px-2 mb-0 text-sm fw-semibold">
-                    License Info
+                    License  <span className="text-primary">Info</span>
                 </legend>
                 <Row>
                     {licenceDtl?.createDate && (

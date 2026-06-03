@@ -122,3 +122,12 @@ export const updateProductConfigStatus = BaseUrl + "/update-product-config-statu
 export const allServiceList = BaseUrl + "/get-bank-subscribed-services-list/";
 export const updateLicense = BaseUrl + "/update-license/";
 export const activeServiceList = BaseUrl + "/get-bank-subscribed-service-list/";
+
+// Services
+export const assignService = BaseUrl + '/Api/CMSAdmin/Service/assignService';
+export const getAssignService = BaseUrl + '/Api/CMSAdmin/Service/getAssignService';
+export const getUserAssignService = BaseUrl + '/Api/CMSAdmin/Service/getUserAssignService';
+
+export const getMapServices = BaseUrl + '/Api/CMSAdmin/Service/getMapServices';
+export const getServiceStepInput = BaseUrl + '/Api/CMSAdmin/Service/getServiceStepInput';
+export const serviceRequest = BaseUrl + '/Api/CMSAdmin/Service/serviceRequest';

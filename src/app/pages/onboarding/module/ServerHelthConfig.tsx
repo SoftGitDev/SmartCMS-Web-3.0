@@ -100,6 +100,7 @@ const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
                         <Textfield
                             label="Product Verification Key"
                             name="productKey"
+                            required
                             placeholder="Enter service product validation key"
                             value={values.productKey}
                             tabIndex={getNextTabIndex()}
@@ -116,6 +117,7 @@ const ServerHealthConfig: React.FC<ServerHealthConfigProps> = ({
                             label="Secret Key"
                             name="secretKey"
                             type="password"
+                            required
                             placeholder="••••••••••••"
                             value={values.secretKey}
                             tabIndex={getNextTabIndex()}

@@ -108,7 +108,9 @@ const Ticket = () => {
 
                 {/* Table UI */}
                 <div className='mt-3'>
-                    <TicketTbl />
+                    <TicketTbl
+
+                    />
                 </div>
 
             </div>

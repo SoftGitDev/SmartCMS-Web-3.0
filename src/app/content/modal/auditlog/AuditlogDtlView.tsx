@@ -7,6 +7,7 @@ interface AuditlogDtlViewProps {
     handleClose: () => void
     auditlogDtl: any
 }
+
 const AuditlogDtlView: React.FC<AuditlogDtlViewProps> = ({ show, handleClose, auditlogDtl }) => {
 
 

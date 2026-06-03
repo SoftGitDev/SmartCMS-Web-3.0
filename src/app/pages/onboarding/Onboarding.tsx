@@ -111,11 +111,7 @@ const stepSchemas = [
         bankCode: Yup.string()
             .required('NPCI Code is required'),
 
-        productKey: Yup.string()
-            .required('Product key is required'),
 
-        secretKey: Yup.string()
-            .required('Secret key is required'),
 
         adminDomain: Yup.string()
             .required('Admin domain is required'),
@@ -164,7 +160,14 @@ const stepSchemas = [
     }),
     // STEP 3
     Yup.object().shape({}),
+
     // STEP 4
+    Yup.object().shape({
+        productKey: Yup.string().required('Product key is required'),
+        secretKey: Yup.string().required('Secret key is required'),
+    }),
+
+    // STEP 5
     Yup.object().shape({}),
 ];
 
@@ -206,7 +209,7 @@ const Onboarding = () => {
                 <Card className="border-0 shadow-sm rounded-4">
                     {/* HEADER */}
                     <CardHeader className="bg-white border-0">
-                        <div className="d-flex mt-3 justify-content-center align-items-center mb-4">
+                        <div className="d-flex mt-3 p-1 pb-0  justify-content-center align-items-center mb-4">
                             <StepIndicator
                                 allSteps={allSteps}
                                 currentStep={(currentStep + 1) as any}

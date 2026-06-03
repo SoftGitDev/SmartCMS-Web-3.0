@@ -3,13 +3,15 @@
 // Created Date: 01-06-2026
 
 import { Formik, Form, ErrorMessage } from 'formik';
-import { LucideListChecks } from 'lucide-react';
+import { LucideGitMerge, LucideListChecks } from 'lucide-react';
 import React, { useState } from 'react'
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import * as Yup from 'yup';
 import Textfield from '../../../components/ui/TextField/TextInput';
 import SelectField from '../../../components/ui/SelectBox/SelectField';
 import FormPermissionTbl from '../../table/miscellaneous.tsx/FormPermissionTbl';
+import Note from '../../../utils/Note';
+import { FormMappingNote } from '../../data/note';
 
 
 interface FormMappingMdlProps {
@@ -71,15 +73,20 @@ const FormMappingMdl: React.FC<FormMappingMdlProps> = ({ show, handleClose, edit
                             <Modal.Header closeButton>
                                 <Modal.Title className='w-100'>
                                     <div className='d-flex align-items-start'>
-                                        <div className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3" style={{ width: 40, height: 40, flexShrink: 0 }} >
-                                            <LucideListChecks className='text-primary' size={22} strokeWidth={2.2} />
+                                        <div
+                                            className="d-flex align-items-center justify-content-center rounded-3 bg-primary-50 bg-opacity-10 me-3"
+                                            style={{ width: 40, height: 40, flexShrink: 0 }}
+                                        >
+                                            <LucideGitMerge className='text-primary' size={22} strokeWidth={2.2} />
                                         </div>
+
                                         <div>
                                             <h6 className="fw-semibold text-dark mb-1">
-                                                {editedData ? 'Edit Sub-Category' : 'Create New Sub-Category'}
+                                                {editedData ? 'Edit Form Mapping' : 'Create Form Mapping'}
                                             </h6>
+
                                             <p className="text-secondary text-sm mb-0">
-                                                FormMappingMdl
+                                                Manage form mappings.
                                             </p>
                                         </div>
                                     </div>
@@ -158,9 +165,9 @@ const FormMappingMdl: React.FC<FormMappingMdlProps> = ({ show, handleClose, edit
                                     </Col>
 
                                     {/* Sidebar Guidance Notes */}
-                                    {/* <Col md={5}>
-                                        <Note data={SubCategoryMdlNote} />
-                                    </Col> */}
+                                    <Col className="d-none d-md-block">
+                                        <Note data={FormMappingNote} />
+                                    </Col>
                                 </Row>
                             </Modal.Body>
 
