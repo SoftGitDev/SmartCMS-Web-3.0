@@ -5,15 +5,16 @@
 // Change History:
 
 
-import React, { Suspense, useEffect, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import BranchTbl from '../../../content/table/administrator/BranchTbl'
 import LoaderUI from '../../../components/loader/Loader';
 import PageHeaeder from '../../../components/common/PageHeaeder';
 import { GitBranchIcon, Plus, Upload } from 'lucide-react';
 import { Button } from 'react-bootstrap';
-import BranchMdl from '../../../content/modal/administrator/branch/BranchMdl';
 import { branchPropsType } from '../../../types/typr';
-import UploadMdl from '../../../content/modal/administrator/branch/UploadMdl';
+
+const BranchMdl = lazy(() => import("../../../content/modal/administrator/branch/BranchMdl").then(({ default: BranchMdl }) => ({ default: BranchMdl })));
+const UploadMdl = lazy(() => import("../../../content/modal/administrator/branch/UploadMdl").then(({ default: UploadMdl }) => ({ default: UploadMdl })));
 
 const Branch = () => {
     const [isBranchMdl, setIsbranchMdl] = useState(false)
@@ -90,7 +91,7 @@ const Branch = () => {
         setPageSize(10);
     }, [searchContain])
 
-    
+
     return (
         <>
             {/* Header */}
@@ -138,10 +139,12 @@ const Branch = () => {
                 }
 
                 {isUploadBranchMdl &&
-                    <UploadMdl
-                        show={isUploadBranchMdl}
-                        handleClose={handleUploadBranchMdl}
-                    />
+                    <Suspense fallback={<LoaderUI />}>
+                        <UploadMdl
+                            show={isUploadBranchMdl}
+                            handleClose={handleUploadBranchMdl}
+                        />
+                    </Suspense>
                 }
 
             </div>

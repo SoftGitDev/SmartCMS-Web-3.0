@@ -13,11 +13,10 @@ import toastNotify from '../../../../utils/tostNotify';
 import { getUserData } from '../../../../utils/common';
 import { SweetAlerts } from '../../../../utils/sweetAlert';
 import LoaderUI from '../../../../components/loader/Loader';
-import MailSmsTempTbl from '../../../../content/table/administrator/MailSmsTempTbl';
-import AddMailSMSTemplate from '../../../../content/modal/administrator/AddMailSMSTemplate';
 
-// const AddMailSMSTemplate = lazy(() => import("../../../../content/modal/appconfiguration/AddMailSMSTemplate").then(({ default: AddMailSMSTemplate }) => ({ default: AddMailSMSTemplate })));
-// const MailSmsTempTbl = lazy(() => import("../../../../content/table/appconfiguration/MailSmsTempTbl").then(({ default: MailSmsTempTbl }) => ({ default: MailSmsTempTbl })));
+
+const AddMailSMSTemplate = lazy(() => import("../../../../content/modal/administrator/AddMailSMSTemplate").then(({ default: AddMailSMSTemplate }) => ({ default: AddMailSMSTemplate })));
+const MailSmsTempTbl = lazy(() => import("../../../../content/table/administrator/MailSmsTempTbl").then(({ default: MailSmsTempTbl }) => ({ default: MailSmsTempTbl })));
 
 const MailSMSTemplate = () => {
 
@@ -129,7 +128,7 @@ const MailSMSTemplate = () => {
             </div>
 
             {isAddTemplateMdl &&
-                <Suspense>
+                <Suspense fallback={<LoaderUI />}>
                     <AddMailSMSTemplate
                         show={isAddTemplateMdl}
                         handleClose={handleAddTemplateMdl}

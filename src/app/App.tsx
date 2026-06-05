@@ -29,6 +29,9 @@ import Ticketdtl from './pages/tickets/Ticketdtl';
 import Article from './pages/knowledgeBase/Article';
 import Announcement from './pages/knowledgeBase/Announcement';
 import Circular from './pages/knowledgeBase/Circular';
+import ManageServices from './pages/administrator/manageServices/ManageServices';
+import IntergratedService from './pages/integratedService/IntegratedServices';
+import Email from './pages/email/Email';
 
 function App() {
   return (
@@ -57,6 +60,10 @@ function App() {
           <Route path="product-config" element={<ProductConfig />} />
           <Route path="communication-config" element={<MailSmsConfigMain />} />
           <Route path="api-configurations" element={<APIConfiguration />} />
+          <Route path="manageservices" element={<ManageServices />} />
+          <Route path="manageticketservices" element={<IntergratedService />} />
+
+
 
           {/* Miscellaneous */}
           <Route path="miscellaneous" element={<Miscellaneous />} />
@@ -66,6 +73,10 @@ function App() {
           <Route path="tickets/ticketdtl" element={<Ticketdtl />} />
           {/* Services */}
           <Route path="services" element={<Services />} />
+
+          {/* email */}
+          <Route path="email" element={<Email />} />
+
 
           {/* Knowledge Base */}
           <Route path="article" element={<Article />} />

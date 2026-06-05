@@ -720,7 +720,7 @@ const APIConfigFrm: React.FC<APIConfigFrmProps> = ({ show, handleClose, services
                                                         <Accordion.Header className="sticky-top">
                                                             <div className="d-flex align-items-center">
                                                                 <div className="p-2 bg-primary-50 icon-wrapper rounded me-2" style={{ height: "35px", width: "35px" }}>
-                                                                    <KeySquare size={18}  className='text-primary' />
+                                                                    <KeySquare size={18} className='text-primary' />
                                                                 </div>
                                                                 <div>
                                                                     <h6 className="m-0 fw-bold text-dark text-sm">Service Variables</h6>
@@ -818,7 +818,7 @@ const APIConfigFrm: React.FC<APIConfigFrmProps> = ({ show, handleClose, services
                                                                     <Accordion.Header className="sticky-top bg-white">
                                                                         <div className="d-flex align-items-center">
                                                                             <div className="p-2 bg-primary-50 icon-wrapper rounded me-2" style={{ height: "35px", width: "35px" }}>
-                                                                                <KeySquare size={18}  className='text-primary'/>
+                                                                                <KeySquare size={18} className='text-primary' />
                                                                             </div>
                                                                             <div>
                                                                                 <h6 className="m-0 fw-bold text-dark text-sm">Step {idx + 1} Keywords</h6>
@@ -867,10 +867,10 @@ const APIConfigFrm: React.FC<APIConfigFrmProps> = ({ show, handleClose, services
                                             <div className="p-3 border-top bg-white w-100">
                                                 {/* {userData?.permissions?.SAVE_APP_CONF_API === "Y" && ( */}
                                                 <div className="d-flex justify-content-end gap-2">
-                                                    <Button variant="light" type='button'  onClick={handleClose}>
+                                                    <Button variant="light" type='button' onClick={handleClose}>
                                                         <CircleX size={16} className='me-1' /> Close
                                                     </Button>
-                                                    <Button variant="primary" type='submit'  disabled={isLoader}>
+                                                    <Button variant="primary" type='submit' disabled={isLoader}>
                                                         {isLoader ? <span><LoaderCircle size={16} className='icon-loader' /> Loading...</span> : <span className="text-white"> <CheckCircle2 size={16} className='me-2' />{isEdit ? "Update" : "Submit"}</span>}
                                                     </Button>
                                                 </div>

@@ -5,7 +5,7 @@
 
 
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Card, Col, Row, Button } from 'react-bootstrap';
@@ -13,7 +13,6 @@ import { CheckCircle2, InfoIcon, LoaderCircle, Mail, MessageSquare, Send } from 
 import { apiRequest } from '../../../../utils/apiRequest';
 import { SweetAlerts } from '../../../../utils/sweetAlert';
 import * as urls from '../../../../utils/url';
-import TestMailSmsMdl from '../../../../content/modal/administrator/MailSmsTestFrm';
 import SelectField from '../../../../components/ui/SelectBox/SelectField';
 
 export interface MailFormInitialValues {

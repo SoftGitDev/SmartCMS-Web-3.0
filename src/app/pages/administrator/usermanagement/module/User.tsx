@@ -5,10 +5,13 @@
 // Created Date: 25-05-2026
 
 
-import React, { Suspense, useEffect, useState } from 'react'
-import UserTbl from '../../../../content/table/administrator/UserTbl'
-import UserMdl from '../../../../content/modal/administrator/userManagement/UserMdl';
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import { userPropsType } from '../../../../types/typr';
+import LoaderUI from '../../../../components/loader/Loader';
+
+// Lazy loading the Table and Modal components
+const UserTbl = lazy(() => import('../../../../content/table/administrator/UserTbl'));
+const UserMdl = lazy(() => import('../../../../content/modal/administrator/userManagement/UserMdl'));
 
 const dummyData: userPropsType[] = [
     {
@@ -92,7 +95,7 @@ const User = () => {
     return (
         <>
             {/* Table */}
-            <Suspense>
+            <Suspense fallback={<LoaderUI />}>
                 <UserTbl
                     data={dummyData}
                     isLoader={isLoader}
@@ -106,11 +109,13 @@ const User = () => {
 
             {/* Modal */}
             {isUserMdl &&
-                <UserMdl
-                    show={isUserMdl}
-                    handleClose={handleUserMdl}
-                    editedData={editTableData}
-                />
+                <Suspense fallback={<LoaderUI />}>
+                    <UserMdl
+                        show={isUserMdl}
+                        handleClose={handleUserMdl}
+                        editedData={editTableData}
+                    />
+                </Suspense>
             }
         </>
     )

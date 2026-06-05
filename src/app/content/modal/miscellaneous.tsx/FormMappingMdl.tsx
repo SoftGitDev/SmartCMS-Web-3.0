@@ -125,8 +125,10 @@ const FormMappingMdl: React.FC<FormMappingMdlProps> = ({ show, handleClose, edit
                                             </Col>
                                         </Row>
 
-                                        <fieldset>
-                                            <legend className='text-sm text-primary'>Columns Details</legend>
+                                        <fieldset className="border rounded-3 p-3 mb-3">
+                                            <legend className="float-none w-auto px-2 text-sm text-slate-700 mb-0 fw-semibold">
+                                                Columns <span className='text-primary'>  Details </span>
+                                            </legend>
                                             <Row>
                                                 <Col md={6} className='mb-3'>
                                                     <SelectField

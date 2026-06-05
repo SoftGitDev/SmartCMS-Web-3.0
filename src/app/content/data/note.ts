@@ -95,3 +95,14 @@ export const AnnouncementNote: string[] = [
   "Uploaded validation reference materials are restricted to document extensions under a 5 MB file size scale.",
   "Archived or expired announcement logs remain accessible for audit queries within administrative tables.",
 ];
+
+export const CircularForNote: string[] = [
+  "Circular Title captures the mandatory document heading.",
+  "Circular Type selects the targeted document category.",
+  "For User scope configures Internal, External, or global visibility.",
+  "Start Date schedules the publication activation timestamp.",
+  "End Date registers the automated expiration deadline.",
+  "Email Alerts checkbox queues background notification dispatches.",
+  "Description editor handles rich-text formatting parameters.",
+  "File attachment restricts validation documents to 5 MB.",
+];

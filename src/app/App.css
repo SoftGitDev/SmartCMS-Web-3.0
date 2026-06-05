@@ -971,6 +971,27 @@ input::placeholder {
   color: var(--whiteColor) !important;
 }
 
+.btn-save {
+  background-color: var(--successColor40) !important;
+  border: none !important;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-save svg {
+  color: var(--successButton) !important;
+}
+
+.btn-save:hover,
+.btn-save:active {
+  background-color: var(--successButton) !important;
+}
+
+.btn-save:hover svg,
+.btn-save:active svg {
+  color: var(--whiteColor) !important;
+}
+
 /* ticket details */
 /* Custom cleanups targeting standard CKEditor build structures */
 .custom-ckeditor-wrapper .ck-editor__top .ck-toolbar {
@@ -1023,7 +1044,7 @@ input::placeholder {
   border-color: rgba(0, 0, 0, 0);
 }
 
-.icon-box {
+.icon-box-service {
   width: 70px;
   height: 70px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -1036,6 +1057,57 @@ input::placeholder {
   box-shadow: inset 0 2px 4px 0 rgba(255, 255, 255, 0.8);
 }
 
-.premium-card:hover .icon-box {
+.premium-card:hover .icon-box-service {
   transform: scale(1.1) rotate(3deg);
+}
+
+/* Accodinh header  UI */
+.accordion-button,
+.accordion-item {
+  background-color: transparent !important;
+}
+
+.accordion-button {
+  color: var(--slate700Color) !important;
+}
+
+.accordion-item {
+  border: 1px solid var(--slate500Color20) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--slate50Color) !important;
+  box-shadow: none !important;
+  border-radius: 10px 10px 0px 0px !important;
+}
+
+.accordion-item {
+  border-radius: 10px !important;
+}
+
+.date-section .accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+
+.shadow-md {
+  box-shadow: 0 7px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+.accordion-button {
+  padding: 10px !important;
+  font-size: 13px !important;
+}
+
+.date-section .accordion-button:nth-child(1)::after {
+  display: none;
+}
+
+/* Dashed border for the 'Add' button */
+.dashed-border {
+  border-style: dashed !important;
 }

@@ -8,7 +8,7 @@
 // --------------------------------------------------------------
 
 import React, { lazy, Suspense } from 'react'
-import { Mail, MessageSquare, Sliders, Sparkles } from 'lucide-react'
+import { Layers, Mail, MessageSquare, Sliders, Sparkles } from 'lucide-react'
 import { Tab, Tabs } from 'react-bootstrap'
 import { getUserData } from '../../../utils/common';
 import LoaderUI from '../../../components/loader/Loader';
@@ -19,6 +19,7 @@ const SMTPConfig = lazy(() => import("./smtp-config/SMTPConfig").then(({ default
 const MailSMSTemplate = lazy(() => import("./templates/MailSMSTemplate").then(({ default: MailSMSTemplate }) => ({ default: MailSMSTemplate })));
 const SmsAPIConfig = lazy(() => import("./sms-config/SmsAPIConfig").then(({ default: SmsAPIConfig }) => ({ default: SmsAPIConfig })));
 const MailConfig = lazy(() => import("./mail-config/MailConfig").then(({ default: MailConfig }) => ({ default: MailConfig })));
+const TemplateMapping = lazy(() => import("./mailSMSTemplateMapping/MailSMSTemplateMapping").then(({ default: TemplateMapping }) => ({ default: TemplateMapping })));
 
 
 const MailSmsConfigMain = () => {
@@ -68,7 +69,6 @@ const MailSmsConfigMain = () => {
                     {activeTab === "mailconfig" &&
                         <Suspense fallback={<LoaderUI />}>
                             <div className='p-3 pt-0'>
-
                                 <MailConfig userData={userData} />
                             </div>
 
@@ -113,6 +113,17 @@ const MailSmsConfigMain = () => {
                     }
                 </Tab>
                 {/* } */}
+
+                <Tab eventKey="templatesMapping" title={<><Layers size={16} className='me-1' /> Templates Mapping</>} onSelect={() => setActiveTab("templatesMapping")}>
+                    {activeTab === "templatesMapping" &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <div className='p-3 pt-0'>
+                                <TemplateMapping />
+                            </div>
+
+                        </Suspense>
+                    }
+                </Tab>
             </Tabs>
         </div >
     )

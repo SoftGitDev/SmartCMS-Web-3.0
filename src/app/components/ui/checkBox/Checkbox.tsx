@@ -15,13 +15,14 @@ type checkboxPros = {
     description?: any
     textclass?: string,
     required?: boolean
+    id?: any
 }
 
-const Checkbox = ({ label, name, value, onChange, onBlur, onClick, checked, disabled, className, tabIndex, textclass, required }: checkboxPros) => {
+const Checkbox = ({ label, name, id, value, onChange, onBlur, onClick, checked, disabled, className, tabIndex, textclass, required }: checkboxPros) => {
     return (
         <div className={`${label ? "d-flex gap-1" : ""} ${className || ""}`}>
             <label className="checkbox bounce">
-                <input type="checkbox" tabIndex={tabIndex} id={label} name={name} value={value} onChange={onChange} onBlur={onBlur} onClick={onClick} checked={checked} disabled={disabled} />
+                <input type="checkbox" tabIndex={tabIndex} id={id} name={name} value={value} onChange={onChange} onBlur={onBlur} onClick={onClick} checked={checked} disabled={disabled} />
                 <svg viewBox="0 0 21 21">
                     <polyline points="5 10.75 8.5 14.25 16 6"></polyline>
                 </svg>

@@ -12,6 +12,7 @@ import Textfield from '../../../../components/ui/TextField/TextInput'
 import SelectField from '../../../../components/ui/SelectBox/SelectField';
 import Note from '../../../../utils/Note';
 import { UserAddNote } from '../../../data/note';
+import Checkbox from '../../../../components/ui/checkBox/Checkbox';
 
 interface UserMdlProps {
     show: boolean
@@ -46,6 +47,7 @@ const UserMdl: React.FC<UserMdlProps> = ({ show, handleClose, editedData }) => {
         seniorEmail1: editedData?.seniorEmail1 || '',
         seniorEmail2: editedData?.seniorEmail2 || '',
         seniorEmail3: editedData?.seniorEmail3 || '',
+        isServiceAccess: editedData?.isServiceAccess || '',
     };
 
     const UserValidationSchema = Yup.object().shape({
@@ -316,6 +318,14 @@ const UserMdl: React.FC<UserMdlProps> = ({ show, handleClose, editedData }) => {
                                                 </Col>
                                             </Row>
                                         </fieldset>
+
+                                        {/* Public Access for Service */}
+                                        <Checkbox
+                                            label='Public Access for Service'
+                                            name='isServiceAccess'
+                                            value={values.isServiceAccess}
+                                            onChange={handleChange}
+                                        />
                                     </Col>
 
 
@@ -335,7 +345,7 @@ const UserMdl: React.FC<UserMdlProps> = ({ show, handleClose, editedData }) => {
                                 </Button>
 
                                 <Button variant="primary" type='submit'>
-                                    {editedData ? 'Update User' : 'Create User'}
+                                    {editedData ? 'Update' : 'Submit'}
                                 </Button>
                             </Modal.Footer>
 

@@ -7,20 +7,23 @@ import React, { lazy, Suspense, useState } from 'react'
 import { Building2, ClipboardList, Columns3, Files, FileText, FolderKanban, GitBranch, Layers3, PlusCircle, Settings2, ShieldCheck, Ticket, Workflow } from 'lucide-react';
 import { Button } from 'react-bootstrap';
 import LoaderUI from '../../components/loader/Loader';
-import SideMenu from '../../components/common/SideMenu';
-import Category from './module/Category';
-import SubCategory from './module/SubCategory';
-import Department from './module/Department';
-import CircularType from './module/CircularType';
-import DynamicColumn from './module/DynamicColumn';
-import FormMapping from './module/FormMapping';
-import TicketTemplate from './module/TicketTemplate';
-import TicketStatus from './module/TicketStatus';
-import CategoryVieWright from './module/CategoryVieWright';
-import EscalationLevelAssign from './module/EscalationLevelAssign';
-import ExceptionLevel from './module/ExceptionLevel';
-import ExceptionMatrix from './module/ExceptionMatrix';
 
+// Common Components
+const SideMenu = lazy(() => import('../../components/common/SideMenu').then(({ default: SideMenu }) => ({ default: SideMenu })));
+
+// Module Components
+const Category = lazy(() => import('./module/Category').then(({ default: Category }) => ({ default: Category })));
+const SubCategory = lazy(() => import('./module/SubCategory').then(({ default: SubCategory }) => ({ default: SubCategory })));
+const Department = lazy(() => import('./module/Department').then(({ default: Department }) => ({ default: Department })));
+const CircularType = lazy(() => import('./module/CircularType').then(({ default: CircularType }) => ({ default: CircularType })));
+const DynamicColumn = lazy(() => import('./module/DynamicColumn').then(({ default: DynamicColumn }) => ({ default: DynamicColumn })));
+const FormMapping = lazy(() => import('./module/FormMapping').then(({ default: FormMapping }) => ({ default: FormMapping })));
+const TicketTemplate = lazy(() => import('./module/TicketTemplate').then(({ default: TicketTemplate }) => ({ default: TicketTemplate })));
+const TicketStatus = lazy(() => import('./module/TicketStatus').then(({ default: TicketStatus }) => ({ default: TicketStatus })));
+const CategoryVieWright = lazy(() => import('./module/CategoryVieWright').then(({ default: CategoryVieWright }) => ({ default: CategoryVieWright })));
+const EscalationLevelAssign = lazy(() => import('./module/EscalationLevelAssign').then(({ default: EscalationLevelAssign }) => ({ default: EscalationLevelAssign })));
+const ExceptionLevel = lazy(() => import('./module/ExceptionLevel').then(({ default: ExceptionLevel }) => ({ default: ExceptionLevel })));
+const ExceptionMatrix = lazy(() => import('./module/ExceptionMatrix').then(({ default: ExceptionMatrix }) => ({ default: ExceptionMatrix })));
 const PageHeaeder = lazy(() => import("../../components/common/PageHeaeder").then(({ default: PageHeaeder }) => ({ default: PageHeaeder })));
 
 
@@ -336,13 +339,15 @@ const Miscellaneous = () => {
 
             <div className="d-flex h-100">
                 {/* Sidebar */}
-                <div className="custom-tabs-sidebar">
-                    <SideMenu
-                        menus={menus}
-                        activeTab={activeTab}
-                        setActiveTab={setActiveTab}
-                    />
-                </div>
+                <Suspense fallback={<LoaderUI />}>
+                    <div className="custom-tabs-sidebar">
+                        <SideMenu
+                            menus={menus}
+                            activeTab={activeTab}
+                            setActiveTab={setActiveTab}
+                        />
+                    </div>
+                </Suspense>
 
                 {/* Content Panel */}
                 <div className="tab-content-panel w-100" style={{ backgroundColor: "rgb(235 243 250)", height: "calc(-170px + 100vh)" }}>

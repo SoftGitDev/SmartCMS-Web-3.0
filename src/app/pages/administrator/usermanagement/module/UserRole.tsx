@@ -3,9 +3,12 @@
 // Created Date: 25-05-2026
 
 
-import React, { useEffect, useState } from 'react'
-import UserRoleTbl from '../../../../content/table/administrator/UserRoleTbl'
-import UserRoleMdl from '../../../../content/modal/administrator/userManagement/UserRoleMdl';
+import React, { lazy, Suspense, useEffect, useState } from 'react'
+import LoaderUI from '../../../../components/loader/Loader';
+
+// Lazy loading the Table and Modal components
+const UserRoleTbl = lazy(() => import('../../../../content/table/administrator/UserRoleTbl'));
+const UserRoleMdl = lazy(() => import('../../../../content/modal/administrator/userManagement/UserRoleMdl'));
 
 const UserRole = () => {
 
@@ -60,22 +63,26 @@ const UserRole = () => {
     return (
         <>
             {/* table  */}
-            <UserRoleTbl
-                data={dummyData}
-                isLoader={isLoader}
-                setPageSize={setPageSize}
-                setPageNo={setPageNo}
-                totalRecord={totalRecord}
-                setSearchContain={setSearchContain}
-                handleUserRoleMdl={handleUserRoleMdl}
-            />
+            <Suspense fallback={<LoaderUI />}>
+                <UserRoleTbl
+                    data={dummyData}
+                    isLoader={isLoader}
+                    setPageSize={setPageSize}
+                    setPageNo={setPageNo}
+                    totalRecord={totalRecord}
+                    setSearchContain={setSearchContain}
+                    handleUserRoleMdl={handleUserRoleMdl}
+                />
+            </Suspense>
 
             {/* Modal add edit user role */}
-            <UserRoleMdl
-                show={isUserRoleMdl}
-                handleClose={handleUserRoleMdl}
-                editedData={editTableData}
-            />
+            <Suspense fallback={<LoaderUI />}>
+                <UserRoleMdl
+                    show={isUserRoleMdl}
+                    handleClose={handleUserRoleMdl}
+                    editedData={editTableData}
+                />
+            </Suspense>
         </>
     )
 }

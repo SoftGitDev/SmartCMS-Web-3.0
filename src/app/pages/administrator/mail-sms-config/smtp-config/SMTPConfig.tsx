@@ -18,8 +18,10 @@ import { Button } from 'react-bootstrap';
 import { Plus } from 'lucide-react';
 import { SMTPConfigListProps } from '../../../../types/administrator';
 import LoaderUI from '../../../../components/loader/Loader';
-import SmtpConfigTbl from '../../../../content/table/administrator/SmtpConfigTbl';
+
 // import ConfirmModal from '../../../../content/modal/ConfirmModal';
+
+const SmtpConfigTbl = lazy(() => import("../../../../content/table/administrator/SmtpConfigTbl").then(({ default: SmtpConfigTbl }) => ({ default: SmtpConfigTbl })));
 
 
 const SMTPConfig = () => {
@@ -125,7 +127,7 @@ const SMTPConfig = () => {
                         userData={userData}
                         tableBtn={
                             userData?.permissions?.SAVE_MAIL_CONFIG !== "Y" &&
-                            <Button variant='primary'  className="ms-auto" onClick={() => { handleSmtpConfigFrm() }}>  <Plus size={16} className="me-2" /> New SMTP Config </Button>
+                            <Button variant='primary' className="ms-auto" onClick={() => { handleSmtpConfigFrm() }}>  <Plus size={16} className="me-2" /> New SMTP Config </Button>
                         }
                     />
                 </Suspense>

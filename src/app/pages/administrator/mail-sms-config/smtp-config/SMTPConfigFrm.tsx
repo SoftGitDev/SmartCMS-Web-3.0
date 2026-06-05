@@ -9,6 +9,7 @@ import * as urls from '../../../../utils/url';
 import { SMTPConfigListProps } from '../../../../types/administrator';
 import Checkbox from '../../../../components/ui/checkBox/Checkbox';
 import Textfield from '../../../../components/ui/TextField/TextInput';
+import RadioBtn from '../../../../components/ui/Radio/RadioBtn';
 
 
 interface smtpConfigProps {
@@ -31,6 +32,7 @@ export interface MailFormInitialValues {
     smtpTls?: boolean;
     Status?: boolean;
     description?: string;
+    smtpType: string;
 }
 
 
@@ -132,7 +134,8 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
         fromEmail: editSMTPData?.fromId || '',
         fromName: editSMTPData?.fromName || '',
         Status: editSMTPData?.status || true,
-        smtpTls: editSMTPData?.tls || false
+        smtpTls: editSMTPData?.tls || false,
+        smtpType: editSMTPData?.smtpType || 'I',
     };
 
 
@@ -146,6 +149,9 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
         fromName: Yup.string().required('From Name is required'),
     });
 
+    // Tab Index auto manage
+    let currentTabIndex = 1;
+    const getNextTabIndex = () => currentTabIndex++;
 
     return (
         <Modal show={isOpen} onHide={handleClose} backdrop="static" keyboard={false} size='xl' >
@@ -188,7 +194,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     checked={values.Status === true}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         setFieldValue("Status", e?.target.checked);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, Status: e.target.checked }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, Status: e.target.checked }));
                                                     }}
                                                 />
                                             </Col>
@@ -202,12 +208,35 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     checked={values.smtpTls === true}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         setFieldValue("smtpTls", e?.target.checked);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, Tls: e.target.checked }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, Tls: e.target.checked }));
                                                     }}
                                                 />
                                             </Col>
 
-                                            <Col md={6}></Col>
+                                            <Col md={6}>
+                                                <label className='text-sm text-muted'>SMTP Type</label>
+                                                <div className='d-flex gap-3 mt-1'>
+                                                    <RadioBtn
+                                                        label='Internal'
+                                                        tabIndex={getNextTabIndex()}
+                                                        id='Internal'
+                                                        name='smtpType'
+                                                        value='I'
+                                                        checked={values.smtpType === 'I'}
+                                                        onChange={handleChange}
+                                                    />
+
+                                                    <RadioBtn
+                                                        label='External'
+                                                        tabIndex={getNextTabIndex()}
+                                                        id='External'
+                                                        name='smtpType'
+                                                        value='E'
+                                                        checked={values.smtpType === 'E'}
+                                                        onChange={handleChange}
+                                                    />
+                                                </div>
+                                            </Col>
 
                                             <Col md={6}>
                                                 <Textfield
@@ -222,7 +251,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     value={values.description}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         handleChange(e);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, Description: e.target.value }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, Description: e.target.value }));
                                                     }}
                                                     onBlur={handleBlur}
                                                 />
@@ -242,7 +271,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     value={values.smtpHost}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         handleChange(e);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, Host: e.target.value }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, Host: e.target.value }));
                                                     }}
                                                     onBlur={handleBlur}
                                                 />
@@ -265,7 +294,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                         const regex = /^[0-9]*$/;
                                                         if (regex.test(value)) {
                                                             setFieldValue('port', value);
-                                                            setUpdatedFormData((pre:any) => ({ ...pre, Port: value }));
+                                                            setUpdatedFormData((pre: any) => ({ ...pre, Port: value }));
                                                         }
                                                     }}
                                                     onBlur={handleBlur}
@@ -286,7 +315,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     value={values.fromName}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         handleChange(e);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, FromName: e.target.value }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, FromName: e.target.value }));
                                                     }}
                                                     onBlur={handleBlur}
                                                 />
@@ -306,7 +335,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     value={values.password}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         handleChange(e);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, Pass: e.target.value }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, Pass: e.target.value }));
                                                     }}
                                                     onBlur={handleBlur}
                                                 />
@@ -326,7 +355,7 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                                                     value={values.fromEmail}
                                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                         handleChange(e);
-                                                        setUpdatedFormData((pre:any) => ({ ...pre, FromId: e.target.value }));
+                                                        setUpdatedFormData((pre: any) => ({ ...pre, FromId: e.target.value }));
                                                     }}
                                                     onBlur={handleBlur}
                                                 />
@@ -365,15 +394,15 @@ const SMTPConfigFrm: React.FC<smtpConfigProps> = ({ isOpen, handleClose, getSmtp
                             </Button>
                             {/* {(userData?.permissions?.SAVE_APP_CONF_MAIL === "Y" || userData?.permissions?.UPDATE_APP_CONF_MAIL === "Y") && */}
                             {/* {(userData?.permissions?.SAVE_MAIL_CONFIG === "Y" || userData?.permissions?.UPDATE_MAIL_CONFIG === "Y") && */}
-                                <Button
-                                    type="submit"
-                                    variant='primary'
-                                    className="d-flex align-items-center gap-2"
-                                    disabled={isLoader}
-                                    tabIndex={9}
-                                >
-                                    {isLoader ? (<> <LoaderCircle size={18} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
-                                </Button>
+                            <Button
+                                type="submit"
+                                variant='primary'
+                                className="d-flex align-items-center gap-2"
+                                disabled={isLoader}
+                                tabIndex={9}
+                            >
+                                {isLoader ? (<> <LoaderCircle size={18} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
+                            </Button>
                             {/* } */}
                         </Modal.Footer>
                     </Form>

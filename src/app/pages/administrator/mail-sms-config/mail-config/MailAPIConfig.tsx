@@ -99,10 +99,35 @@ const MailAPIConfig = ({ apiTypeData, mailConfigData, refreshMailConfig, userDat
                                     <Row>
                                         <Col md={12}>
                                             <Row className="g-3">
+
+                                                {/* Internal */}
                                                 <Col md={4}>
                                                     <SelectField
-                                                        label='Select Mail API'
-                                                        placeholder='Select Mail API'
+                                                        label='Internal Mail API'
+                                                        placeholder='Select Internal Mail API'
+                                                        required
+                                                        tabIndex={1}
+                                                        // isDisabled={userData?.permissions?.UPDATE_MAIL_CONFIG !== "Y"}
+                                                        options={apiTypeData}
+                                                        name='mailAPI'
+                                                        value={values.mailAPI !== "0" ? {
+                                                            value: values.mailAPI,
+                                                            label: values.mailAPILabel
+                                                        } : null}
+                                                        onChange={(e: any) => {
+                                                            setFieldValue("mailAPI", e?.value || '');
+                                                            setFieldValue("mailAPILabel", e?.label || '');
+                                                        }}
+                                                        onBlur={() => setFieldTouched("mailAPI", true)}
+                                                    />
+                                                    <ErrorMessage name="mailAPI" className="ErrorMessage text-danger small" component="div" />
+                                                </Col>
+
+                                                {/* External */}
+                                                <Col md={4}>
+                                                    <SelectField
+                                                        label='External Mail API'
+                                                        placeholder='Select External Mail API'
                                                         required
                                                         tabIndex={1}
                                                         // isDisabled={userData?.permissions?.UPDATE_MAIL_CONFIG !== "Y"}
@@ -145,15 +170,15 @@ const MailAPIConfig = ({ apiTypeData, mailConfigData, refreshMailConfig, userDat
                                             <Send size={16} /> Test Connection
                                         </Button>
                                         {/* {userData?.permissions?.UPDATE_MAIL_CONFIG === "Y" && */}
-                                            <Button
-                                                type="submit"
-                                                variant='primary'
-                                                className="d-flex align-items-center gap-2"
-                                                disabled={isSubmitting || isLoader}
-                                                tabIndex={2}
-                                            >
-                                                {isLoader ? (<> <LoaderCircle size={20} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
-                                            </Button>
+                                        <Button
+                                            type="submit"
+                                            variant='primary'
+                                            className="d-flex align-items-center gap-2"
+                                            disabled={isSubmitting || isLoader}
+                                            tabIndex={2}
+                                        >
+                                            {isLoader ? (<> <LoaderCircle size={20} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
+                                        </Button>
                                         {/* } */}
                                     </div>
                                 </Card.Body>

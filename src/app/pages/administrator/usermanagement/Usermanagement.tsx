@@ -3,12 +3,15 @@
 // Created Date: 02-06-2026
 
 
-import React, { Suspense, useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import PageHeaeder from '../../../components/common/PageHeaeder'
-import { LucideNotepadTextDashed, PaintRoller, ShieldCogCorner, User2 } from 'lucide-react'
+import { LucideNotepadTextDashed, ShieldCogCorner, User2 } from 'lucide-react'
 import { Card, CardBody, Tab, Tabs } from 'react-bootstrap'
-import User from './module/User'
-import UserRole from './module/UserRole'
+import LoaderUI from '../../../components/loader/Loader'
+
+const UserRole = lazy(() => import("./module/UserRole").then(({ default: UserRole }) => ({ default: UserRole })));
+const User = lazy(() => import("./module/User").then(({ default: User }) => ({ default: User })));
+
 
 const Usermanagement = () => {
 
@@ -31,7 +34,9 @@ const Usermanagement = () => {
                     <div className=" p-3">
                         <Card>
                             <CardBody>
-                                <User />
+                                <Suspense fallback={<LoaderUI />}>
+                                    <User />
+                                </Suspense>
                             </CardBody>
                         </Card>
                     </div>
@@ -41,7 +46,9 @@ const Usermanagement = () => {
                     <div className=" p-3">
                         <Card>
                             <CardBody>
-                                <UserRole />
+                                <Suspense fallback={<LoaderUI />}>
+                                    <UserRole />
+                                </Suspense>
                             </CardBody>
                         </Card>
                     </div>

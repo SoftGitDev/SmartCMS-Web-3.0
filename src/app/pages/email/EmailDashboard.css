@@ -1,0 +1,155 @@
+/* EmailDashboard.css */
+body {
+  background-color: #f8f9fa;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  color: #333333;
+}
+
+/* Sidebar Styling */
+.sidebar-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  min-height: calc(100vh - 24px);
+}
+
+.btn-compose {
+  background-color: #ff623d;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-compose:hover {
+  background-color: #e04f2c;
+  color: #ffffff;
+}
+
+.nav-link-custom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  color: #5f6368;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.nav-link-custom.active {
+  background-color: #fff0ed;
+  color: #ff623d;
+  font-weight: 600;
+}
+
+.nav-link-custom:hover:not(.active) {
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+/* Main Content Styling */
+.main-content-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  min-height: calc(100vh - 24px);
+  border: 1px solid #e5e7eb;
+}
+
+/* Tabs Styling */
+.custom-tabs .nav-link {
+  color: #5f6368;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.custom-tabs .nav-link.active {
+  color: #ff623d;
+  border-bottom-color: #ff623d;
+  background-color: transparent;
+}
+
+/* Table Customization */
+.email-table th {
+  color: #80868b;
+  font-weight: 500;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+.email-table td {
+  padding: 12px 8px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f3f4;
+  font-size: 0.9rem;
+}
+
+.email-table tr.unread {
+  background-color: #fafafa;
+  font-weight: 600;
+}
+
+/* Badge System Colors */
+.badge-support {
+  background-color: #e3f2fd;
+  color: #1d88e5;
+}
+.badge-freelance {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+.badge-social {
+  background-color: #f3e5f5;
+  color: #8e24aa;
+}
+.badge-promotions {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+.badge-family {
+  background-color: #e0f2f1;
+  color: #00897b;
+}
+.badge-friends {
+  background-color: #fce4ec;
+  color: #d81b60;
+}
+
+.badge-custom {
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Global Icon Placeholders / Helpers */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-initial {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.text-muted-custom {
+  color: #5f6368 !important;
+}

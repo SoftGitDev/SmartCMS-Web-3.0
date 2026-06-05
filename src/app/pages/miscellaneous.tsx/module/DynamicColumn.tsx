@@ -1,6 +1,9 @@
-import React from 'react'
-import DynamicColumnTbl from '../../../content/table/miscellaneous.tsx/DynamicColumnTbl'
-import DynamicColumnMdl from '../../../content/modal/miscellaneous.tsx/DynamicColumnMdl'
+import React, { lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
+
+// Lazy loading the Table and Modal components
+const DynamicColumnTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/DynamicColumnTbl'));
+const DynamicColumnMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/DynamicColumnMdl'));
 
 interface DynamicColumnProps {
     show: boolean
@@ -9,20 +12,22 @@ interface DynamicColumnProps {
 
 const DynamicColumn: React.FC<DynamicColumnProps> = ({ show, handleClose }) => {
     return (
-        <div>
-            {/* table  */}
-            <DynamicColumnTbl
-                handleditData={handleClose}
-            />
-
-            {/* Modal */}
-            {show &&
-                <DynamicColumnMdl
-                    show={show}
-                    handleClose={handleClose}
+        <Suspense fallback={<LoaderUI />}>
+            <div>
+                {/* table  */}
+                <DynamicColumnTbl
+                    handleditData={handleClose}
                 />
-            }
-        </div>
+
+                {/* Modal */}
+                {show &&
+                    <DynamicColumnMdl
+                        show={show}
+                        handleClose={handleClose}
+                    />
+                }
+            </div>
+        </Suspense>
     )
 }
 

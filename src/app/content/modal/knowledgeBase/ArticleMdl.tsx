@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal, Form, Row, Col, ModalBody } from 'react-bootstrap'
-import { FileText, Save, X } from 'lucide-react'
+import { FileText, FileTextIcon, HelpCircle, Save, X } from 'lucide-react'
 import { Formik, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import Editor from '../../../components/ui/editor/Editor'
@@ -77,12 +77,26 @@ const ArticleMdl: React.FC<ArticleMdlProps> = ({
             keyboard={false}
             size="xl"
         >
-            <Modal.Header closeButton className="border-bottom border-light-subtle bg-light-subtle py-3">
-                <Modal.Title className="fs-6 fw-bold text-dark d-flex align-items-center gap-2">
-                    <FileText size={18} className="text-secondary" />
-                    <span>{isEdited ? "Modify Knowledge Base Article" : "Create New Knowledge Base Article"}</span>
+            {/* <Modal.Header closeButton className="border-bottom border-light-subtle bg-light-subtle py-3"> */}
+
+            {/* Header */}
+            <Modal.Header closeButton >
+                <Modal.Title className='d-flex align-items-center gap-2'>
+                    <div className='icon-wrapper mt-1'>
+                        <FileTextIcon className='text-primary' size={22} />
+                    </div>
+                    <div>
+                        <h6 className="m-0 fw-semibold text-dark">
+                            {isEdited ? "Modify Knowledge Base Article" : "Create New Knowledge Base Article"}
+                        </h6>
+                        <p className="text-xs text-muted fw-normal m-0 mt-1">
+                            Publish and manage information articles, standard documentation, and troubleshooting guides.
+                        </p>
+                    </div>
                 </Modal.Title>
             </Modal.Header>
+
+            {/* </Modal.Header> */}
 
             <Formik
                 initialValues={initialValues}
@@ -267,10 +281,10 @@ const ArticleMdl: React.FC<ArticleMdlProps> = ({
 
                         <Modal.Footer>
                             <Button variant="light" onClick={handleClose} disabled={isSubmitting} >
-                                <X size={15} /> Cancel
+                                Cancel
                             </Button>
                             <Button type="submit" disabled={isSubmitting}>
-                                <Save size={15} /> {isSubmitting ? "Processing..." : isEdited ? "Update Entry" : "Save Entry"}
+                                {isSubmitting ? "Processing..." : isEdited ? "Update" : "Submit"}
                             </Button>
                         </Modal.Footer>
                     </Form>

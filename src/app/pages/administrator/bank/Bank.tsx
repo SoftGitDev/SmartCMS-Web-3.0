@@ -77,7 +77,7 @@ const Bank = () => {
     const validationSchema = Yup.object({
         // Step 1: Organization  Details Validation
         bankName: Yup.string().required('Organization  is required'),
-        bankCode: Yup.string().required('NPCI Code is required'),
+        bankCode: Yup.string().required('Organization Code is required'),
         productKey: Yup.string().required('Product Key is required'),
         secretKey: Yup.string().required('Secret Key is required'),
         adminDomain: Yup.string().required('Admin Domain URL is required'),

@@ -2,10 +2,12 @@
 // Created by: Harish
 // Created Date: 02-06-2026
 
+import React, { lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
 
-import React from 'react'
-import TicketStatusTbl from '../../../content/table/miscellaneous.tsx/TicketStatusTbl'
-import TicketStatusMdl from '../../../content/modal/miscellaneous.tsx/TicketStatusMdl'
+// Lazy loading the Table and Modal components
+const TicketStatusTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/TicketStatusTbl'));
+const TicketStatusMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/TicketStatusMdl'));
 
 interface TicketStatusProps {
     show: boolean
@@ -14,18 +16,20 @@ interface TicketStatusProps {
 
 const TicketStatus: React.FC<TicketStatusProps> = ({ show, handleClose }) => {
     return (
-        <>
+        <Suspense fallback={<LoaderUI />}>
             {/* Table */}
             <TicketStatusTbl
                 handleCloseTicketStatus={handleClose}
             />
 
             {/* Modal */}
-            <TicketStatusMdl
-                show={show}
-                handleClose={handleClose}
-            />
-        </>
+            {show && (
+                <TicketStatusMdl
+                    show={show}
+                    handleClose={handleClose}
+                />
+            )}
+        </Suspense>
     )
 }
 

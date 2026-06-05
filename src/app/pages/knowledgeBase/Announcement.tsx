@@ -3,13 +3,15 @@
 // Created Date: 03-06-2026
 
 
-import React, { Suspense, useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import { Button, Card, CardBody } from 'react-bootstrap'
-import Announcementbl from '../../content/table/knowledgeBase/Announcementbl'
 import LoaderUI from '../../components/loader/Loader'
 import PageHeaeder from '../../components/common/PageHeaeder'
 import { Megaphone, PlusCircle } from 'lucide-react'
-import AnnouncementMdl from '../../content/modal/knowledgeBase/AnnouncementMdl'
+
+// Lazy loading the Table and Modal components
+const Announcementbl = lazy(() => import('../../content/table/knowledgeBase/Announcementbl'));
+const AnnouncementMdl = lazy(() => import('../../content/modal/knowledgeBase/AnnouncementMdl'));
 
 const Announcement = () => {
     const [isAnnouncement, setIsAnnouncement] = useState<boolean>(false)
@@ -40,16 +42,20 @@ const Announcement = () => {
             <div className='p-3'>
                 <Card>
                     <CardBody>
-                        <Announcementbl />
+                        <Suspense fallback={<LoaderUI />}>
+                            <Announcementbl />
+                        </Suspense>
                     </CardBody>
                 </Card>
             </div>
 
             {/* Modal */}
-            <AnnouncementMdl
-                show={isAnnouncement}
-                handleClose={handleToggleAnnouncementMdl}
-            />
+            <Suspense fallback={<LoaderUI />}>
+                <AnnouncementMdl
+                    show={isAnnouncement}
+                    handleClose={handleToggleAnnouncementMdl}
+                />
+            </Suspense>
 
         </>
     )

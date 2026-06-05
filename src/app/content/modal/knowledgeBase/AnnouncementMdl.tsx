@@ -3,7 +3,6 @@
 // Created Date: 03-06-2026
 
 import React, { useRef, useState } from 'react';
-import { ArrowDownNarrowWide, File, Link, Trash } from 'lucide-react';
 import { Button, Col, Modal, Row } from 'react-bootstrap';
 import { Formik, ErrorMessage, Form } from 'formik';
 import * as Yup from 'yup';
@@ -15,6 +14,8 @@ import RadioBtn from '../../../components/ui/Radio/RadioBtn';
 import Textfield from '../../../components/ui/TextField/TextInput';
 import Note from '../../../utils/Note';
 import { AnnouncementNote } from '../../data/note';
+import FileInput from '../../../components/ui/fileInput/FileInput';
+import { Megaphone } from 'lucide-react';
 // import moment from 'moment';
 
 interface AnnouncementMdlProps {
@@ -43,14 +44,7 @@ const AnnouncementValidationSchema = Yup.object().shape({
     description: Yup.string().required('Description content body is required'),
 });
 
-const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({
-    show,
-    handleClose,
-    isEdited = false,
-    initialData,
-    state,
-    downloadFile = () => { }
-}) => {
+const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({ show, handleClose, isEdited = false, initialData, state, downloadFile = () => { } }) => {
     const attanchmentRef = useRef<HTMLInputElement>(null);
 
     // Internal operational states matching your custom file upload routines
@@ -76,14 +70,6 @@ const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({
         description: initialData?.Description || '',
     };
 
-    // Simulated handler mappings from your dashboard code setup
-    const attachfiles = () => attanchmentRef.current?.click();
-
-    const handleMultiFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            setMultiFile([...multiFile, e.target.files[0]]);
-        }
-    };
 
     const handleFormSubmit = (values: typeof formInitialValues) => {
         console.log("Submitting structured Announcement Payload Data:", { values, formData, multiFile });
@@ -100,8 +86,18 @@ const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({
             size="xl"
         >
             <Modal.Header closeButton>
-                <Modal.Title className="text-md font-semibold text-slate-800">
-                    {isEdited ? "Edit Announcement" : "Create New Announcement"}
+                <Modal.Title className='d-flex align-items-center gap-2'>
+                    <div className='icon-wrapper mt-1'>
+                        <Megaphone className='text-primary' size={20} />
+                    </div>
+                    <div>
+                        <h6 className="m-0 fw-semibold  text-dark">
+                            {isEdited ? "Edit Announcement" : "Create New Announcement"}
+                        </h6>
+                        <p className="text-xs text-muted fw-normal m-0 mt-1">
+                            Broadcast important news, system updates, or alerts to your target audiences.
+                        </p>
+                    </div>
                 </Modal.Title>
             </Modal.Header>
 
@@ -257,70 +253,30 @@ const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({
                                                 <ErrorMessage name="description" className='ErrorMessage' component="div" />
                                             </Col>
 
-                                            {/* File Attachment Pipeline Row */}
-                                            <Col md={12} className='mt-4'>
-                                                <input
-                                                    type="file"
-                                                    name="attachFile"
-                                                    className="d-none"
-                                                    ref={attanchmentRef}
+                                            {/* File Attachment */}
+                                            <Col md={12} className="mt-4">
+                                                <FileInput
+                                                    title="Attach a validation reference file"
+                                                    description="Document scale restriction up to 5 MB"
+                                                    files={multiFile}
+                                                    setFiles={setMultiFile}
                                                     accept=".pdf,.doc,.docx,.txt"
-                                                    onChange={handleMultiFile}
-                                                    onBlur={handleBlur}
+                                                    multiple={true}
+                                                    maxSizeMB={5}
+                                                    maxHeight="250px"
+                                                    remoteFiles={
+                                                        state?.data?.[0]?.FileName
+                                                            ? [
+                                                                {
+                                                                    fileName: state.data[0].FileName,
+                                                                    fileBase64: state.data[0].FileBase64,
+                                                                    fileContentType: state.data[0].FileContentType,
+                                                                },
+                                                            ]
+                                                            : []
+                                                    }
+                                                    onDownload={downloadFile}
                                                 />
-
-                                                <span className="d-flex align-items-center" onClick={attachfiles} style={{ cursor: "pointer", width: 'fit-content' }}>
-                                                    <div className="border rounded-circle d-flex justify-content-center align-items-center me-2 border-orange" style={{ width: 35, height: 35 }}>
-                                                        <Link size={16} className="text-orange" />
-                                                    </div>
-                                                    <div>
-                                                        <h5 className="text-sm mb-0 font-semibold text-slate-700">Attach a validation reference file</h5>
-                                                        <div className="text-xs text-slate-500">Document scale restriction up to 5 MB</div>
-                                                    </div>
-                                                </span>
-
-                                                {/* Local file loop rendering */}
-                                                <div className='mt-2'>
-                                                    {multiFile.map((file: any, id: number) => {
-                                                        const fileSize = file.size >= 1048576 ? (file.size / 1048576).toFixed(2) + " MB" : (file.size / 1024).toFixed(2) + " KB";
-                                                        return (
-                                                            <div key={id} className="d-flex align-items-center mt-2 p-2 bg-light rounded border">
-                                                                <div className="border rounded-circle d-flex justify-content-center align-items-center me-3 bg-white" style={{ width: 35, height: 35 }}>
-                                                                    <File size={16} className="text-muted" />
-                                                                </div>
-                                                                <div>
-                                                                    <h5 className="text-sm mb-0 font-medium text-slate-700">{file.name}</h5>
-                                                                    <div className="text-xs text-slate-500">File Size : {fileSize}</div>
-                                                                </div>
-                                                                <Button variant='outline-danger' className='rounded-circle btn-sm ms-auto d-flex justify-content-center align-items-center' style={{ width: 30, height: 30, padding: 0 }}
-                                                                    onClick={() => {
-                                                                        let selectedFile = [...multiFile];
-                                                                        selectedFile.splice(id, 1);
-                                                                        setMultiFile(selectedFile);
-                                                                    }}>
-                                                                    <Trash size={14} />
-                                                                </Button>
-                                                            </div>
-                                                        );
-                                                    })}
-
-                                                    {/* Remote database file pipeline check */}
-                                                    {state?.data?.[0]?.FileName && (
-                                                        <>
-                                                            <hr className="my-3 text-slate-200" />
-                                                            <div className="d-flex align-items-center p-2 bg-light rounded border">
-                                                                <div className="border rounded-circle d-flex justify-content-center align-items-center me-3 bg-white" style={{ width: 35, height: 35 }}>
-                                                                    <File size={16} />
-                                                                </div>
-                                                                <h5 className="text-sm mb-0 text-slate-700 font-medium">{state.data[0].FileName}</h5>
-                                                                <Button variant='outline-success' className='rounded-circle btn-sm ms-auto d-flex justify-content-center align-items-center' style={{ width: 30, height: 30, padding: 0 }}
-                                                                    onClick={() => downloadFile(state.data[0].FileBase64, state.data[0].FileName, state.data[0].FileContentType)}>
-                                                                    <ArrowDownNarrowWide size={14} />
-                                                                </Button>
-                                                            </div>
-                                                        </>
-                                                    )}
-                                                </div>
                                             </Col>
                                         </Row>
                                     </fieldset>
@@ -338,7 +294,7 @@ const AnnouncementMdl: React.FC<AnnouncementMdlProps> = ({
                                 Close
                             </Button>
                             <Button type="submit" variant="primary" className="px-3">
-                                {isEdited ? "Update Changes" : "Save Announcement"}
+                                {isEdited ? "Update" : "Submit"}
                             </Button>
                         </Modal.Footer>
                     </Form>

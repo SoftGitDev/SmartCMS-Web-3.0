@@ -2,11 +2,12 @@
 // Created by: Harish
 // Created Date: 26-05-2026
 
+import React, { useState, lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
 
-
-import React, { useState } from 'react'
-import CategoryTbl from '../../../content/table/miscellaneous.tsx/CategoryTbl'
-import CategoryMdl from '../../../content/modal/miscellaneous.tsx/CategoryMdl'
+// Lazy loading the Table and Modal components
+const CategoryTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/CategoryTbl'));
+const CategoryMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/CategoryMdl'));
 
 interface CategoryProps {
     show: boolean
@@ -17,7 +18,7 @@ const Category: React.FC<CategoryProps> = ({ show, handleClose }) => {
     const [editData, setEditeData] = useState<any>(null);
 
     return (
-        <>
+        <Suspense fallback={<LoaderUI />}>
             {/* Table */}
             <CategoryTbl
                 handleCloseCategoryMdl={handleClose}
@@ -31,7 +32,7 @@ const Category: React.FC<CategoryProps> = ({ show, handleClose }) => {
                     editedData={editData}
                 />
             }
-        </>
+        </Suspense>
     )
 }
 

@@ -88,18 +88,21 @@ const MailAPIConfig: React.FC<{ userData: any, mailConfigData: any, apiTypeData:
                                         </div>
                                     </div>
 
+
                                     <Row>
                                         <Col md={12}>
                                             <Row className="g-3">
+
+                                                {/* Intenal */}
                                                 <Col md={4}>
                                                     <SelectField
-                                                        label='SMTP Configuration'
-                                                        placeholder='Select SMTP Configuration'
+                                                        label='Internal  SMTP Configuration'
+                                                        placeholder='Select Internal  SMTP Configuration'
                                                         required
                                                         tabIndex={3}
                                                         // isDisabled={userData?.permissions?.UPDATE_MAIL_CONFIG !== "Y"}
                                                         options={apiTypeData}
-                                                        name='mailAPI'
+                                                        name='internalmailAPI'
                                                         value={values.mailAPI !== 0 ? {
                                                             value: values.mailAPI,
                                                             label: values.mailAPILabel
@@ -112,6 +115,30 @@ const MailAPIConfig: React.FC<{ userData: any, mailConfigData: any, apiTypeData:
                                                     />
                                                     <ErrorMessage name="mailAPI" className="ErrorMessage text-danger small" component="div" />
                                                 </Col>
+
+                                                {/* External  */}
+                                                <Col md={4}>
+                                                    <SelectField
+                                                        label='External  SMTP Configuration'
+                                                        placeholder='Select External  SMTP Configuration'
+                                                        required
+                                                        tabIndex={3}
+                                                        // isDisabled={userData?.permissions?.UPDATE_MAIL_CONFIG !== "Y"}
+                                                        options={apiTypeData}
+                                                        name='externalmailAPI'
+                                                        value={values.mailAPI !== 0 ? {
+                                                            value: values.mailAPI,
+                                                            label: values.mailAPILabel
+                                                        } : null}
+                                                        onChange={(e: { value: string, label: string }) => {
+                                                            setFieldValue("mailAPI", e?.value || '');
+                                                            setFieldValue("mailAPILabel", e?.label || '');
+                                                        }}
+                                                        onBlur={() => setFieldTouched("mailAPI", true)}
+                                                    />
+                                                    <ErrorMessage name="mailAPI" className="ErrorMessage text-danger small" component="div" />
+                                                </Col>
+
                                             </Row>
 
                                             <div className="alert my-4 border-primary border-0 d-flex align-items-center shadow-sm" style={{ backgroundColor: 'var(--primaryColor25)', borderRadius: '10px', color: 'var(--primaryColor)' }}>
@@ -137,13 +164,13 @@ const MailAPIConfig: React.FC<{ userData: any, mailConfigData: any, apiTypeData:
                                         </Button>
 
                                         {/* {userData?.permissions?.UPDATE_MAIL_CONFIG === "Y" && */}
-                                            <Button
-                                                type="submit"
-                                                variant='primary'
-                                                className="d-flex align-items-center gap-2"
-                                                disabled={isSubmitting || isLoader}>
-                                                {isLoader ? (<> <LoaderCircle size={20} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
-                                            </Button>
+                                        <Button
+                                            type="submit"
+                                            variant='primary'
+                                            className="d-flex align-items-center gap-2"
+                                            disabled={isSubmitting || isLoader}>
+                                            {isLoader ? (<> <LoaderCircle size={20} className='spinner-animation' /> Saving... </>) : (<> <Mail size={18} /> Save Configuration </>)}
+                                        </Button>
                                         {/* } */}
                                     </div>
                                 </Card.Body>

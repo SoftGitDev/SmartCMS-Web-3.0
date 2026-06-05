@@ -128,6 +128,48 @@ export const assignService = BaseUrl + '/Api/CMSAdmin/Service/assignService';
 export const getAssignService = BaseUrl + '/Api/CMSAdmin/Service/getAssignService';
 export const getUserAssignService = BaseUrl + '/Api/CMSAdmin/Service/getUserAssignService';
 
+
+// Service Controller
+export const getServiceList = BaseUrl + '/Api/CMSAdmin/Service/getServiceList';
+export const getServiceDetail = BaseUrl + '/Api/CMSAdmin/Service/getServiceDetail';
+export const editServiceStatus = BaseUrl + '/Api/CMSAdmin/Service/editServiceStatus';
+export const editService = BaseUrl + '/Api/CMSAdmin/Service/editService';
+export const addService = BaseUrl + '/Api/CMSAdmin/Service/addService';
+export const getServiceMapSeviceList = BaseUrl + '/Api/CMSAdmin/Service/getMapServicesList';
+export const mapServices = BaseUrl + '/Api/CMSAdmin/Service/mapService';
 export const getMapServices = BaseUrl + '/Api/CMSAdmin/Service/getMapServices';
 export const getServiceStepInput = BaseUrl + '/Api/CMSAdmin/Service/getServiceStepInput';
 export const serviceRequest = BaseUrl + '/Api/CMSAdmin/Service/serviceRequest';
+
+
+// Combo
+export const getTicketTemplateCombo = BaseUrl + '/Api/CMSAdmin/Combo/getTicketTemplateCombo';
+export const getTicketStatusCombo = BaseUrl + '/Api/CMSAdmin/Combo/getTicketStatusCombo';
+
+
+
+// Ticket Integ Service Controller
+export const getTicketIntageServiceList = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServiceList';
+export const getTicketIntageServiceDetail = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServiceDetail';
+export const editTicketIntageService = BaseUrl + '/Api/CMSAdmin/TicketIntageService/editTicketIntageService';
+export const addTicketIntageService = BaseUrl + '/Api/CMSAdmin/TicketIntageService/addTicketIntageService';
+export const getTicketIntageServiceMapList = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServiceMapList';
+export const mapTicketIntageService = BaseUrl + '/Api/CMSAdmin/TicketIntageService/mapTicketIntageService';
+export const editTicketIntageServiceStatus = BaseUrl + '/Api/CMSAdmin/TicketIntageService/editTicketIntageServiceStatus';
+export const getTicketIntageServiceCount = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServiceCount';
+export const generateTicketIntageKeyword = BaseUrl + '/Api/CMSAdmin/TicketIntageService/generateTicketIntageKeyword';
+export const getTicketIntageServicePullStatus = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServicePullStatus';
+
+
+
+export const getMapTicketIntageService = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getMapTicketIntageService'; // USED FOR GET SERVICE DETAIL IN TICKET DETAIL SECTION
+export const ticketIntageServicePushRequest = BaseUrl + '/Api/CMSAdmin/TicketIntageService/ticketIntageServicePushRequest'; // USED FOR PUSH TICKET DETAIL
+export const ticketIntageServicePullRequest = BaseUrl + '/Api/CMSAdmin/TicketIntageService/ticketIntageServicePullRequest'; // USED FOR PULL TICKET DETAIL
+export const ticketIntageServiceReplyRequest = BaseUrl + '/Api/CMSAdmin/TicketIntageService/ticketIntageServiceReplyRequest'; // USED FOR TICKET SERVICE REPLY REQUEST
+export const transactionCheckStatus = BaseUrl + '/Api/CMSAdmin/TicketIntageService/transactionCheckStatus'; // USED FOR TICKET TRANSACTION STATUS CHECK REQUEST
+export const transactionComplaint = BaseUrl + '/Api/CMSAdmin/TicketIntageService/transactionComplaint'; // USED FOR TICKET TRANSACTION COMPLAINT REQUEST
+export const getTicketIntageServicePullLastRequest = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServicePullLastRequest'; // USED FOR LAST TICKET PULL REQUEST
+export const getTicketIntageServicePullHistory = BaseUrl + '/Api/CMSAdmin/TicketIntageService/getTicketIntageServicePullHistory'; // USED FOR LAST TICKET PULL REQUEST
+
+
+export const getDynamicColumnKeyword = BaseUrl + '/Api/CMSAdmin/Combo/getDynamicColumnKeyword';

@@ -109,7 +109,7 @@ const stepSchemas = [
             .required('Organization  is required'),
 
         bankCode: Yup.string()
-            .required('NPCI Code is required'),
+            .required('Organization Code is required'),
 
 
 

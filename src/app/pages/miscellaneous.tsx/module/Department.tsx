@@ -2,32 +2,38 @@
 // Created by: Harish
 // Created Date: 29-05-2026
 
-import React from 'react'
-import DepartmentTbl from '../../../content/table/miscellaneous.tsx/DepartmentTbl'
-import DepartmentMdl from '../../../content/modal/miscellaneous.tsx/DepartmentMdl'
 
-interface DepartmentProps {
+import React, { lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
+
+// Lazy loading the Table and Modal components
+const DynamicColumnTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/DynamicColumnTbl'));
+const DynamicColumnMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/DynamicColumnMdl'));
+
+interface DynamicColumnProps {
   show: boolean
   handleClose: () => void
 }
 
-const Department: React.FC<DepartmentProps> = ({ show, handleClose }) => {
+const DynamicColumn: React.FC<DynamicColumnProps> = ({ show, handleClose }) => {
   return (
-    <>
-      {/* Table */}
-      <DepartmentTbl
-        handleCloseDepartmentMdl={handleClose}
-      />
-
-      {/* Modal */}
-      {show &&
-        <DepartmentMdl
-          show={show}
-          handleClose={handleClose}
+    <Suspense fallback={<LoaderUI />}>
+      <div>
+        {/* table  */}
+        <DynamicColumnTbl
+          handleditData={handleClose}
         />
-      }
-    </>
+
+        {/* Modal */}
+        {show &&
+          <DynamicColumnMdl
+            show={show}
+            handleClose={handleClose}
+          />
+        }
+      </div>
+    </Suspense>
   )
 }
 
-export default Department
+export default DynamicColumn

@@ -54,7 +54,7 @@ const ServicesCards: React.FC<ServicesCardsProps> = ({ serviceData, getServiceDt
 
                 {/* --- Icon Section --- */}
                 <div className="mb-4 text-center">
-                    <div className="icon-box">
+                    <div className="icon-box-service">
                         {Base64 ? (
                             <img
                                 src={Base64}

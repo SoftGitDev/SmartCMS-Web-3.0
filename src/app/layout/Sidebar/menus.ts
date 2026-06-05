@@ -48,7 +48,7 @@ export function menuItems(userData: any) {
           childtitle: "Organization Management",
           childlink: "/organization-management",
           childicon: Building2,
-          isShow: true,
+          isShow: false,
         },
         {
           childtitle: "User Management",
@@ -80,6 +80,18 @@ export function menuItems(userData: any) {
           childicon: BellRing,
           isShow: true,
         },
+        {
+          childtitle: "Manage Services",
+          childlink: "/manageservices",
+          childicon: BellRing,
+          isShow: true,
+        },
+        {
+          childtitle: "Manage ODR Integration",
+          childlink: "/manageticketservices",
+          childicon: BellRing,
+          isShow: true,
+        },
         // {
         //   childtitle: "Mail & SMS Configuration",
         //   childlink: "/communication-config",
@@ -105,6 +117,13 @@ export function menuItems(userData: any) {
       title: "Miscellaneous",
       icon: ClipboardList,
       link: "/miscellaneous",
+      isShow: true,
+    },
+
+    {
+      title: "Email",
+      icon: Mail,
+      link: "/email",
       isShow: true,
     },
 

@@ -20,6 +20,12 @@ interface SmtpConfigTblProps {
 
 const columns: tableColumnProps[] = [
     {
+        field: 'smtpType',
+        header: 'Configuration Name',
+        sorting: true,
+        width: "150px",
+    },
+    {
         field: 'description',
         header: 'Description',
         sorting: true,
@@ -62,6 +68,7 @@ const dummyData = [
     {
         id: 1,
         description: 'Primary SMTP Server',
+        smtpType: 'I',
         host: 'smtp.gmail.com',
         port: 587,
         fromName: 'Support Team',
@@ -79,6 +86,8 @@ const dummyData = [
         description: 'Marketing Mail Server',
         host: 'smtp.office365.com',
         port: 465,
+        smtpType: 'I',
+
         fromName: 'Marketing',
         emailId: 'marketing@company.com',
         fromId: 'marketing@company.com',
@@ -96,6 +105,8 @@ const dummyData = [
         port: 25,
         fromName: 'Notifier',
         emailId: 'notify@yahoo.com',
+        smtpType: 'E',
+
         fromId: 'notify@yahoo.com',
         insertBy: 'Admin',
         insertIP: '192.168.1.12',
@@ -274,6 +285,10 @@ const SmtpConfigTbl: React.FC<SmtpConfigTblProps> = ({ data, isLoader, setPageSi
                         <div className='text-xs text-slate-500'>{child.row.insertDt}</div>
                     </div>}
 
+                    {child.column.field === 'smtpType' &&
+                        <div>{child.row.smtpType === 'I' ? 'Internal Ticket mail' : 'External Ticket mail'}</div>
+                    }
+
                     {child.column.field === 'modifyBy' && child?.row?.modifyBy && <div>
                         <div>{child.row.modifyBy} | {child.row.modifyIP}</div>
                         <div className='text-xs text-slate-500'>{child.row.modifyDt}</div>
@@ -294,6 +309,7 @@ const SmtpConfigTbl: React.FC<SmtpConfigTblProps> = ({ data, isLoader, setPageSi
                     {child.column.field !== "fromName" &&
                         child.column.field !== "insertBy" &&
                         child.column.field !== "modifyBy" &&
+                        child.column.field !== "smtpType" &&
                         child.row[child.column.field as keyof any]}
                 </>
             )}

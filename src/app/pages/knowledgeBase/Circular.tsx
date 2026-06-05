@@ -4,15 +4,19 @@
 
 import React, { Suspense, useState, lazy } from 'react'
 import { ScrollText, PlusCircle } from 'lucide-react'
-import { Button } from 'react-bootstrap'
+import { Button, Card, CardBody } from 'react-bootstrap'
 import LoaderUI from '../../components/loader/Loader'
+
+
+const CircularTbl = lazy(() => import("../../content/table/knowledgeBase/CircularTbl").then(({ default: CircularTbl }) => ({ default: CircularTbl })));
+const CircularMdl = lazy(() => import("../../content/modal/knowledgeBase/CircularMdl").then(({ default: CircularMdl }) => ({ default: CircularMdl })));
 
 // Lazy load header component securely
 const PageHeaeder = lazy(() => import('../../components/common/PageHeaeder'))
 // Lazy load modal component (assuming it follows your standard naming convention)
 
 const Circular = () => {
-    // 🔄 Standardized modal lifecycle state hooks
+    //  Standardized modal lifecycle state hooks
     const [isCircularMdl, setIsCircularMdl] = useState<boolean>(false);
 
     const handleToggleCircularMdl = () => {
@@ -38,17 +42,23 @@ const Circular = () => {
             </Suspense>
 
             {/* Core Datatable Viewport Container */}
-            <div className="mt-4">
-                {/* Your custom operational datatable component goes here */}
+            <div className="p-3">
+                <Card>
+                    <CardBody>
+                        <Suspense fallback={<LoaderUI />}>
+                            <CircularTbl />
+                        </Suspense>
+                    </CardBody>
+                </Card>
             </div>
 
             {/* Formik-backed configuration modal structure */}
-            {/* <Suspense fallback={null}>
+            <Suspense fallback={<LoaderUI />}>
                 <CircularMdl
                     show={isCircularMdl}
                     handleClose={handleToggleCircularMdl}
                 />
-            </Suspense> */}
+            </Suspense>
         </>
     )
 }

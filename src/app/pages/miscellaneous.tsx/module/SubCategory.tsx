@@ -2,9 +2,12 @@
 // Created by: Harish
 // Created Date: 28-05-2026
 
-import React, { useState } from 'react'
-import SubCategoryMdl from '../../../content/modal/miscellaneous.tsx/SubCategoryMdl';
-import SubCategoryTbl from '../../../content/table/miscellaneous.tsx/SubCategoryTbl';
+import React, { useState, lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
+
+// Lazy loading the Table and Modal components
+const SubCategoryMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/SubCategoryMdl'));
+const SubCategoryTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/SubCategoryTbl'));
 
 interface subCategoryProps {
     show: boolean
@@ -15,8 +18,7 @@ const SubCategory: React.FC<subCategoryProps> = ({ show, handleClose }) => {
     const [editData, setEditeData] = useState<any>(null);
 
     return (
-        <>
-
+        <Suspense fallback={<LoaderUI />}>
             <SubCategoryTbl
                 handleCloseSubCategoryMdl={handleClose}
             />
@@ -27,10 +29,9 @@ const SubCategory: React.FC<subCategoryProps> = ({ show, handleClose }) => {
                     show={show}
                     handleClose={handleClose}
                     editedData={editData}
-
                 />
             }
-        </>
+        </Suspense>
     )
 }
 

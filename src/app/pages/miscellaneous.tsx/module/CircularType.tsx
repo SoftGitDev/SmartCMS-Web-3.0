@@ -2,22 +2,23 @@
 // Created by: Harish
 // Created Date: 29-05-2026
 
+import React, { useState, lazy, Suspense } from 'react'
+import LoaderUI from '../../../components/loader/Loader';
 
-import React, { useState } from 'react'
-import CircularTypeTbl from '../../../content/table/miscellaneous.tsx/CircularTypeTbl'
-import CircularTypeMdl from '../../../content/modal/miscellaneous.tsx/CircularTypeMdl'
+// Lazy loading the Table and Modal components
+const CircularTypeTbl = lazy(() => import('../../../content/table/miscellaneous.tsx/CircularTypeTbl'));
+const CircularTypeMdl = lazy(() => import('../../../content/modal/miscellaneous.tsx/CircularTypeMdl'));
 
 interface CategoryTypeProps {
   show: boolean
   handleClose: () => void
 }
 
-
 const CircularType: React.FC<CategoryTypeProps> = ({ show, handleClose }) => {
   const [editData, setEditeData] = useState<any>(null);
 
   return (
-    <>
+    <Suspense fallback={<LoaderUI />}>
       {/* Table  */}
       <CircularTypeTbl
         handleCloseCategoryTypeMdl={handleClose}
@@ -31,7 +32,7 @@ const CircularType: React.FC<CategoryTypeProps> = ({ show, handleClose }) => {
           editedData={editData}
         />
       }
-    </>
+    </Suspense>
   )
 }
 
