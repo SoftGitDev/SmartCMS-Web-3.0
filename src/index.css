@@ -82,3 +82,21 @@ body {
 .imagePreview {
   width: 140px;
 }
+
+/* datatable */
+
+.dataTables_scroll {
+  margin-bottom: 0.75rem;
+}
+
+.dataTables_scrollHead {
+  overflow-x: auto;
+  position: relative;
+  border: 0px;
+  width: 100%;
+  white-space: nowrap !important;
+}
+
+.dataTables_scrollHeadInner {
+  box-sizing: content-box;
+}

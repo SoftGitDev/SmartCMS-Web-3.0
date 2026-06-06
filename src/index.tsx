@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import App from './app/App';
+// import App from './app/App';
 import 'react-bootstrap';
 import reportWebVitals from './reportWebVitals';
-import { LayoutProvide } from './app/provider/layout';
+import { LayoutProvide } from './app/providers/layout';
+import App from './app/App';
+// import App from './app2/App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,0 +1,95 @@
+.email-icon-person {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.email-icon-person:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Dashed border for the 'Add' button */
+.dashed-border {
+  border-style: dashed !important;
+}
+
+/* Default (inactive) link color */
+
+/* Hover state */
+.custome-nav.nav-pills .nav-link:not(.active):hover {
+  background-color: var(--primaryColor25);
+  color: var(--primaryColor) !important;
+}
+
+/* Active pill — bg-primary-50 + text-primary */
+.custome-nav.nav-pills .nav-link.active,
+.custome-nav.nav-pills .show > .nav-link {
+  background-color: var(--primaryColor50) !important;
+  color: var(--primaryColor) !important;
+  font-weight: 600;
+}
+
+/* Email star UI  */
+
+.star-rating-section {
+  display: flex;
+}
+
+.star-rating-section .star:hover svg {
+  color: #e2c12c !important;
+}
+
+.star-rating-section .star svg {
+  cursor: pointer;
+  color: #ccc !important;
+}
+
+.star-rating-section .star-view svg,
+.star-rating-section svg {
+  color: #ccc !important;
+}
+
+.star-rating-section .active {
+  background: none;
+}
+
+.star-rating-section .active svg {
+  background: none;
+  color: #e2c12c !important;
+}
+
+.list-item-hover:hover {
+  cursor: pointer;
+  background-color: var(
+    --primaryColor25
+  ); /* Light grey Bootstrap tint on hover */
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.blank-logo-email {
+  width: 30px;
+  height: 30px;
+  border-radius: 14px;
+  /* border-radius: 5px; */
+  background-color: var(--primaryColor50);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primaryColor) !important;
+}
+
+.blank-logo-email:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
