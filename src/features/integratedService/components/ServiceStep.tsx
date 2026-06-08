@@ -639,7 +639,7 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                 <Button
                     size="sm"
                     className="text-xs fw-semibold text-base w-100 py-3 dashed-border"
-                    variant="outline-orange"
+                    variant="light"
                     // disabled={values.steps.isFinalStep === "Y"}
                     onClick={() => {
 

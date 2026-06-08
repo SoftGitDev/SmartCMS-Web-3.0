@@ -149,7 +149,7 @@ const RequestPayloadEditor = ({ value, onChange, type, contentType, getTabIndex 
                                 />
                             ))}
                             <Button
-                                variant="outline-orange"
+                                variant="light"
                                 size="sm"
                                 className="mt-2 border-dashed w-100"
                                 onClick={() => handleTreeChange([...treeData, { id: Math.random().toString(36).substr(2, 9), key: "", value: "", type: "string", isOpen: true, children: [] }])}>

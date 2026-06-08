@@ -21,6 +21,7 @@ import CategoryVieWright from './CategoryVieWright';
 import EscalationLevelAssign from './EscalationLevelAssign';
 import ExceptionLevel from './ExceptionLevel';
 import ExceptionMatrix from './ExceptionMatrix';
+import ServiceAssign from './ServiceAssign';
 // import LoaderUI from '../../components/loader/Loader';
 
 // // Common Components
@@ -135,15 +136,15 @@ const Miscellaneous = () => {
             buttonPermission: true,
             isShow: true,
         },
-        // {
-        //     title: "Service Assign",
-        //     description: "Manage service assignments",
-        //     Icon: ClipboardList,
-        //     link: "service-assign",
-        //     buttonName: "Assign Service",
-        //     buttonPermission: true,
-        //     isShow: true,
-        // },
+        {
+            title: "Service Assign",
+            description: "Manage service assignments",
+            Icon: ClipboardList,
+            link: "service-assign",
+            buttonName: "Assign Service",
+            buttonPermission: false,
+            isShow: true,
+        },
         {
             title: "Escalation  Level",
             description: "Manage Escalation  Level",
@@ -458,6 +459,13 @@ const Miscellaneous = () => {
                     {activeTab === 'escalation-assign' &&
                         <Suspense fallback={<LoaderUI />}>
                             <EscalationLevelAssign />
+                        </Suspense>
+                    }
+
+                    {/* service-assign */}
+                    {activeTab === 'service-assign' &&
+                        <Suspense fallback={<LoaderUI />}>
+                            <ServiceAssign />
                         </Suspense>
                     }
 

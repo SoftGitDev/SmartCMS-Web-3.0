@@ -98,7 +98,7 @@ const ResponseMappingMdl: React.FC<ResponseMappingMdlProps> = ({ setFieldValue, 
               </Col>
               <Col md={3}>
                 <Button
-                  variant="outline-orange"
+                  variant="light"
                   tabIndex={getTabIndex()}
                   size='sm'
                   className="w-100 d-flex align-items-center justify-content-center"

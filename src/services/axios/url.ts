@@ -173,3 +173,13 @@ export const getTicketIntageServicePullHistory = BaseUrl + '/Api/CMSAdmin/Ticket
 
 
 export const getDynamicColumnKeyword = BaseUrl + '/Api/CMSAdmin/Combo/getDynamicColumnKeyword';
+
+
+
+// Department
+export const getDepartment = BaseUrl + '/Api/CMSAdmin/Department/getDepartment';
+export const addDepartment = BaseUrl + '/Api/CMSAdmin/Department/addDepartment';
+export const editDepartment = BaseUrl + '/Api/CMSAdmin/Department/editDepartment';
+export const addDepartmentHod = BaseUrl + '/Api/CMSAdmin/Department/addDepartmentHod';
+export const getDepartmentHod = BaseUrl + '/Api/CMSAdmin/Department/getDepartmentHod';
+export const editDepartmentHod = BaseUrl + '/Api/CMSAdmin/Department/editDepartmentHod';

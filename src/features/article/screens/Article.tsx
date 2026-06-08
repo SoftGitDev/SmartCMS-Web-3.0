@@ -47,7 +47,9 @@ const Article = () => {
                 <Card >
                     <CardBody>
                         <Suspense fallback={<LoaderUI />}>
-                            <ArticleTbl />
+                            <ArticleTbl 
+                            handleToggleArticleMdl={handleToggleArticleMdl}
+                            />
                         </Suspense>
                     </CardBody>
                 </Card>

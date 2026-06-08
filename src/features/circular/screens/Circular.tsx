@@ -48,7 +48,9 @@ const Circular = () => {
                 <Card>
                     <CardBody>
                         <Suspense fallback={<LoaderUI />}>
-                            <CircularTbl />
+                            <CircularTbl
+                                handleToggleCircularMdl={handleToggleCircularMdl}
+                            />
                         </Suspense>
                     </CardBody>
                 </Card>

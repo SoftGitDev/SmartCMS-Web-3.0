@@ -45,7 +45,9 @@ const Announcement = () => {
                 <Card>
                     <CardBody>
                         <Suspense fallback={<LoaderUI />}>
-                            <Announcementbl />
+                            <Announcementbl 
+                            handleToggleAnnouncementMdl={handleToggleAnnouncementMdl}
+                            />
                         </Suspense>
                     </CardBody>
                 </Card>

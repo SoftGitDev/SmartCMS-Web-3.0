@@ -1,6 +1,6 @@
 import React, { JSX } from 'react'
-import { Button } from 'react-bootstrap';
-import { Plus, SquarePen, Trash } from 'lucide-react';
+import { Button, Dropdown } from 'react-bootstrap';
+import { EllipsisVertical, Pen, Plus, SquarePen, Trash, Trash2 } from 'lucide-react';
 import { mailsmstemplate } from '../types/MailSMSTemp';
 import { Datatable } from '../../../common/components/ui/DataTable/Datatable';
 import { tableColumnProps } from '../../../services/type';
@@ -261,17 +261,32 @@ const MailSmsTempTbl: React.FC<MailSmsTempTblProps> = ({ data, isLoader, setPage
                         <div className='text-xs text-slate-500'>{child.row.modifyDt}</div>
                     </div>}
 
-                    {child.column.field === '' && <div>
-                        <div className='d-flex justify-content-center gap-2'>
-                            {/* {userData?.permissions?.UPDATE_MAIL_SMS_TEMPLATE === "Y" && */}
-                            <Button variant="edit" title="Edit" className="btn-sm icon-wrapper-edit rounded-circle" onClick={() => { handleAddTemplateMdl(child.row) }} ><SquarePen size={16} /></Button>
-                            {/* } */}
-                            {/* {userData?.permissions?.DELETE_MAIL_SMS_TEMPLATE === "Y" && */}
-                            <Button variant="delete" title="Delete" className="btn-sm icon-wrapper-delete rounded-circle" onClick={() => { handleDeleteConfirmationMdl(child.row) }}><Trash size={16} /></Button>
-                            {/* } */}
-                        </div>
-                    </div>
-                    }
+
+                    {child.column.field === '' && (
+                        <Dropdown align="end">
+                            <Dropdown.Toggle
+                                variant="link"
+                                className="p-1 border-0 text-muted shadow-none no-caret custom-action-btn"
+                            >
+                                <EllipsisVertical size={20} />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu renderOnMount popperConfig={{ strategy: 'fixed' }} className="shadow-lg border-0 py-2" style={{ minWidth: '160px', zIndex: 9999 }}>
+
+                                <Dropdown.Item className="d-flex align-items-center gap-2 py-2 px-3" onClick={() => handleAddTemplateMdl(child.row)}>
+                                    <Pen size={16} />
+                                    <span className='text-sm'>Edit</span>
+                                </Dropdown.Item>
+
+                                {/* onClick={() => handleConfirmation()} */}
+                                {/* --- DESTRUCTIVE SECTION --- */}
+                                <Dropdown.Item className="d-flex align-items-center gap-2 py-2 px-3 text-danger delete-dropDown" >
+                                    <Trash2 size={16} />
+                                    <span className='text-sm '>Delete</span>
+                                </Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    )}
 
                     {child.column.field !== "insertBy" &&
                         child.column.field !== "modifyBy" &&
