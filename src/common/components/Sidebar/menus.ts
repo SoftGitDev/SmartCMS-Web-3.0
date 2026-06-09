@@ -1,4 +1,23 @@
-import {  Archive,  Bug,  Building2,  Building,  Home,  LayoutDashboard,  Settings,  User,  FileText,  Mail,   Package,  Code2,  ClipboardList,  BellRing,  Lightbulb,} from "lucide-react";
+import {
+  Archive,
+  Bug,
+  Building2,
+  Building,
+  Home,
+  LayoutDashboard,
+  Settings,
+  User,
+  FileText,
+  Mail,
+  Package,
+  Code2,
+  ClipboardList,
+  BellRing,
+  Lightbulb,
+  Workflow,
+  LogIn,
+  UserCheck,
+} from "lucide-react";
 
 export function menuItems(userData: any) {
   return [
@@ -40,6 +59,12 @@ export function menuItems(userData: any) {
           isShow: true,
         },
         {
+          childtitle: "Customers",
+          childlink: "/customers",
+          childicon: User,
+          isShow: true,
+        },
+        {
           childtitle: "App Configuration",
           childlink: "/app-config",
           childicon: Settings,
@@ -75,24 +100,6 @@ export function menuItems(userData: any) {
           childicon: BellRing,
           isShow: true,
         },
-        // {
-        //   childtitle: "Mail & SMS Configuration",
-        //   childlink: "/communication-config",
-        //   childicon: Mail,
-        //   isShow: true,
-        // },
-        // {
-        //   childtitle: "Escalation Levels",
-        //   childlink: "/matrixlevels",
-        //   childicon: Code2,
-        //   isShow: true,
-        // },
-        // {
-        //   childtitle: "Exception Matrix",
-        //   childlink: "/escalationmatrix",
-        //   childicon: Code2,
-        //   isShow: true,
-        // },
       ],
     },
 
@@ -157,6 +164,7 @@ export function menuItems(userData: any) {
       link: "/configurations",
       isShow: false,
     },
+
     {
       title: "Logs",
       icon: Bug,
@@ -183,12 +191,61 @@ export function menuItems(userData: any) {
         },
       ],
     },
-
     {
       title: "Reports",
       icon: FileText,
-      link: "/reports",
+      link: "#",
       isShow: true,
+      child: [
+        {
+          childtitle: "Ticket Report",
+          childlink: "/ticketreport",
+          childicon: FileText,
+          isShow: true,
+        },
+        {
+          childtitle: "Ticket Summary Report",
+          childlink: "/ticketsummaryreport",
+          childicon: ClipboardList,
+          isShow: true,
+        },
+        {
+          childtitle: "Ticket Auto Assign",
+          childlink: "/assigncategoryreport",
+          childicon: UserCheck,
+          isShow: true,
+        },
+        {
+          childtitle: "User Login / Logout Report",
+          childlink: "/loginlogoutreport",
+          childicon: LogIn,
+          isShow: true,
+        },
+        // {
+        //   childtitle: "User Activity Log",
+        //   childlink: "/useractivityreport",
+        //   childicon: Activity,
+        //   isShow: true,
+        // },
+        // {
+        //   childtitle: "Audit Log",
+        //   childlink: "/auditlogreport",
+        //   childicon: ShieldCheck,
+        //   isShow: true,
+        // },
+        {
+          childtitle: "Service Report",
+          childlink: "/servicelogreport",
+          childicon: Settings,
+          isShow: true,
+        },
+        {
+          childtitle: "ODR Integration Report",
+          childlink: "/integservicelogreport",
+          childicon: Workflow,
+          isShow: true,
+        },
+      ],
     },
   ];
 }

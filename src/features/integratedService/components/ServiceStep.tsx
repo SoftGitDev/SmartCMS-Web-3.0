@@ -376,6 +376,7 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                                                                                 <Textfield
                                                                                     label="Key"
                                                                                     type="text"
+                                                                                    placeholder='Enter Key'
                                                                                     name={`${namePath}.key`}
                                                                                     value={header.key}
                                                                                     tabIndex={getNextTabIndex()}
@@ -388,6 +389,7 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                                                                             <Col md={8} className="p-0 mb-2">
                                                                                 <Textfield
                                                                                     label="Value"
+                                                                                    placeholder='Enter Value'
                                                                                     type={showHeaderFields[headerIndex] ? "text" : "password"}
                                                                                     // IconProp={() => (<Button variant="" className="p-0" onClick={() => toggleShowHeader(headerIndex)}> {showHeaderFields[headerIndex] ? <IoEyeSharp /> : <BsEyeSlashFill />} </Button>)}
                                                                                     tabIndex={getNextTabIndex()}
@@ -402,7 +404,7 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                                                                             <Col md={1} className="d-flex p-0 mb-2">
                                                                                 <Button
                                                                                     variant="outline-danger"
-                                                                                    className="btn-sm rounded-2 border-1 pe-0"
+                                                                                    className="btn-sm rounded-2 mt-3 border-1 pe-0"
                                                                                     onClick={() => {
                                                                                         const currentHeaders = [...values.steps[index].headerData];
                                                                                         const findInd = currentHeaders.findIndex((f: any) => f.id === header.id);
@@ -443,9 +445,9 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                                                 />
 
                                                 {/* Response payload */}
-                                                <div className="flex-grow-1 mt-3">
+                                                <div className="flex-grow-1 mt-3 ">
                                                     <div className='d-flex'>
-                                                        <div>
+                                                        <div className='mb-3'>
                                                             <h6 className="text-primary text-sm ps-2 fw-semibold ">Response Config</h6>
                                                             <Checkbox
                                                                 name={`steps[${index}].isFinalStep`}
@@ -639,7 +641,7 @@ const ServiceStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleC
                 <Button
                     size="sm"
                     className="text-xs fw-semibold text-base w-100 py-3 dashed-border"
-                    variant="light"
+                    variant="outline-orange"
                     // disabled={values.steps.isFinalStep === "Y"}
                     onClick={() => {
 

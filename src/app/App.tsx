@@ -36,6 +36,7 @@ import IntergratedService from '../features/integratedService/screens/Integrated
 import ManageServices from '../features/manageServices/screens/ManageServices';
 import Usermanagement from '../features/usermanagement/screens/Usermanagement';
 import OrganizationMst from '../features/organizationMange/screens/OrganizationMst';
+import Customers from '../features/customers/screens/Customers';
 
 function App() {
     return (
@@ -66,6 +67,7 @@ function App() {
                     <Route path="api-configurations" element={<APIConfig />} />
                     <Route path="manageservices" element={<ManageServices />} />
                     <Route path="manageticketservices" element={<IntergratedService />} />
+                    <Route path="customers" element={<Customers />} />
 
 
 

@@ -22,6 +22,7 @@ import SelectField from "../../../common/components/ui/SelectBox/SelectField";
 import ServiceStep from "./ServiceStep";
 import Checkbox from "../../../common/components/ui/checkBox/Checkbox";
 import CategoryMappedMdl from "../../../common/components/common/CategoryMappedMdl";
+import noDataFound from '../../../assets/images/commone/NoDatafound.png'
 
 
 type IntegratedServiceMdlProps = {
@@ -1491,7 +1492,7 @@ const IntegratedServiceMdl: React.FC<IntegratedServiceMdlProps> = ({ show, handl
                                                                                     })
                                                                                 ) : (
                                                                                     <div className="d-grid justify-content-center align-content-center pt-3">
-                                                                                        <img src="/images/svg/55024593_9264820.svg" alt="no data found" style={{ width: 80 }} />
+                                                                                        <img src={noDataFound} alt="no data found" style={{ width: 80 }} />
                                                                                         <h1 className="text-sm text-center">No Keywords found</h1>
                                                                                     </div>
                                                                                 )}

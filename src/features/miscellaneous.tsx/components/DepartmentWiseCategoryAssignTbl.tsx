@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import Checkbox from "../../../common/components/ui/checkBox/Checkbox";
 import { CornerDownRightIcon, LayoutDashboard } from "lucide-react";
+import noDataFound from '../../../assets/images/commone/NoDatafound.png'
+
 
 const columns: any = [
     {
@@ -142,7 +144,7 @@ const DepartmentWiseCategoryAssignTbl: React.FC<departmentWisePermission> = ({ h
                         <div>
                             {values.assignedCategory.length === 0 && <div className="d-flex align-items-center justify-content-center" style={{ height: '40vh' }}>
                                 <div>
-                                    <img src="../../../assets/images/commone/NoDatafound.png" alt="no data found" style={{ width: 200 }} />
+                                    <img src={noDataFound} alt="no data found" style={{ width: 200 }} />
                                     <h1 className="text-base text-center">No category found</h1>
                                 </div>
                             </div>}

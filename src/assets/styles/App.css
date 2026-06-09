@@ -219,6 +219,13 @@ input::placeholder {
   border: 1px solid var(--primaryColor);
 }
 
+/* Scrollbar styling for textarea if you want it extra fancy */
+textarea.form-control {
+  box-shadow: none !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+
 /* Boostrap Button Color  */
 
 .btn-primary {
@@ -1151,4 +1158,52 @@ input::placeholder {
 .delete-dropDown:hover {
   color: var(--color-danger) !important;
   background-color: var(--dangerColor40) !important;
+}
+
+/* ODR Integration UI Css  */
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* borders - css */
+
+.border-success {
+  border-color: rgb(74 202 143) !important;
+  box-shadow: 0 4px 15px rgba(23, 168, 59, 0.25);
+}
+
+.border-danger {
+  border-color: rgb(239 68 68) !important;
+  box-shadow: 0 4px 15px rgba(168, 23, 23, 0.25);
+}
+
+.border-danger-class {
+  border: 1px solid var(--dangerColor) !important;
+}
+
+.border-warning {
+  border-color: rgb(252 211 77) !important;
+  box-shadow: 0 4px 15px rgba(168, 134, 23, 0.25);
+}
+
+/* Outline Button ui */
+
+.btn-outline-orange {
+  border-color: var(--primaryColor) !important;
+  color: var(--primaryColor) !important;
+}
+
+.btn-outline-orange:hover {
+  background-color: var(--primaryColor) !important;
+  color: var(--whiteColor) !important;
 }

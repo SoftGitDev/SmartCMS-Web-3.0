@@ -358,7 +358,7 @@ const APIStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleChang
                                                                                             <Col md={3} className="ps-0 mb-2">
                                                                                                 <Textfield
                                                                                                     label="Key"
-                                                                                                    placeholder="Key"
+                                                                                                    placeholder="Enter Key"
                                                                                                     type="text"
                                                                                                     name={`${namePath}.key`}
                                                                                                     value={header.key}
@@ -372,7 +372,7 @@ const APIStep: React.FC<ServiceMdlProps> = ({ values, setFieldValue, handleChang
                                                                                             <Col md={8} className="p-0 mb-2">
                                                                                                 <Textfield
                                                                                                     label="Value"
-                                                                                                    placeholder="Value"
+                                                                                                    placeholder="Enter Value"
                                                                                                     type={"password"}
                                                                                                     tabIndex={getNextTabIndex()}
                                                                                                     name={`${namePath}.value`}

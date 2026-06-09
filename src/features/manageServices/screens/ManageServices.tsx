@@ -13,6 +13,8 @@ import LoaderUI from '../../../common/components/feedBack/loader/Loader';
 import PageHeaeder from '../../../common/components/common/PageHeaeder';
 import ServicesCards from '../../integratedService/components/ServicesCards';
 import ServiceCreateMdl from '../components/ServiceCreateMdl';
+import noDataFound from '../../../assets/images/commone/NoDatafound.png'
+
 
 // Lazy loading the PageHeader component
 
@@ -237,7 +239,7 @@ const ManageServices = () => {
                                 <div
                                     className="d-flex flex-column justify-content-center align-items-center"
                                     style={{ height: "calc(100vh - 200px)", width: "100%", }}>
-                                    <img src="/images/svg/55024593_9264820.svg" alt="no data found" style={{ width: 200 }} />
+                                    <img src={noDataFound} alt="no data found" style={{ width: 200 }} />
                                     <h1 className="text-sm text-center mt-3 text-slate-600">No Services found</h1>
                                 </div>
                             </>

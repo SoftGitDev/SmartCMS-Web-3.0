@@ -10,6 +10,8 @@ import * as Yup from 'yup';
 import Textfield from '../../../common/components/ui/TextField/TextInput';
 import SelectField from '../../../common/components/ui/SelectBox/SelectField';
 import Checkbox from '../../../common/components/ui/checkBox/Checkbox';
+import NoteUI from '../../../services/storage/NoteUI';
+import { UserAddNote } from '../../../services/storage/note';
 
 
 
@@ -330,9 +332,9 @@ const UserMdl: React.FC<UserMdlProps> = ({ show, handleClose, editedData }) => {
 
                                     {/* Right Note Section */}
                                     <Col >
-                                        {/* <div className="d-none d-md-block">
-                                            <Note data={UserAddNote} />
-                                        </div> */}
+                                        <div className="d-none d-md-block">
+                                            <NoteUI data={UserAddNote} />
+                                        </div>
                                     </Col>
                                 </Row>
                             </Modal.Body>

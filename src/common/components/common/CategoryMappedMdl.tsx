@@ -46,7 +46,7 @@ const CategoryMappedMdl = ({
             Close
           </Button>
           <Button
-            variant="theme" // assuming "theme" is your primary blue style
+            variant="primary" // assuming "theme" is your primary blue style
             onClick={onViewIntegration}
           >
             View Integration

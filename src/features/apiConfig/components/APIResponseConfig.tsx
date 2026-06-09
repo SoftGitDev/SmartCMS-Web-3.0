@@ -200,7 +200,7 @@ const APIResponseConfig: React.FC<APIResponseConfigProps> = ({ setFieldValue, in
                     <div className="d-flex justify-content-center align-items-center mt-3 w-100">
                         <Button
                             size="sm"
-                            variant="light"
+                            variant="outline-orange"
                             className="text-xs fw-semibold text-sm w-100 py-2 border-dashed"
                             disabled={values.steps[index][fieldType].filter((r: any) => r?.deleteFlag !== "Y").length === 3}
                             onClick={() => {

@@ -168,8 +168,8 @@ const ResponseMappingMdl: React.FC<ResponseMappingMdlProps> = ({ setFieldValue, 
                   />
                 </Col>
 
-                <Col md={1} className="text-end">
-                  <Button variant="outline-danger" size="sm"
+                <Col md={1} className="text-end ">
+                  <Button className='mt-1' variant="outline-danger" size="sm"
                     tabIndex={getTabIndex()}
                     onClick={() => {
                       const newData = [...modalData];
@@ -208,7 +208,7 @@ const ResponseMappingMdl: React.FC<ResponseMappingMdlProps> = ({ setFieldValue, 
         </BootstrapModal.Body>
         <BootstrapModal.Footer>
           <Button variant="light" onClick={() => setShowModal(false)} > Cancel</Button>
-          <Button variant="theme" onClick={handleSaveModal} > Save Mapping</Button>
+          <Button variant="primary" onClick={handleSaveModal} > Save Mapping</Button>
         </BootstrapModal.Footer>
       </BootstrapModal>
     </div>
