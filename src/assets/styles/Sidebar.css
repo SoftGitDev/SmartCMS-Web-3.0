@@ -87,7 +87,7 @@
   font-size: 0.8125rem;
   font-weight: 500;
   padding: 0.58rem 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition:
     background 0.22s ease,
@@ -110,8 +110,9 @@
 }
 
 .single-sidebar-menu > .menu-link:hover {
-  background: rgba(255, 255, 255, 0.07);
-  color: #fff;
+  /* background: rgba(255, 255, 255, 0.07); */
+  background-color: var(--primaryColor25) !important;
+  color: var(--primaryColor) !important;
 }
 
 .single-sidebar-menu > .menu-link:hover::after {
@@ -153,75 +154,16 @@
   background: var(--primaryColor);
   background-size: 200% 200%;
   color: #fff !important;
-  animation:
-    activeGlow 2.2s ease-in-out infinite,
-    activeShimmer 4s ease infinite;
   position: relative;
   overflow: hidden;
 }
 
-/* Left accent bar on active item */
-.menu-item-active > .menu-link::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 15%;
-  height: 70%;
-  width: 3px;
-  border-radius: 0 3px 3px 0;
-  background: rgba(255, 255, 255, 0.7);
-  animation: accentPulse 2.2s ease-in-out infinite;
-}
-
-@keyframes accentPulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scaleY(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-/* Shimmer sweep overlay */
-.menu-item-active > .menu-link::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.12) 50%,
-    transparent 100%
-  );
-  animation: shimmerSweep 3.5s ease-in-out infinite;
-}
-
-@keyframes shimmerSweep {
-  0% {
-    left: -60%;
-  }
-  60% {
-    left: 120%;
-  }
-  100% {
-    left: 120%;
-  }
-}
-
-.menu-item-active > .menu-link:hover {
-  filter: brightness(1.1);
-}
-
 /* ── PARENT ACTIVE (has open children) ── */
 .item-has-children .parent_active {
-  background: rgba(var(--primaryColor), 0.18) !important;
-  border-radius: 10px;
+  background: var(--primaryColor) !important;
+  color: #fff !important;
+
+  border-radius: 5px;
 }
 
 .item-has-children .parent_active .menu-icon,
@@ -351,19 +293,20 @@
 .Menuactive .active,
 .sidebar-link-active {
   background-color: rgb(var(--primaryColor)) !important;
-  color: #fff !important;
+  color: var(--primaryColor) !important;
 }
 
 /* ── HOVER HIGHLIGHT (fallback) ───────── */
 .menu-link:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background-color: var(--primaryColor25) !important;
+  color: var(--primaryColor) !important;
   transition: background 0.22s ease;
 }
 
 .background-light {
-  background: rgba(var(--primaryColor), 0.16) !important;
-  color: #fff !important;
-  border-radius: 9px;
+  background: var(--primaryColor) !important;
+  color: var(--primaryColor) !important;
+  border-radius: 5px;
   transition: background 0.22s ease;
 }
 
@@ -502,16 +445,16 @@ body.dark .nav-shadow {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 5px !important;
+  background: var(--primaryColor25) !important;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .sb-link:hover {
-  color: rgba(255, 255, 255, 0.9);
-  padding-left: 14px;
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--primaryColor) !important;
+  padding-left: 10px;
+  background: var(--primaryColor25);
 }
 
 .sb-link:hover::after {
@@ -520,13 +463,10 @@ body.dark .nav-shadow {
 
 /* ── ACTIVE LINK ─ */
 .sb-link--active {
-  color: #fff !important;
+  border-radius: 5px !important;
+  color: var(--primaryColor) !important;
   font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    rgba(var(--primaryColor), 0.22) 0%,
-    rgba(var(--primaryColor2, var(--primaryColor)), 0.1) 100%
-  );
+  background: var(--primaryColor25);
 }
 
 .sb-link--active::before {
@@ -534,14 +474,11 @@ body.dark .nav-shadow {
   position: absolute;
   left: 0;
   top: 20%;
+  border-radius: 5px !important;
   height: 60%;
   width: 2.5px;
-  border-radius: 0 2px 2px 0;
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--primaryColor)),
-    rgb(var(--primaryColor2, var(--primaryColor)))
-  );
+  /* border-radius: 0 2px 2px 0; */
+  background: var(--primaryColor);
 }
 
 /* ── CHILD ICON (optional) ───────── */
@@ -566,4 +503,27 @@ body.dark .nav-shadow {
   background: rgba(var(--primaryColor), 0.25);
   color: rgba(255, 255, 255, 0.85);
   text-transform: uppercase;
+}
+
+/* Logo  */
+.navbar_logo {
+  width: 120px !important;
+  height: 30px !important;
+}
+
+/* ─────────────────────────────────────────────
+   CUSTOM SCROLLBAR
+───────────────────────────────────────────── */
+.menu-list::-webkit-scrollbar {
+  width: 5px;
+}
+.menu-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.menu-list::-webkit-scrollbar-thumb {
+  background: #dbe4ee;
+  border-radius: 30px;
+}
+.menu-list::-webkit-scrollbar-thumb:hover {
+  background: var(--primaryColor50);
 }

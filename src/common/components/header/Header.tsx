@@ -26,7 +26,7 @@ type HeaderProps = {
 
 const Header = ({ collapsed, setCollapsed, isMobile, setMobileSidebarOpen, }: HeaderProps) => {
   const [isProfile, setIsProfile] = useState<boolean>(false);
-  const headreWidth = isMobile ? 0 : collapsed ? 65 : 210;
+  const headreWidth = isMobile ? 0 : collapsed ? 60 : 210;
   const userData = getUserData();
 
   const handleSidebarToggle = () => {

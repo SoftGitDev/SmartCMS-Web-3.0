@@ -119,6 +119,10 @@ const CustomerTbl: React.FC<customerTblProps> = ({ data, flag, handleEditCustome
                             </div>
                         }
 
+                        {child.column.field === "AuthRejectReason" && (
+                            <div>{child.row?.AuthRejectReason || "-"}</div>
+                        )}
+
                         {child.column.field === 'status' && (
                             flag === 'A' ?
                                 <ToggleSwitch
@@ -174,6 +178,7 @@ const CustomerTbl: React.FC<customerTblProps> = ({ data, flag, handleEditCustome
                             child.column.field !== "status" &&
                             child.column.field !== "UserName" &&
                             child.column.field !== "firstNm" &&
+                            child.column.field !== "AuthRejectReason" &&
                             child.row[child.column.field as keyof any]}
                     </>
                 )}

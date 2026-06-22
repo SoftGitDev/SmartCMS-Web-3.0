@@ -661,13 +661,7 @@ const Ticketdtl = () => {
                                             <Eye size={14} className="text-secondary text-xs" /> Internal Visibility
                                         </div>
                                         <div className="d-inline-flex align-items-center gap-2 fw-semibold text-dark ps-4  ">
-                                            <Eye size={18} className="text-muted" />
                                             <span>{ticket.internalVisibility}</span>
-                                            <Pencil
-                                                size={14}
-                                                className="text-primary cursor-pointer ms-2 hover-opacity"
-                                                style={{ cursor: 'pointer' }}
-                                            />
                                         </div>
                                     </Col>
 

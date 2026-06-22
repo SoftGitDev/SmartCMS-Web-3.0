@@ -13,7 +13,7 @@ import Sidebar from "./Sidebar";
 import '../../../assets/styles/Sidebar.css'
 
 // import { menusProps } from "../../types/type";
-import companyLogo from '../../../assets/images/commone/Company_logo.png'
+import companyLogo from '../../../assets/images/commone/logo.png'
 import { SweetAlerts } from "../../../services/notification/sweetAlert";
 import { useLayout } from "../../../app/providers/layout";
 const packageJson = require("../../../../package.json");
@@ -84,40 +84,31 @@ const Navmenu: React.FC<NavmenuProps> = ({ menus, collapsed, isHovered, mobileOp
       <div className="mt-3 pb-3 d-flex align-items-center gap-2 border-bottom">
 
         {!collapsed &&
-          <div>
-            {/* {bankLogoDetails?.mainLogo ? (
+          <div >
+            {bankLogoDetails?.mainLogo ? (
               <img
-                src={bankLogoDetails?.mainLogo}
+                src={companyLogo}
                 alt="Organization Logo"
                 className="img-fluid"
-                style={{ maxHeight: bankLogoDetails?.mainLogoHeight, width: bankLogoDetails?.mainLogoWidth }}
               />
             ) : (
               <>
-                <div className="d-flex gap-2">
-                  <div className="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white fw-bold shadow-sm"
-                    style={{ width: "34px", height: "34px", fontSize: "14px" }}>C
-                  </div>
-                  <div>
-                    <h6 className="mb-0 fw-bold text-md text-white">CRM</h6>
-                    <p className="text-white mb-0 text-xs">Compliance management system</p>
-                  </div>
+                <div className="d-flex justify-content-center align-items-center">
+                  <img
+                    src={companyLogo}
+                    alt="Organization Logo"
+                    className="img-fluid navbar_logo d-flex"
+                    style={{ height: 25, width: 'auto' }}
+                  />
                 </div>
               </>
-            )} */}
-            <img
-              src={companyLogo}
-              alt="Organization Logo"
-              className="img-fluid d-flex"
-              style={{ height: 25, width: 'auto' }}
-            // style={{ maxHeight: bankLogoDetails?.mainLogoHeight, width: bankLogoDetails?.mainLogoWidth }}
-            />
+            )}
           </div>
         }
       </div>
 
       {/* === MENU LIST === */}
-      <ul className="mt-3 h-95 p-0">
+      <ul className="mt-3 h-95 p-0 menu-list">
 
         {menus.filter((items: any) => items.isShow).map((item, i) => {
           const isActive = activeSubmenu === i;
@@ -142,13 +133,13 @@ const Navmenu: React.FC<NavmenuProps> = ({ menus, collapsed, isHovered, mobileOp
                     // 3. Render a clickable Div instead of NavLink for No Access items
                     <div className="menu-link cursor-pointer" onClick={handleNoAccess}>
                       {Icon && <span className="menu-icon me-2 pe-2"> <Icon size={16} /></span>}
-                      {(!collapsed || isHovered) && (<span className="menu-text text-white fw-medium">{item.title}</span>)}
+                      {(!collapsed || isHovered) && (<span className="menu-text  fw-medium">{item.title}</span>)}
                     </div>
                   ) : (
                     // Normal NavLink for valid routes
                     <NavLink className="menu-link" to={item.link}>
                       {Icon && <span className="menu-icon me-2 pe-2"> <Icon size={16} /></span>}
-                      {(!collapsed || isHovered) && (<span className="menu-text text-white fw-medium">{item.title}</span>)}
+                      {(!collapsed || isHovered) && (<span className="menu-text  fw-medium">{item.title}</span>)}
                     </NavLink>
                   )}
                 </>

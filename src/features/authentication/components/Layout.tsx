@@ -151,7 +151,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title = "", Note = "", Header
                 </Col>
                 {/* Right Side Vault Panel */}
                 <Col className="d-flex flex-column bg-white position-relative" style={{ minHeight: '100vh' }}>
-                    <div className="m-4 m-md-5 z-index-2">
+                    <div className="m-4 m-md-2 z-index-2">
                     </div>
                     <div className="flex-grow-1 d-flex flex-column justify-content-center w-100 mx-auto px-4" style={{ maxWidth: '520px' }}>
                         <div className="d-flex justify-content-center align-items-center gap-2 mb-5">

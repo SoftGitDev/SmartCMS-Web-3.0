@@ -75,7 +75,7 @@ const Sidebar: React.FC<SubmenuProps> = ({ activeSubmenu, item, i, collapsed, is
   return (
     <>
       {/* Height-animated wrapper */}
-      <div className="sb-submenu-wrap mb-2" style={{ height: typeof height === "number" ? `${height}px` : height }} aria-hidden={!shouldOpen} >
+      <div className="sb-submenu-wrap  mb-2" style={{ height: typeof height === "number" ? `${height}px` : height }} aria-hidden={!shouldOpen} >
         <ul ref={ref} className="sb-submenu">
           {children.map((subItem: SubMenuItem, j: number) => {
             const childPath = subItem.childlink.startsWith("/") ? subItem.childlink : `/${subItem.childlink}`;
